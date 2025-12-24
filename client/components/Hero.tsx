@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import PremiumMessage from "./PremiumMessage";
 
 export default function Hero() {
   return (
