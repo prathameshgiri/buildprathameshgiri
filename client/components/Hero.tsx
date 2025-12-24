@@ -32,10 +32,10 @@ export default function Hero() {
         {/* Main Heading */}
         <div className="text-center max-w-3xl mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
-            <span className="text-gray-900 inline-block opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>Build your dream website</span>
+            <span className="text-gray-900 inline-block opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>Build your dream website with</span>
             <br />
             <span className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.7s" }}>
-              with Prathamesh Giri
+              Prathamesh Giri
               <Sparkles className="w-8 h-8 text-orange-500 inline opacity-0 animate-bounce-subtle" style={{ animationDelay: "0.9s" }} />
             </span>
           </h1>
