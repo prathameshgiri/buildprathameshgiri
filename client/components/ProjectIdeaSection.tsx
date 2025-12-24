@@ -20,7 +20,7 @@ export default function ProjectIdeaSection() {
         </div>
 
         {/* Form Container */}
-        <div className="bg-gray-50 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-lg border border-gray-200 hover:border-orange-200 transition-colors duration-300">
+        <div className="bg-gray-50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200 hover:border-orange-200 transition-colors duration-300">
           <ProjectIdeaForm />
         </div>
       </div>
