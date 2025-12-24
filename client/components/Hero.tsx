@@ -20,7 +20,7 @@ export default function Hero() {
                 title="Client 1"
               >
                 <img
-                  src="https://in.pinterest.com/pin/5770305769301404/"
+                  src="https://ui-avatars.com/api/?name=A&background=fb923c&color=fff&size=128"
                   alt="Client 1"
                   className="w-full h-full object-cover"
                 />
@@ -31,7 +31,7 @@ export default function Hero() {
                 title="Client 2"
               >
                 <img
-                  src="https://in.pinterest.com/pin/663577326390063684/"
+                  src="https://ui-avatars.com/api/?name=B&background=3b82f6&color=fff&size=128"
                   alt="Client 2"
                   className="w-full h-full object-cover"
                 />
