@@ -43,15 +43,6 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.9s" }}>
-          <button className="btn-primary text-lg px-8 py-3 shadow-lg hover:shadow-2xl transition-all duration-300 group">
-            <span className="inline-block group-hover:scale-110 transition-transform duration-300">Get Started</span>
-          </button>
-          <button className="btn-secondary text-lg px-8 py-3 hover:shadow-lg transition-all duration-300 group">
-            <span className="inline-block group-hover:scale-110 transition-transform duration-300">View Work</span>
-          </button>
-        </div>
       </div>
 
       {/* Decorative Gradient Overlay */}
