@@ -42,6 +42,9 @@ export default function Hero() {
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}>
             Transform your ideas into stunning digital experiences. Professional design, seamless development, and unlimited possibilities.
           </p>
+
+          {/* Premium Message Section */}
+          <PremiumMessage />
         </div>
 
       </div>
