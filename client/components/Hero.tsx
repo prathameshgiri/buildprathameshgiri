@@ -20,7 +20,7 @@ export default function Hero() {
   title="Client 1"
 >
   <img
-    src="https://in.pinterest.com/pin/663577326390063684/"
+    src="https://in.pinterest.com/pin/880524164708682641/"
     alt="Client 1"
     className="w-full h-full object-cover rounded-full"
   />
