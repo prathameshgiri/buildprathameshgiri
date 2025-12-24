@@ -110,12 +110,43 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "slide-down": {
+          from: {
+            opacity: "0",
+            transform: "translateY(-20px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "fade-in-scale": {
+          from: {
+            opacity: "0",
+            transform: "scale(0.95)",
+          },
+          to: {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
+        "bounce-subtle": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-8px)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
+        "slide-down": "slide-down 0.6s ease-out",
+        "fade-in-scale": "fade-in-scale 0.5s ease-out",
+        "bounce-subtle": "bounce-subtle 3s ease-in-out infinite",
       },
       backgroundImage: {
         "gradient-glow": "radial-gradient(circle at 30% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 50%)",
