@@ -31,7 +31,7 @@ export default function Hero() {
                 title="Client 2"
               >
                 <img
-                  src="https://ui-avatars.com/api/?name=B&background=3b82f6&color=fff&size=128"
+                  src="https://in.pinterest.com/pin/5770305769301404/"
                   alt="Client 2"
                   className="w-full h-full object-cover"
                 />
