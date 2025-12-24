@@ -2,7 +2,7 @@ import ProjectIdeaForm from "./ProjectIdeaForm";
 
 export default function ProjectIdeaSection() {
   return (
-    <section className="relative w-full bg-white overflow-hidden py-20 sm:py-28 lg:py-32">
+    <section className="relative w-full bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
       {/* Subtle Gradient Blobs */}
       <div className="absolute top-10 right-10 w-64 h-64 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" />
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-orange-50 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" style={{ animationDelay: "0.3s" }} />
