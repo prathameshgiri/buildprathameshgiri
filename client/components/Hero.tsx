@@ -2,14 +2,14 @@ import { Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-white">
+    <div className="relative w-full overflow-hidden bg-white">
       {/* Gradient Background Blobs */}
       <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" />
       <div className="absolute top-40 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" />
       <div className="absolute -bottom-8 left-20 w-72 h-72 bg-orange-50 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
         {/* Social Proof Badge */}
         <div className="mb-8 animate-slide-up opacity-0" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
           <div className="badge-pill">
