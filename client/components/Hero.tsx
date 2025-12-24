@@ -16,11 +16,7 @@ export default function Hero() {
           <div className="badge-pill hover:shadow-md transition-shadow duration-300">
             <div className="flex -space-x-2">
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300" title="Client 1">
-                 <img 
-    src="https://in.pinterest.com/pin/880524164708682641/" 
-    alt="Woman writing at desk"
-    className="w-full h-full object-cover"
-  />
+                A
               </div>
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300" title="Client 2">
                 B
