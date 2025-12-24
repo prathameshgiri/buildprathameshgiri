@@ -104,7 +104,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-foreground;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
@@ -116,5 +116,27 @@
   code {
     overflow-x: auto;
     white-space: pre;
+  }
+}
+
+@layer components {
+  .gradient-blob {
+    @apply absolute blur-3xl;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 rounded-full bg-orange-500 text-white font-medium hover:bg-orange-600 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 rounded-full border-2 border-orange-500 text-orange-600 font-medium hover:bg-orange-50 transition-all duration-200;
+  }
+
+  .badge-pill {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-medium shadow-sm;
   }
 }
