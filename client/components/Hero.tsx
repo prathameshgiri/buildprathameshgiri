@@ -37,7 +37,7 @@ export default function Hero() {
             <span className="text-gray-900 inline-block opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>with </span>
             
             <span className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.7s" }}>
-             Prathamesh Giri
+              Prathamesh Giri
               <Sparkles className="w-8 h-8 text-orange-500 inline opacity-0 animate-bounce-subtle" style={{ animationDelay: "0.9s" }} />
             </span>
           </h1>
