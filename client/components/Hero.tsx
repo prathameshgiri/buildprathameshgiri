@@ -15,15 +15,39 @@ export default function Hero() {
         <div className="mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}>
           <div className="badge-pill hover:shadow-md transition-shadow duration-300">
             <div className="flex -space-x-2">
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300" title="Client 1">
-                A
+              <div
+                className="w-6 h-6 rounded-full border-2 border-white overflow-hidden hover:scale-110 transition-transform duration-300"
+                title="Client 1"
+              >
+                <img
+                  src="https://ui-avatars.com/api/?name=A&background=fb923c&color=fff&size=128"
+                  alt="Client 1"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300" title="Client 2">
-                B
+
+              <div
+                className="w-6 h-6 rounded-full border-2 border-white overflow-hidden hover:scale-110 transition-transform duration-300"
+                title="Client 2"
+              >
+                <img
+                  src="https://ui-avatars.com/api/?name=B&background=3b82f6&color=fff&size=128"
+                  alt="Client 2"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300" title="Client 3">
-                C
+
+              <div
+                className="w-6 h-6 rounded-full border-2 border-white overflow-hidden hover:scale-110 transition-transform duration-300"
+                title="Client 3"
+              >
+                <img
+                  src="https://ui-avatars.com/api/?name=C&background=ec4899&color=fff&size=128"
+                  alt="Client 3"
+                  className="w-full h-full object-cover"
+                />
               </div>
+
             </div>
             <span className="text-gray-700 text-sm">30+ businesses built with Prathamesh Giri</span>
           </div>
