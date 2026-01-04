@@ -3,14 +3,9 @@ import PremiumMessage from "./PremiumMessage";
 
 export default function Hero() {
   return (
-    <div className="relative w-full overflow-hidden bg-white">
-      {/* Gradient Background Blobs with Animation */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" style={{ animationDelay: "0s" }} />
-      <div className="absolute top-40 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" style={{ animationDelay: "0.2s" }} />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-orange-50 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" style={{ animationDelay: "0.4s" }} />
-
+    <div className="relative w-full">
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <div className="relative z-10 flex flex-col items-start justify-start">
         {/* Social Proof Badge */}
         <div className="mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}>
           <div className="badge-pill hover:shadow-md transition-shadow duration-300">
