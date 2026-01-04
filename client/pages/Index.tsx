@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProjectIdeaSection from "@/components/ProjectIdeaSection";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function Index() {
   return (
@@ -28,6 +29,9 @@ export default function Index() {
         {/* Decorative Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 pointer-events-none" />
       </div>
+
+      {/* Services Section */}
+      <ServicesSection />
     </div>
   );
 }
