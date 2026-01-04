@@ -1,40 +1,95 @@
-import { Lock } from "lucide-react";
+import { Lock, Zap, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function PremiumMessage() {
   return (
     <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.85s" }}>
-      <div className="relative mt-10 bg-gradient-to-r from-orange-50 to-orange-100/50 rounded-2xl p-6 sm:p-8 border-2 border-orange-200 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-          {/* Icon */}
-          <div className="flex-shrink-0">
-            <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Lock className="w-6 h-6 text-white" />
+      <div className="relative mt-12 rounded-3xl p-8 sm:p-10 border-2 border-orange-200/50 shadow-2xl hover:shadow-2xl transition-all duration-500 group overflow-hidden">
+        {/* Multi-layer Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-orange-100/30 rounded-3xl" />
+
+        {/* Animated Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-400/0 via-orange-300/10 to-orange-400/0 group-hover:via-orange-300/20 transition-all duration-500 rounded-3xl" />
+
+        {/* Decorative Blobs */}
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+
+        {/* Top Accent Line */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50 rounded-t-3xl" />
+
+        <div className="relative z-10 flex flex-col gap-6">
+          {/* Header Row */}
+          <div className="flex items-start justify-between gap-6">
+            {/* Icon Section */}
+            <div className="flex-shrink-0">
+              <div className="relative">
+                {/* Icon Background Glow */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-lg" />
+
+                {/* Icon Container */}
+                <div className="relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all duration-500">
+                  <Lock className="w-8 h-8 text-white" strokeWidth={1.5} />
+                </div>
+              </div>
+            </div>
+
+            {/* Premium Badge */}
+            <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-50 rounded-full border border-orange-200 group-hover:border-orange-300 transition-colors duration-300">
+              <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
+              <span className="text-xs font-semibold text-orange-700">Premium Access</span>
             </div>
           </div>
 
           {/* Content */}
-          <div className="flex-1 min-w-0">
-            <p className="text-gray-700 text-base sm:text-lg font-medium leading-relaxed">
+          <div className="space-y-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              Unlock Premium Projects
+            </h3>
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
               Sign up or log in to access exclusive, real-world projects built for serious developers and businesses.
             </p>
           </div>
 
+          {/* Features Grid */}
+          <div className="grid grid-cols-2 gap-3 opacity-75 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+              Real-world Projects
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+              Expert Guidance
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+              Community Access
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+              Career Growth
+            </div>
+          </div>
+
           {/* CTA Button */}
-          <div className="flex-shrink-0 w-full sm:w-auto">
+          <div className="pt-2">
             <Link
               to="/auth"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-full hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 group/btn whitespace-nowrap"
+              className="w-full group/btn relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95"
             >
-              <span className="group-hover/btn:scale-110 inline-block transition-transform duration-300">
-                Unlock Premium Projects
-              </span>
-              <svg className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              {/* Button Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+
+              {/* Button Content */}
+              <div className="relative flex items-center justify-center gap-3">
+                <Zap className="w-5 h-5 group-hover/btn:animate-pulse" strokeWidth={2} />
+                <span className="relative">
+                  Unlock Premium Projects
+                </span>
+                <svg className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
             </Link>
           </div>
         </div>
