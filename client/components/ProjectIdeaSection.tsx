@@ -20,9 +20,6 @@ export default function ProjectIdeaSection() {
           <ProjectIdeaForm />
         </div>
       </div>
-
-      {/* Decorative Bottom Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-20" />
     </section>
   );
 }
