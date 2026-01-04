@@ -25,18 +25,18 @@ export default function Hero() {
         </div>
 
         {/* Main Heading */}
-        <div className="text-center max-w-3xl mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}>
+        <div className="max-w-2xl mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
             <span className="text-gray-900 inline-block opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>Build your dream website</span>
             <br />
             <span className="text-gray-900 inline-block opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>with&nbsp;</span>
-            
+
             <span className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.7s" }}>
               Prathamesh Giri
               <Sparkles className="w-8 h-8 text-orange-500 inline opacity-0 animate-bounce-subtle" style={{ animationDelay: "0.9s" }} />
             </span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}>
+          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}>
             Transform your ideas into stunning digital experiences. Professional design, seamless development, and unlimited possibilities.
           </p>
 
