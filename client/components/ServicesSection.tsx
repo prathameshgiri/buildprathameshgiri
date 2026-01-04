@@ -106,6 +106,7 @@ export default function ServicesSection() {
               icon={service.icon}
               title={service.title}
               description={service.description}
+              link={service.link}
               delay={`${0.3 + index * 0.1}s`}
             />
           ))}
