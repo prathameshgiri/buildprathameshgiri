@@ -70,7 +70,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
+    <section id="services" className="relative py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
       {/* Gradient Background Blobs */}
       <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" style={{ animationDelay: "0s" }} />
       <div className="absolute -bottom-8 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" style={{ animationDelay: "0.2s" }} />
