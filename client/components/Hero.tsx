@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-start justify-start">
         {/* Social Proof Badge */}
         <div className="mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}>
-          <div className="badge-pill hover:shadow-md transition-shadow duration-300">
+          <div className="badge-pill hover:shadow-md transition-shadow duration-300 sm:w-fit">
             <div className="flex -space-x-2">
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300" title="Client 1">
                 A
