@@ -5,6 +5,7 @@ interface ServiceCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  link: string;
   delay?: string;
 }
 
@@ -12,6 +13,7 @@ export default function ServiceCard({
   icon: Icon,
   title,
   description,
+  link,
   delay = "0s",
 }: ServiceCardProps) {
   return (
@@ -39,7 +41,7 @@ export default function ServiceCard({
 
         {/* Learn More Link */}
         <Link
-          to="#"
+          to={link}
           className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:gap-3 transition-all duration-300 group/link"
         >
           <span>Learn more</span>
