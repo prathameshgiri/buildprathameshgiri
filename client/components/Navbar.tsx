@@ -55,6 +55,13 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 animate-slide-down">
           <div className="px-4 py-4 space-y-3">
+            <Link
+              to="/about"
+              className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
             <a
               href="#pricing"
               className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
