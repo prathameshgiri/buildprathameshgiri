@@ -17,54 +17,63 @@ const services = [
     title: "Website Design & Development",
     description:
       "Beautiful, responsive websites that capture your brand's essence and engage your audience with modern design principles.",
+    link: "/services/website-design",
   },
   {
     icon: Code,
     title: "Frontend Development",
     description:
       "Cutting-edge React and Vue applications with smooth animations, intuitive interfaces, and exceptional user experiences.",
+    link: "/services/frontend",
   },
   {
     icon: Database,
     title: "Backend Development",
     description:
       "Robust server-side solutions using Node.js, Python, and databases. Secure, scalable, and built for growth.",
+    link: "/services/backend",
   },
   {
     icon: Zap,
     title: "Full-Stack Development",
     description:
       "End-to-end application development combining frontend finesse with powerful backend architecture for complete solutions.",
+    link: "/services/full-stack",
   },
   {
     icon: ShoppingCart,
     title: "E-commerce Development",
     description:
       "Complete e-commerce platforms with payment integration, inventory management, and conversion-optimized checkout experiences.",
+    link: "/services/ecommerce",
   },
   {
     icon: Smartphone,
     title: "Web App Development",
     description:
       "Progressive web apps and responsive applications that work seamlessly across all devices and screen sizes.",
+    link: "/services/web-app",
   },
   {
     icon: PenTool,
     title: "UI/UX Design",
     description:
       "User-centered design that combines aesthetics with functionality. Every pixel purposeful, every interaction intuitive.",
+    link: "/services/ui-ux-design",
   },
   {
     icon: Wrench,
     title: "Website Maintenance & Support",
     description:
       "Ongoing support, updates, and optimization to keep your site secure, fast, and performing at its best.",
+    link: "/services/maintenance",
   },
   {
     icon: Rocket,
     title: "SEO & Performance Optimization",
     description:
       "Strategic optimization to boost search rankings, improve page speed, and increase conversions and user engagement.",
+    link: "/services/seo-performance",
   },
 ];
 
