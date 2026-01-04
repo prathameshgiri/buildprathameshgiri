@@ -1,5 +1,6 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import PremiumMessage from "./PremiumMessage";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -39,6 +40,16 @@ export default function Hero() {
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}>
             Transform your ideas into stunning digital experiences. Professional design, seamless development, and unlimited possibilities.
           </p>
+
+          {/* About Link */}
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-2 mt-6 text-orange-600 font-semibold hover:gap-3 transition-all duration-300 opacity-0 animate-slide-up group"
+            style={{ animationFillMode: "forwards", animationDelay: "0.82s" }}
+          >
+            <span className="text-base sm:text-lg">About</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
 
           {/* Premium Message Section */}
           <PremiumMessage />
