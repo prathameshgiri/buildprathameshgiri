@@ -16,6 +16,9 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
+          <Link to="/about" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
+            About
+          </Link>
           <a href="#pricing" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
             Pricing
           </a>
