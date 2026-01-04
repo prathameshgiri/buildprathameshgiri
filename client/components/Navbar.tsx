@@ -19,20 +19,23 @@ export default function Navbar() {
           <Link to="/about" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
             About
           </Link>
-          <a href="#pricing" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
+          <a href="/#services" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
+            Services
+          </a>
+          <a href="#pricing" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
             Pricing
           </a>
-          <a href="#explore" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
+          <a href="#explore" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
             Explore
           </a>
         </div>
 
         {/* Desktop Right Side Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <button className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
+          <button className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up" style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}>
             Sign In
           </button>
-          <button className="btn-primary opacity-0 animate-slide-up" style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}>
+          <button className="btn-primary opacity-0 animate-slide-up" style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}>
             Sign Up
           </button>
         </div>
@@ -62,6 +65,13 @@ export default function Navbar() {
             >
               About
             </Link>
+            <a
+              href="/#services"
+              className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Services
+            </a>
             <a
               href="#pricing"
               className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
