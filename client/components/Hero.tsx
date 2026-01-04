@@ -45,9 +45,6 @@ export default function Hero() {
         </div>
 
       </div>
-
-      {/* Decorative Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 pointer-events-none" />
     </div>
   );
 }
