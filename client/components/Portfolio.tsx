@@ -139,8 +139,8 @@ export default function Portfolio() {
 
               {/* Content */}
               <div className="p-6 bg-white">
-                <div className="mb-3 inline-block px-3 py-1 bg-orange-100 rounded-full">
-                  <span className="text-xs font-semibold text-orange-700">{project.category}</span>
+                <div className="mb-3 inline-block px-3 py-1 bg-teal-100 rounded-full">
+                  <span className="text-xs font-semibold text-teal-700">{project.category}</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{project.name}</h3>
                 <p className="text-gray-600 text-sm mb-4">{project.description}</p>
