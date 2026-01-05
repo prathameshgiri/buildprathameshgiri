@@ -92,7 +92,7 @@ export default function Contact() {
                 <MapPin className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Location</h3>
-              <p className="text-gray-600">Bangalore, India</p>
+              <p className="text-gray-600">Pune, India</p>
               <p className="text-gray-600">Remote / On-site</p>
             </div>
           </div>
