@@ -27,11 +27,11 @@ export default function TechnologyStack() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
-          <div className="inline-block mb-6 px-4 py-2 bg-orange-100 rounded-full">
-            <p className="text-orange-700 text-sm font-semibold">Modern Technology</p>
+          <div className="inline-block mb-6 px-4 py-2 bg-blue-100 rounded-full">
+            <p className="text-blue-700 text-sm font-semibold">Modern Technology</p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Technology <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Stack</span>
+            Technology <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Stack</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We use cutting-edge technologies and industry best practices to build fast, scalable, and secure applications.
