@@ -123,8 +123,8 @@ export default function Pricing() {
                   to="/auth"
                   className={`block w-full py-3 rounded-full font-semibold text-center mb-8 transition-all duration-300 ${
                     plan.highlighted
-                      ? "bg-white text-orange-600 hover:shadow-lg"
-                      : "bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-lg"
+                      ? "bg-white text-emerald-600 hover:shadow-lg"
+                      : "bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:shadow-lg"
                   }`}
                 >
                   Get Started
