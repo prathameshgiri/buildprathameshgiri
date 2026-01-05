@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import About from "./pages/About";
+import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 import WebsiteDesignDevelopment from "./pages/services/WebsiteDesignDevelopment";
 import FrontendDevelopment from "./pages/services/FrontendDevelopment";
@@ -31,6 +32,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/services/website-design" element={<WebsiteDesignDevelopment />} />
             <Route path="/services/frontend" element={<FrontendDevelopment />} />
