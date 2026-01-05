@@ -60,7 +60,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="opacity-0 animate-slide-up p-8 bg-gradient-to-br from-white to-orange-50 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300"
+              className="opacity-0 animate-slide-up p-8 bg-gradient-to-br from-white to-rose-50 rounded-2xl border-2 border-rose-100 hover:border-rose-300 hover:shadow-xl transition-all duration-300"
               style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.1}s` }}
             >
               {/* Rating */}
