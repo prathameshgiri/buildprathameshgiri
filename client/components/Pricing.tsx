@@ -88,8 +88,8 @@ export default function Pricing() {
               <div
                 className={`absolute inset-0 ${
                   plan.highlighted
-                    ? "bg-gradient-to-br from-orange-500 to-orange-600"
-                    : "bg-gradient-to-br from-white to-orange-50"
+                    ? "bg-gradient-to-br from-emerald-500 to-teal-600"
+                    : "bg-gradient-to-br from-white to-emerald-50"
                 }`}
               />
 
