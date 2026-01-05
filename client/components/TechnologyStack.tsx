@@ -43,11 +43,11 @@ export default function TechnologyStack() {
           {categories.map((category, idx) => (
             <div
               key={category.name}
-              className="opacity-0 animate-slide-up p-8 bg-gradient-to-br from-white to-orange-50 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300"
+              className="opacity-0 animate-slide-up p-8 bg-gradient-to-br from-white to-blue-50 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
               style={{ animationFillMode: "forwards", animationDelay: `${0.3 + idx * 0.1}s` }}
             >
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <span className="w-2 h-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></span>
+                <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></span>
                 {category.name}
               </h3>
               <div className="space-y-3">
