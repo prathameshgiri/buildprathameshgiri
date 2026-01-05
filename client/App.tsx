@@ -34,15 +34,33 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/services/website-design" element={<WebsiteDesignDevelopment />} />
-            <Route path="/services/frontend" element={<FrontendDevelopment />} />
+            <Route
+              path="/services/website-design"
+              element={<WebsiteDesignDevelopment />}
+            />
+            <Route
+              path="/services/frontend"
+              element={<FrontendDevelopment />}
+            />
             <Route path="/services/backend" element={<BackendDevelopment />} />
-            <Route path="/services/full-stack" element={<FullStackDevelopment />} />
-            <Route path="/services/ecommerce" element={<EcommerceDevelopment />} />
+            <Route
+              path="/services/full-stack"
+              element={<FullStackDevelopment />}
+            />
+            <Route
+              path="/services/ecommerce"
+              element={<EcommerceDevelopment />}
+            />
             <Route path="/services/web-app" element={<WebAppDevelopment />} />
             <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
-            <Route path="/services/maintenance" element={<WebsiteMaintenanceSupport />} />
-            <Route path="/services/seo-performance" element={<SEOPerformanceOptimization />} />
+            <Route
+              path="/services/maintenance"
+              element={<WebsiteMaintenanceSupport />}
+            />
+            <Route
+              path="/services/seo-performance"
+              element={<SEOPerformanceOptimization />}
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

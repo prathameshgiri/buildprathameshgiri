@@ -18,9 +18,18 @@ export default function Index() {
       <Navbar />
       <div className="relative w-full overflow-hidden bg-white">
         {/* Gradient Background Blobs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" style={{ animationDelay: "0s" }} />
-        <div className="absolute top-40 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" style={{ animationDelay: "0.2s" }} />
-        <div className="absolute bottom-0 right-20 w-64 h-64 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" style={{ animationDelay: "0.4s" }} />
+        <div
+          className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in"
+          style={{ animationDelay: "0s" }}
+        />
+        <div
+          className="absolute top-40 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in"
+          style={{ animationDelay: "0.2s" }}
+        />
+        <div
+          className="absolute bottom-0 right-20 w-64 h-64 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in"
+          style={{ animationDelay: "0.4s" }}
+        />
 
         {/* Main Content Grid */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">

@@ -15,12 +15,16 @@ export default function Footer() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Brand */}
             <div>
-              <Link to="/" className="flex items-center gap-1 text-2xl font-bold mb-6">
+              <Link
+                to="/"
+                className="flex items-center gap-1 text-2xl font-bold mb-6"
+              >
                 <span className="text-orange-500">PS</span>
                 <span>Giri</span>
               </Link>
               <p className="text-gray-400 mb-6">
-                Building exceptional digital experiences that drive real business results.
+                Building exceptional digital experiences that drive real
+                business results.
               </p>
               {/* Social Links */}
               <div className="flex gap-4">
@@ -56,22 +60,34 @@ export default function Footer() {
               <h4 className="text-lg font-bold mb-6">Quick Links</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/about" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/about"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/#services" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/#services"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/faq" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/faq"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     FAQs
                   </Link>
                 </li>
@@ -83,22 +99,34 @@ export default function Footer() {
               <h4 className="text-lg font-bold mb-6">Services</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/services/website-design" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/services/website-design"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Web Design
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/frontend" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/services/frontend"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Frontend Dev
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/backend" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/services/backend"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Backend Dev
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/ui-ux-design" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <Link
+                    to="/services/ui-ux-design"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     UI/UX Design
                   </Link>
                 </li>
@@ -110,22 +138,34 @@ export default function Footer() {
               <h4 className="text-lg font-bold mb-6">Legal</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Terms & Conditions
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Cookie Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors duration-300">
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300"
+                  >
                     Disclaimer
                   </a>
                 </li>
@@ -142,7 +182,8 @@ export default function Footer() {
               © {currentYear} PS Giri. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
-              Made with <span className="text-orange-500">❤</span> for amazing clients
+              Made with <span className="text-orange-500">❤</span> for amazing
+              clients
             </p>
           </div>
         </div>

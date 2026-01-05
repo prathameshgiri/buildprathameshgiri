@@ -11,7 +11,7 @@ export default function Contact() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -24,26 +24,41 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
+    <section
+      id="contact"
+      className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white"
+    >
       <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
+        <div
+          className="text-center mb-16 opacity-0 animate-slide-up"
+          style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}
+        >
           <div className="inline-block mb-6 px-4 py-2 bg-orange-100 rounded-full">
-            <p className="text-orange-700 text-sm font-semibold">Get In Touch</p>
+            <p className="text-orange-700 text-sm font-semibold">
+              Get In Touch
+            </p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Contact <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Us</span>
+            Contact{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Us
+            </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can help transform your ideas
+            Have a project in mind? Let's discuss how we can help transform your
+            ideas
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* Contact Info */}
-          <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
+          <div
+            className="opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
+          >
             <div className="p-8 bg-white rounded-2xl border-2 border-orange-100 hover:border-orange-300 transition-colors duration-300">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
                 <Mail className="w-6 h-6 text-orange-600" />
@@ -54,7 +69,10 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}>
+          <div
+            className="opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}
+          >
             <div className="p-8 bg-white rounded-2xl border-2 border-orange-100 hover:border-orange-300 transition-colors duration-300">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
                 <Phone className="w-6 h-6 text-orange-600" />
@@ -65,7 +83,10 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}>
+          <div
+            className="opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}
+          >
             <div className="p-8 bg-white rounded-2xl border-2 border-orange-100 hover:border-orange-300 transition-colors duration-300">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
                 <MapPin className="w-6 h-6 text-orange-600" />
@@ -168,32 +189,45 @@ export default function Contact() {
           </form>
 
           {/* Info */}
-          <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}>
+          <div
+            className="opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}
+          >
             <div className="p-8 bg-gradient-to-br from-white to-orange-50 rounded-2xl border-2 border-orange-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Quick Response</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Quick Response
+              </h3>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  <span className="font-semibold text-gray-900">Response Time:</span> We
-                  typically respond within 24 hours
+                  <span className="font-semibold text-gray-900">
+                    Response Time:
+                  </span>{" "}
+                  We typically respond within 24 hours
                 </p>
                 <p>
-                  <span className="font-semibold text-gray-900">Best Time:</span> Monday -
-                  Friday, 10 AM - 6 PM IST
+                  <span className="font-semibold text-gray-900">
+                    Best Time:
+                  </span>{" "}
+                  Monday - Friday, 10 AM - 6 PM IST
                 </p>
                 <p>
-                  <span className="font-semibold text-gray-900">Urgent Queries:</span> Use
-                  WhatsApp for immediate assistance
+                  <span className="font-semibold text-gray-900">
+                    Urgent Queries:
+                  </span>{" "}
+                  Use WhatsApp for immediate assistance
                 </p>
                 <p>
-                  <span className="font-semibold text-gray-900">What to Include:</span> Brief
-                  project description, budget, and timeline
+                  <span className="font-semibold text-gray-900">
+                    What to Include:
+                  </span>{" "}
+                  Brief project description, budget, and timeline
                 </p>
               </div>
 
               <div className="mt-8 pt-8 border-t border-orange-200">
                 <p className="text-sm text-gray-600">
-                  We look forward to hearing from you and exploring how we can help bring
-                  your vision to life!
+                  We look forward to hearing from you and exploring how we can
+                  help bring your vision to life!
                 </p>
               </div>
             </div>

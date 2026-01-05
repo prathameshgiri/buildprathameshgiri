@@ -60,12 +60,20 @@ export default function Pricing() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
+        <div
+          className="text-center mb-16 opacity-0 animate-slide-up"
+          style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}
+        >
           <div className="inline-block mb-6 px-4 py-2 bg-emerald-100 rounded-full">
-            <p className="text-emerald-700 text-sm font-semibold">Transparent Pricing</p>
+            <p className="text-emerald-700 text-sm font-semibold">
+              Transparent Pricing
+            </p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Simple, <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Transparent Pricing</span>
+            Simple,{" "}
+            <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
+              Transparent Pricing
+            </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Choose the perfect package for your needs. No hidden charges, ever.
@@ -82,7 +90,10 @@ export default function Pricing() {
                   ? "border-emerald-500 shadow-2xl md:scale-105"
                   : "border-emerald-100 hover:border-emerald-300"
               }`}
-              style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.1}s` }}
+              style={{
+                animationFillMode: "forwards",
+                animationDelay: `${0.3 + index * 0.1}s`,
+              }}
             >
               {/* Background */}
               <div
@@ -94,26 +105,36 @@ export default function Pricing() {
               />
 
               {/* Content */}
-              <div className={`relative p-8 ${plan.highlighted ? "text-white" : "text-gray-900"}`}>
+              <div
+                className={`relative p-8 ${plan.highlighted ? "text-white" : "text-gray-900"}`}
+              >
                 {/* Badge */}
                 {plan.highlighted && (
                   <div className="absolute top-4 right-4 px-4 py-1 bg-white bg-opacity-30 rounded-full">
-                    <span className="text-sm font-semibold text-white">Most Popular</span>
+                    <span className="text-sm font-semibold text-white">
+                      Most Popular
+                    </span>
                   </div>
                 )}
 
                 {/* Plan Name */}
-                <h3 className={`text-2xl font-bold mb-2 ${plan.highlighted ? "text-white" : ""}`}>
+                <h3
+                  className={`text-2xl font-bold mb-2 ${plan.highlighted ? "text-white" : ""}`}
+                >
                   {plan.name}
                 </h3>
-                <p className={`text-sm mb-6 ${plan.highlighted ? "text-orange-100" : "text-gray-600"}`}>
+                <p
+                  className={`text-sm mb-6 ${plan.highlighted ? "text-orange-100" : "text-gray-600"}`}
+                >
                   {plan.description}
                 </p>
 
                 {/* Price */}
                 <div className="mb-6">
                   <div className="text-4xl font-bold mb-2">{plan.price}</div>
-                  <p className={`text-sm ${plan.highlighted ? "text-orange-100" : "text-gray-600"}`}>
+                  <p
+                    className={`text-sm ${plan.highlighted ? "text-orange-100" : "text-gray-600"}`}
+                  >
                     Delivery: {plan.deliveryTime}
                   </p>
                 </div>
@@ -134,7 +155,9 @@ export default function Pricing() {
                 <div className="space-y-4">
                   {plan.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.highlighted ? "text-white" : "text-orange-600"}`} />
+                      <CheckCircle
+                        className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.highlighted ? "text-white" : "text-orange-600"}`}
+                      />
                       <span className="text-sm">{feature}</span>
                     </div>
                   ))}
@@ -145,10 +168,16 @@ export default function Pricing() {
         </div>
 
         {/* Contact Note */}
-        <div className="text-center mt-12 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>
+        <div
+          className="text-center mt-12 opacity-0 animate-slide-up"
+          style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}
+        >
           <p className="text-gray-600">
             Need a custom solution?{" "}
-            <Link to="#contact" className="text-orange-600 font-semibold hover:text-orange-700">
+            <Link
+              to="#contact"
+              className="text-orange-600 font-semibold hover:text-orange-700"
+            >
               Let's discuss your requirements
             </Link>
           </p>

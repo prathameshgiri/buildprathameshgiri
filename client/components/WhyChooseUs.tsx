@@ -4,11 +4,13 @@ export default function WhyChooseUs() {
   const reasons = [
     {
       title: "Clean & Scalable Code",
-      description: "Well-structured, maintainable code that grows with your business",
+      description:
+        "Well-structured, maintainable code that grows with your business",
     },
     {
       title: "On-Time Delivery",
-      description: "We respect deadlines and deliver projects on schedule, every time",
+      description:
+        "We respect deadlines and deliver projects on schedule, every time",
     },
     {
       title: "Transparent Pricing",
@@ -16,7 +18,8 @@ export default function WhyChooseUs() {
     },
     {
       title: "SEO-Friendly Development",
-      description: "Built with SEO best practices to help your site rank higher",
+      description:
+        "Built with SEO best practices to help your site rank higher",
     },
     {
       title: "Mobile-First Approach",
@@ -24,7 +27,8 @@ export default function WhyChooseUs() {
     },
     {
       title: "Post-Launch Support",
-      description: "We're here for you after launch with ongoing support and updates",
+      description:
+        "We're here for you after launch with ongoing support and updates",
     },
   ];
 
@@ -34,15 +38,24 @@ export default function WhyChooseUs() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
+        <div
+          className="text-center mb-16 opacity-0 animate-slide-up"
+          style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}
+        >
           <div className="inline-block mb-6 px-4 py-2 bg-purple-100 rounded-full">
-            <p className="text-purple-700 text-sm font-semibold">Why Choose Us</p>
+            <p className="text-purple-700 text-sm font-semibold">
+              Why Choose Us
+            </p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Why <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Choose Us</span>
+            Why{" "}
+            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Choose Us
+            </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We combine expertise, reliability, and innovation to deliver exceptional results
+            We combine expertise, reliability, and innovation to deliver
+            exceptional results
           </p>
         </div>
 
@@ -52,14 +65,19 @@ export default function WhyChooseUs() {
             <div
               key={index}
               className="opacity-0 animate-slide-up p-8 bg-white rounded-2xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group"
-              style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.08}s` }}
+              style={{
+                animationFillMode: "forwards",
+                animationDelay: `${0.3 + index * 0.08}s`,
+              }}
             >
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
                   <CheckCircle className="w-8 h-8 text-purple-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{reason.title}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {reason.title}
+                  </h3>
                   <p className="text-gray-600">{reason.description}</p>
                 </div>
               </div>
