@@ -61,11 +61,11 @@ export default function Pricing() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
-          <div className="inline-block mb-6 px-4 py-2 bg-orange-100 rounded-full">
-            <p className="text-orange-700 text-sm font-semibold">Transparent Pricing</p>
+          <div className="inline-block mb-6 px-4 py-2 bg-emerald-100 rounded-full">
+            <p className="text-emerald-700 text-sm font-semibold">Transparent Pricing</p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Simple, <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Transparent Pricing</span>
+            Simple, <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Transparent Pricing</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Choose the perfect package for your needs. No hidden charges, ever.
