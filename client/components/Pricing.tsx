@@ -79,8 +79,8 @@ export default function Pricing() {
               key={index}
               className={`opacity-0 animate-slide-up relative rounded-2xl border-2 overflow-hidden transition-all duration-300 ${
                 plan.highlighted
-                  ? "border-orange-500 shadow-2xl md:scale-105"
-                  : "border-orange-100 hover:border-orange-300"
+                  ? "border-emerald-500 shadow-2xl md:scale-105"
+                  : "border-emerald-100 hover:border-emerald-300"
               }`}
               style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.1}s` }}
             >
