@@ -78,8 +78,8 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Phone</h3>
-              <p className="text-gray-600">+91 (123) 456-7890</p>
-              <p className="text-gray-600">WhatsApp: +91 (123) 456-7890</p>
+              <p className="text-gray-600">+91 8010901226</p>
+              <p className="text-gray-600">WhatsApp: +91 8010901226</p>
             </div>
           </div>
 
