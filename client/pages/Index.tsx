@@ -2,6 +2,15 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProjectIdeaSection from "@/components/ProjectIdeaSection";
 import ServicesSection from "@/components/ServicesSection";
+import TechnologyStack from "@/components/TechnologyStack";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Portfolio from "@/components/Portfolio";
+import WorkProcess from "@/components/WorkProcess";
+import Testimonials from "@/components/Testimonials";
+import Pricing from "@/components/Pricing";
+import CTASection from "@/components/CTASection";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Index() {
   return (
@@ -32,6 +41,33 @@ export default function Index() {
 
       {/* Services Section */}
       <ServicesSection />
+
+      {/* Technology Stack Section */}
+      <TechnologyStack />
+
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+
+      {/* Portfolio Section */}
+      <Portfolio />
+
+      {/* Work Process Section */}
+      <WorkProcess />
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* Pricing Section */}
+      <Pricing />
+
+      {/* CTA Section */}
+      <CTASection />
+
+      {/* Contact Section */}
+      <Contact />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
