@@ -60,78 +60,30 @@ export default function WorkProcess() {
           </p>
         </div>
 
-        {/* Desktop: Vertical Timeline */}
-        <div className="hidden lg:block">
-          <div className="space-y-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              const isEven = index % 2 === 0;
+        {/* Grid Layout - All Screen Sizes */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
 
-              return (
-                <div
-                  key={index}
-                  className="opacity-0 animate-slide-up relative"
-                  style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.08}s` }}
-                >
-                  <div className={`grid grid-cols-2 gap-8 items-center`}>
-                    {/* Content - Left or Right */}
-                    <div className={isEven ? "col-start-1" : "col-start-2"}>
-                      <div className="bg-gradient-to-br from-white to-orange-50 p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-2xl transition-all duration-300">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                        <p className="text-gray-600 text-lg leading-relaxed">{step.description}</p>
-                      </div>
-                    </div>
-
-                    {/* Icon - Center */}
-                    <div className={`flex justify-center ${isEven ? "col-start-2" : "col-start-1"}`}>
-                      <div className={`relative flex items-center justify-center`}>
-                        {/* Icon Background */}
-                        <div className={`absolute w-24 h-24 bg-gradient-to-br ${step.color} rounded-full opacity-20 blur-xl`} />
-
-                        {/* Icon Container */}
-                        <div className={`relative w-20 h-20 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110`}>
-                          <Icon className="w-10 h-10 text-white" strokeWidth={1.5} />
-                        </div>
-
-                        {/* Connector Line */}
-                        {index < steps.length - 1 && (
-                          <div className="absolute top-full w-1 h-8 bg-gradient-to-b from-orange-400 to-transparent" />
-                        )}
-                      </div>
-                    </div>
+            return (
+              <div
+                key={index}
+                className="opacity-0 animate-slide-up"
+                style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.08}s` }}
+              >
+                <div className="h-full bg-gradient-to-br from-white to-orange-50 p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300 group">
+                  {/* Icon */}
+                  <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center mb-6 group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                    <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
                   </div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Mobile & Tablet: Grid Layout */}
-        <div className="lg:hidden">
-          <div className="grid md:grid-cols-2 gap-6">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-
-              return (
-                <div
-                  key={index}
-                  className="opacity-0 animate-slide-up"
-                  style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.08}s` }}
-                >
-                  <div className="h-full bg-gradient-to-br from-white to-orange-50 p-8 rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300 group">
-                    {/* Icon */}
-                    <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center mb-6 group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}>
-                      <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom CTA */}
