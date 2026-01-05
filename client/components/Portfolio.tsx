@@ -111,7 +111,7 @@ export default function Portfolio() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="opacity-0 animate-slide-up group overflow-hidden rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-2xl transition-all duration-300"
+              className="opacity-0 animate-slide-up group overflow-hidden rounded-2xl border-2 border-teal-100 hover:border-teal-300 hover:shadow-2xl transition-all duration-300"
               style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.1}s` }}
             >
               {/* Image */}
