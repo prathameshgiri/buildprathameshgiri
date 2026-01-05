@@ -51,12 +51,12 @@ export default function WhyChooseUs() {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="opacity-0 animate-slide-up p-8 bg-white rounded-2xl border-2 border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300 group"
+              className="opacity-0 animate-slide-up p-8 bg-white rounded-2xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-xl transition-all duration-300 group"
               style={{ animationFillMode: "forwards", animationDelay: `${0.3 + index * 0.08}s` }}
             >
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <CheckCircle className="w-8 h-8 text-orange-600 group-hover:scale-110 transition-transform duration-300" />
+                  <CheckCircle className="w-8 h-8 text-purple-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{reason.title}</h3>
