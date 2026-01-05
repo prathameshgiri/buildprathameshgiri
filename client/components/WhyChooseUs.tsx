@@ -29,17 +29,17 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" />
+    <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-purple-50 to-white">
+      <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
-          <div className="inline-block mb-6 px-4 py-2 bg-orange-100 rounded-full">
-            <p className="text-orange-700 text-sm font-semibold">Why Choose Us</p>
+          <div className="inline-block mb-6 px-4 py-2 bg-purple-100 rounded-full">
+            <p className="text-purple-700 text-sm font-semibold">Why Choose Us</p>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Why <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Choose Us</span>
+            Why <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Choose Us</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We combine expertise, reliability, and innovation to deliver exceptional results
