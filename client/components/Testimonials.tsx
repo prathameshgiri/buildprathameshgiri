@@ -78,7 +78,7 @@ export default function Testimonials() {
               </p>
 
               {/* Client Info */}
-              <div className="flex items-center gap-4 pt-6 border-t border-orange-200">
+              <div className="flex items-center gap-4 pt-6 border-t border-rose-200">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
