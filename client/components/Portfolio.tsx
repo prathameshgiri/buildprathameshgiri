@@ -62,7 +62,7 @@ export default function Portfolio() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="opacity-0 animate-slide-up group overflow-hidden rounded-2xl border-2 border-teal-100 hover:border-teal-300 hover:shadow-2xl transition-all duration-300"
+              className="opacity-0 animate-slide-up overflow-hidden rounded-2xl border-2 border-teal-100 hover:border-teal-300 hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
               style={{
                 animationFillMode: "forwards",
                 animationDelay: `${0.3 + index * 0.1}s`,
@@ -73,27 +73,13 @@ export default function Portfolio() {
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.liveLink}
-                    className="p-3 bg-white rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300"
-                  >
-                    <ExternalLink className="w-6 h-6" />
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    className="p-3 bg-white rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300"
-                  >
-                    <Github className="w-6 h-6" />
-                  </a>
-                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 bg-white">
-                <div className="mb-3 inline-block px-3 py-1 bg-teal-100 rounded-full">
+              <div className="p-6 bg-white flex-grow flex flex-col">
+                <div className="mb-3 inline-block px-3 py-1 bg-teal-100 rounded-full w-fit">
                   <span className="text-xs font-semibold text-teal-700">
                     {project.category}
                   </span>
@@ -101,10 +87,10 @@ export default function Portfolio() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {project.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 text-sm mb-4 flex-grow">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((t) => (
                     <span
                       key={t}
@@ -114,11 +100,49 @@ export default function Portfolio() {
                     </span>
                   ))}
                 </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View
+                  </a>
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-800 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </a>
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-orange-100 text-orange-700 font-semibold rounded-lg hover:bg-orange-200 transition-all duration-300 hover:scale-105 text-sm"
+                  >
+                    <Info className="w-4 h-4" />
+                    Details
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <ProjectDetailsModal
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 pointer-events-none" />
     </section>
