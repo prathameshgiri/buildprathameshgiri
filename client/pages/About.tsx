@@ -113,15 +113,19 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Visual Element */}
             <div className="opacity-0 animate-slide-up order-2 md:order-1" style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}>
-              <div className="relative h-96 bg-gradient-to-br from-orange-100 to-orange-50 rounded-3xl overflow-hidden shadow-xl">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <Award className="w-16 h-16 text-orange-500 mx-auto mb-4" />
-                    <p className="text-gray-600 font-medium">Trusted by 50+</p>
-                    <p className="text-gray-600 font-medium">Satisfied Clients</p>
+              <div className="relative h-96 rounded-3xl overflow-hidden shadow-xl group">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                  alt="Satisfied Clients - Happy team collaboration"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-start p-8">
+                  <div>
+                    <p className="text-white font-medium text-lg mb-1">Trusted by</p>
+                    <div className="text-5xl font-bold text-white mb-0">50+</div>
+                    <p className="text-white font-medium">Satisfied Clients</p>
                   </div>
                 </div>
-                <div className="absolute top-0 right-0 w-40 h-40 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
               </div>
             </div>
 
