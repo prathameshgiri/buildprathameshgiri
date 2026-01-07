@@ -50,15 +50,18 @@ export default function About() {
 
             {/* Visual Element */}
             <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}>
-              <div className="relative h-96 bg-gradient-to-br from-orange-100 to-orange-50 rounded-3xl overflow-hidden shadow-xl">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-orange-500 mb-2">10+</div>
-                    <p className="text-gray-600 font-medium">Years of Experience</p>
+              <div className="relative h-96 rounded-3xl overflow-hidden shadow-xl group">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                  alt="Years of Experience - Team working on project"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-start p-8">
+                  <div>
+                    <div className="text-5xl font-bold text-white mb-2">10+</div>
+                    <p className="text-white font-medium text-lg">Years of Experience</p>
                   </div>
                 </div>
-                <div className="absolute top-0 right-0 w-40 h-40 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
               </div>
             </div>
           </div>
