@@ -83,7 +83,9 @@ export default function ProjectDetailsModal({
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {/* Challenge */}
             <div className="p-6 bg-orange-50 rounded-2xl border-2 border-orange-100">
-              <h4 className="text-lg font-bold text-gray-900 mb-3">Challenge</h4>
+              <h4 className="text-lg font-bold text-gray-900 mb-3">
+                Challenge
+              </h4>
               <p className="text-gray-600">{project.challenge}</p>
             </div>
 

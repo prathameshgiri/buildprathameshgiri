@@ -9,33 +9,59 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm animate-slide-down">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-1 text-xl font-bold opacity-0 animate-slide-up" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
+        <Link
+          to="/"
+          className="flex items-center gap-1 text-xl font-bold opacity-0 animate-slide-up"
+          style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
+        >
           <span className="text-orange-500">PS</span>
           <span className="text-gray-900">Giri</span>
         </Link>
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/about" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
+          <Link
+            to="/about"
+            className="nav-link opacity-0 animate-slide-up"
+            style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
+          >
             About
           </Link>
-          <a href="/#services" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}>
+          <a
+            href="/#services"
+            className="nav-link opacity-0 animate-slide-up"
+            style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
+          >
             Services
           </a>
-          <a href="#pricing" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
+          <a
+            href="#pricing"
+            className="nav-link opacity-0 animate-slide-up"
+            style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+          >
             Pricing
           </a>
-          <a href="#explore" className="nav-link opacity-0 animate-slide-up" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
+          <a
+            href="#explore"
+            className="nav-link opacity-0 animate-slide-up"
+            style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+          >
             Explore
           </a>
         </div>
 
         {/* Desktop Right Side Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <button className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up" style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}>
+          <button
+            className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up"
+            style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
+          >
             Sign In
           </button>
-          <button className="btn-primary opacity-0 animate-slide-up" style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}>
+          <button
+            className="btn-primary opacity-0 animate-slide-up"
+            style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+          >
             Sign Up
           </button>
         </div>

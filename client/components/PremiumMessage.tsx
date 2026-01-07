@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function PremiumMessage() {
   return (
-    <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.85s" }}>
+    <div
+      className="opacity-0 animate-slide-up"
+      style={{ animationFillMode: "forwards", animationDelay: "0.85s" }}
+    >
       <div className="relative mt-12 rounded-3xl p-8 sm:p-10 border-2 border-orange-200/50 shadow-2xl hover:shadow-2xl transition-all duration-500 group overflow-hidden">
         {/* Multi-layer Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-orange-100/30 rounded-3xl" />
@@ -37,7 +40,9 @@ export default function PremiumMessage() {
             {/* Premium Badge */}
             <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-50 rounded-full border border-orange-200 group-hover:border-orange-300 transition-colors duration-300">
               <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
-              <span className="text-xs font-semibold text-orange-700">Premium Access</span>
+              <span className="text-xs font-semibold text-orange-700">
+                Premium Access
+              </span>
             </div>
           </div>
 
@@ -47,7 +52,8 @@ export default function PremiumMessage() {
               Unlock Premium Projects
             </h3>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-              Sign up or log in to access exclusive, real-world projects built for serious developers and businesses.
+              Sign up or log in to access exclusive, real-world projects built
+              for serious developers and businesses.
             </p>
           </div>
 
@@ -82,12 +88,23 @@ export default function PremiumMessage() {
 
               {/* Button Content */}
               <div className="relative flex items-center justify-center gap-3">
-                <Zap className="w-5 h-5 group-hover/btn:animate-pulse" strokeWidth={2} />
-                <span className="relative">
-                  Unlock Premium Projects
-                </span>
-                <svg className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <Zap
+                  className="w-5 h-5 group-hover/btn:animate-pulse"
+                  strokeWidth={2}
+                />
+                <span className="relative">Unlock Premium Projects</span>
+                <svg
+                  className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
               </div>
             </Link>
