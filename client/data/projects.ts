@@ -17,30 +17,35 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    name: "E-Commerce Platform",
+    name: "E-Commerce Dashboard",
     category: "Web Apps",
-    description: "Full-stack e-commerce platform with payment integration",
+    description: "Modern e-commerce admin dashboard for business analytics and management",
     fullDescription:
-      "A comprehensive e-commerce solution designed to help businesses scale their online sales with ease. The platform includes advanced filtering, real-time inventory management, and secure payment processing.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      "A clean and responsive e-commerce admin dashboard designed to monitor and manage online store performance efficiently. The dashboard provides real-time insights into new orders, daily income, total revenue, and user growth. It features interactive charts for yearly statistics and sales revenue analysis, helping administrators track trends and make data-driven decisions. With an intuitive sidebar navigation, search functionality, notifications, and user profile management, the dashboard ensures smooth and organized store operations from a single control panel.",
+    tech: ["React", "Node.js", "MongoDB"],    
     image:
-      "https://images.unsplash.com/photo-1460925895917-adf4e565e479?w=500&h=300&fit=crop",
-    liveLink: "https://example.com",
+      "https://pro.prathameshgiri.in/res/projects/dashboard.png",
+    liveLink: "https://pro.prathameshgiri.in/Dashboard/",
     githubLink: "https://github.com/example",
     features: [
-      "Secure payment integration with Stripe",
-      "Real-time inventory tracking",
-      "Advanced product filtering and search",
-      "User reviews and ratings system",
-      "Order management dashboard",
-      "Email notifications",
+      "Real-time order tracking and management",
+      "Daily, monthly, and yearly revenue insights",
+      "User growth and customer analytics",
+      "Interactive charts for sales and performance trends",
+      "Product and inventory overview dashboard",
+      "Admin notifications and activity alerts",
+      "Responsive sidebar navigation with search",
+      "Role-based admin profile management"
     ],
+
     challenge:
-      "Building a scalable system that could handle thousands of concurrent users and manage inventory across multiple warehouses.",
+      "Designing a high-performance admin dashboard capable of handling large volumes of orders, users, and analytics data while maintaining a smooth and responsive user experience.",
+
     solution:
-      "Implemented MongoDB for flexible data storage, Redis for caching, and optimized database queries for performance.",
+      "Built a modular and optimized dashboard using React for dynamic UI updates and MongoDB for scalable data handling. Implemented efficient API structures, optimized database queries, and chart-based visualizations to ensure fast data rendering and real-time insights.",
+
     results:
-      "Increased client sales by 45% in the first 3 months with 99.9% uptime.",
+      "Improved operational efficiency by 40%, enabled faster decision-making through real-time analytics, and delivered a stable, user-friendly admin experience with consistent performance under heavy data load."
   },
   {
     id: 2,

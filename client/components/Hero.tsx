@@ -15,23 +15,38 @@ export default function Hero() {
           <div className="badge-pill hover:shadow-md transition-shadow duration-300 sm:w-fit">
             <div className="flex -space-x-2">
               <div
-                className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300"
-                title="Client 1"
-              >
-                A
-              </div>
-              <div
-                className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300"
-                title="Client 2"
-              >
-                B
-              </div>
-              <div
-                className="w-6 h-6 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 border-2 border-white flex items-center justify-center text-xs text-white font-bold hover:scale-110 transition-transform duration-300"
-                title="Client 3"
-              >
-                C
-              </div>
+  className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 border-2 border-white overflow-hidden hover:scale-110 transition-transform duration-300"
+  title="Client 1"
+>
+  <img
+    src="https://i.pinimg.com/736x/a0/7e/97/a07e97d59a80980946c144f2ae8446b1.jpg"
+    alt="Client 1"
+    className="w-full h-full object-cover"
+  />
+</div>
+
+<div
+  className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-white overflow-hidden hover:scale-110 transition-transform duration-300"
+  title="Client 2"
+>
+  <img
+    src="https://i.pinimg.com/1200x/dc/ef/a9/dcefa9cacc1e9ffa53276b178fdb0a3f.jpg"
+    alt="Client 2"
+    className="w-full h-full object-cover"
+  />
+</div>
+
+<div
+  className="w-6 h-6 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 border-2 border-white overflow-hidden hover:scale-110 transition-transform duration-300"
+  title="Client 3"
+>
+  <img
+    src="https://i.pinimg.com/736x/15/e5/75/15e575c7279d73dbfd7ce6492c1c6994.jpg"
+    alt="Client 3"
+    className="w-full h-full object-cover"
+  />
+</div>
+
             </div>
             <span className="text-gray-700 text-sm">
               30+ businesses built with Prathamesh Giri
