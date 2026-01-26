@@ -26,7 +26,7 @@ export const projects: Project[] = [
     image:
       "https://pro.prathameshgiri.in/res/projects/dashboard.png",
     liveLink: "https://pro.prathameshgiri.in/Dashboard/",
-    githubLink: "https://github.com/example",
+    githubLink: "https://github.com/prathameshgiri/Dashboard",
     features: [
       "Real-time order tracking and management",
       "Daily, monthly, and yearly revenue insights",
@@ -57,8 +57,8 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity"],
     image:
       "https://images.unsplash.com/photo-1507238691619-20f6629c3368?w=500&h=300&fit=crop",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/example",
+    liveLink: "prathameshgiri.github.io/HealthMate/",
+    githubLink: "https://github.com/prathameshgiri/HealthMate",
     features: [
       "Headless CMS integration",
       "SEO-optimized pages",
