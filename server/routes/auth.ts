@@ -55,7 +55,14 @@ router.post("/signup", async (req: Request, res: Response) => {
       `INSERT INTO users (email, password, name, phone, address, company)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING id, email, name, phone, address, company, created_at`,
-      [email, hashedPassword, name, phone || null, address || null, company || null]
+      [
+        email,
+        hashedPassword,
+        name,
+        phone || null,
+        address || null,
+        company || null,
+      ],
     );
 
     const user = result.rows[0];
@@ -72,7 +79,7 @@ router.post("/signup", async (req: Request, res: Response) => {
     await query(
       `INSERT INTO login_history (user_id, ip_address, user_agent, device_info)
        VALUES ($1, $2, $3, $4)`,
-      [user.id, ipAddress, userAgent, JSON.stringify(deviceInfo)]
+      [user.id, ipAddress, userAgent, JSON.stringify(deviceInfo)],
     );
 
     res.status(201).json({
@@ -98,15 +105,11 @@ router.post("/login", async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res
-        .status(400)
-        .json({ error: "Email and password are required" });
+      return res.status(400).json({ error: "Email and password are required" });
     }
 
     // Find user
-    const result = await query("SELECT * FROM users WHERE email = $1", [
-      email,
-    ]);
+    const result = await query("SELECT * FROM users WHERE email = $1", [email]);
     if (result.rows.length === 0) {
       return res.status(401).json({ error: "Invalid email or password" });
     }
@@ -132,7 +135,7 @@ router.post("/login", async (req: Request, res: Response) => {
     await query(
       `INSERT INTO login_history (user_id, ip_address, user_agent, device_info)
        VALUES ($1, $2, $3, $4)`,
-      [user.id, ipAddress, userAgent, JSON.stringify(deviceInfo)]
+      [user.id, ipAddress, userAgent, JSON.stringify(deviceInfo)],
     );
 
     res.json({
@@ -158,7 +161,7 @@ router.get("/profile", authMiddleware, async (req: Request, res: Response) => {
     const user = (req as any).user;
     const result = await query(
       "SELECT id, email, name, phone, address, company, created_at, updated_at FROM users WHERE id = $1",
-      [user.id]
+      [user.id],
     );
 
     if (result.rows.length === 0) {
@@ -182,7 +185,7 @@ router.put("/profile", authMiddleware, async (req: Request, res: Response) => {
       `UPDATE users SET name = $1, phone = $2, address = $3, company = $4, updated_at = CURRENT_TIMESTAMP
        WHERE id = $5
        RETURNING id, email, name, phone, address, company, created_at, updated_at`,
-      [name || null, phone || null, address || null, company || null, user.id]
+      [name || null, phone || null, address || null, company || null, user.id],
     );
 
     if (result.rows.length === 0) {
@@ -211,7 +214,7 @@ router.get(
          WHERE user_id = $1
          ORDER BY login_time DESC
          LIMIT $2`,
-        [user.id, limit]
+        [user.id, limit],
       );
 
       res.json(result.rows);
@@ -219,7 +222,7 @@ router.get(
       console.error("Login history error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
-  }
+  },
 );
 
 // Logout (update logout_time)
@@ -233,7 +236,7 @@ router.post("/logout", authMiddleware, async (req: Request, res: Response) => {
        WHERE user_id = $1 AND logout_time IS NULL
        ORDER BY login_time DESC
        LIMIT 1`,
-      [user.id]
+      [user.id],
     );
 
     res.json({ message: "Logged out successfully" });

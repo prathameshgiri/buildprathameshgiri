@@ -136,7 +136,7 @@ class AuthAPI {
       {
         method: "GET",
         headers: this.getHeaders(true),
-      }
+      },
     );
 
     if (!response.ok) {

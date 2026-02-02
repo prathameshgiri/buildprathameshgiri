@@ -1,7 +1,8 @@
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-change-in-production";
+const JWT_SECRET =
+  process.env.JWT_SECRET || "your-secret-key-change-in-production";
 const SALT_ROUNDS = 10;
 
 export async function hashPassword(password: string): Promise<string> {
@@ -10,20 +11,18 @@ export async function hashPassword(password: string): Promise<string> {
 
 export async function verifyPassword(
   password: string,
-  hash: string
+  hash: string,
 ): Promise<boolean> {
   return bcryptjs.compare(password, hash);
 }
 
 export function generateToken(userId: number, email: string): string {
-  return jwt.sign(
-    { id: userId, email },
-    JWT_SECRET,
-    { expiresIn: "7d" }
-  );
+  return jwt.sign({ id: userId, email }, JWT_SECRET, { expiresIn: "7d" });
 }
 
-export function verifyToken(token: string): { id: number; email: string } | null {
+export function verifyToken(
+  token: string,
+): { id: number; email: string } | null {
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as {
       id: number;
@@ -38,10 +37,10 @@ export function verifyToken(token: string): { id: number; email: string } | null
 
 export function extractDeviceInfo(userAgent: string): Record<string, any> {
   const browserMatch = userAgent.match(
-    /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/
+    /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/,
   );
   const osMatch = userAgent.match(
-    /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/
+    /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/,
   );
 
   return {

@@ -13,7 +13,10 @@ export default function Portfolio() {
     filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="explore" className="relative py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
+    <section
+      id="explore"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white overflow-hidden"
+    >
       <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" />
       <div
         className="absolute -bottom-8 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in"

@@ -26,11 +26,13 @@ This guide will help you set up the authentication backend with PostgreSQL datab
 ## Step 2: Set Environment Variables
 
 1. Copy `.env.example` to `.env`:
+
    ```bash
    cp .env.example .env
    ```
 
 2. Update `.env` with your values:
+
    ```
    DATABASE_URL=postgresql://your-user:your-password@your-host:5432/your-database
    JWT_SECRET=your-super-secret-key-min-32-characters-long
@@ -62,6 +64,7 @@ The API will be available at `http://localhost:5173/api`
 ## Step 5: Testing Authentication
 
 ### Sign Up
+
 ```bash
 curl -X POST http://localhost:5173/api/auth/signup \
   -H "Content-Type: application/json" \
@@ -76,6 +79,7 @@ curl -X POST http://localhost:5173/api/auth/signup \
 ```
 
 ### Sign In
+
 ```bash
 curl -X POST http://localhost:5173/api/auth/login \
   -H "Content-Type: application/json" \
@@ -86,18 +90,21 @@ curl -X POST http://localhost:5173/api/auth/login \
 ```
 
 ### Get Profile (requires token)
+
 ```bash
 curl -X GET http://localhost:5173/api/auth/profile \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 ### Get Login History (requires token)
+
 ```bash
 curl -X GET 'http://localhost:5173/api/auth/login-history?limit=10' \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 ### Logout (requires token)
+
 ```bash
 curl -X POST http://localhost:5173/api/auth/logout \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
@@ -106,21 +113,24 @@ curl -X POST http://localhost:5173/api/auth/logout \
 ## API Endpoints
 
 ### POST `/api/auth/signup`
+
 Create a new user account.
 
 **Body:**
+
 ```json
 {
   "email": "user@example.com",
   "password": "password123",
   "name": "John Doe",
-  "phone": "+1234567890",    // Optional
-  "address": "123 Main St",   // Optional
-  "company": "Acme Corp"      // Optional
+  "phone": "+1234567890", // Optional
+  "address": "123 Main St", // Optional
+  "company": "Acme Corp" // Optional
 }
 ```
 
 **Response:**
+
 ```json
 {
   "user": {
@@ -136,9 +146,11 @@ Create a new user account.
 ```
 
 ### POST `/api/auth/login`
+
 Authenticate a user and return a JWT token.
 
 **Body:**
+
 ```json
 {
   "email": "user@example.com",
@@ -147,6 +159,7 @@ Authenticate a user and return a JWT token.
 ```
 
 **Response:**
+
 ```json
 {
   "user": {
@@ -162,14 +175,17 @@ Authenticate a user and return a JWT token.
 ```
 
 ### GET `/api/auth/profile`
+
 Get the current user's profile information.
 
 **Headers:**
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 **Response:**
+
 ```json
 {
   "id": 1,
@@ -184,14 +200,17 @@ Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 ### PUT `/api/auth/profile`
+
 Update the current user's profile.
 
 **Headers:**
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 **Body:**
+
 ```json
 {
   "name": "Jane Doe",
@@ -202,17 +221,21 @@ Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 ### GET `/api/auth/login-history?limit=10`
+
 Get the current user's login history.
 
 **Headers:**
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 **Query Parameters:**
+
 - `limit` (optional, default: 10): Number of records to return
 
 **Response:**
+
 ```json
 [
   {
@@ -230,14 +253,17 @@ Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 ### POST `/api/auth/logout`
+
 Log out the current user.
 
 **Headers:**
+
 ```
 Authorization: Bearer YOUR_JWT_TOKEN
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Logged out successfully"
@@ -247,6 +273,7 @@ Authorization: Bearer YOUR_JWT_TOKEN
 ## Database Schema
 
 ### users table
+
 ```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -262,6 +289,7 @@ CREATE TABLE users (
 ```
 
 ### login_history table
+
 ```sql
 CREATE TABLE login_history (
   id SERIAL PRIMARY KEY,
@@ -284,16 +312,19 @@ CREATE TABLE login_history (
 ## Troubleshooting
 
 ### Connection Error to Database
+
 - Check your `DATABASE_URL` is correct
 - Ensure your database server is running
 - For Neon, verify IP address is whitelisted
 
 ### JWT Token Errors
+
 - Ensure `JWT_SECRET` is set in environment variables
 - Token expires after 7 days
 - Tokens are stored in browser localStorage
 
 ### CORS Issues
+
 - CORS is enabled for all origins by default
 - Modify `server/index.ts` if you need to restrict origins
 
