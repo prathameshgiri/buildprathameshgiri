@@ -352,7 +352,7 @@ export default function Auth() {
           </div>
 
           {/* Bottom Info */}
-          <p className="text-center text-gray-500 text-xs mt-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.8s" : "1s" }}>
+          <p className="text-center text-gray-500 text-xs mt-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.8s" : "1.1s" }}>
             We respect your privacy. Your data is always secure with us.
           </p>
         </div>
