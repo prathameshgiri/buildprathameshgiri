@@ -309,7 +309,7 @@ export default function Auth() {
               )}
 
               {/* Submit Button */}
-              <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.6s" : "0.8s" }}>
+              <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.6s" : "0.95s" }}>
                 <button
                   type="submit"
                   disabled={isLoading}
@@ -330,7 +330,7 @@ export default function Auth() {
               </div>
 
               {/* Toggle Form Type */}
-              <div className="text-center pt-4 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.7s" : "0.9s" }}>
+              <div className="text-center pt-4 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.7s" : "1s" }}>
                 <p className="text-gray-600 text-sm">
                   {isLogin ? "Don't have an account? " : "Already have an account? "}
                   <Link
@@ -343,7 +343,7 @@ export default function Auth() {
               </div>
 
               {/* Back to Home */}
-              <div className="text-center pt-2 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.75s" : "0.95s" }}>
+              <div className="text-center pt-2 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.75s" : "1.05s" }}>
                 <Link to="/" className="text-gray-500 hover:text-gray-700 text-sm transition-colors duration-200">
                   ← Back to Home
                 </Link>
