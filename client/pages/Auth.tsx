@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import { authAPI } from "@/lib/api";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Auth() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
   const [formData, setFormData] = useState({
@@ -12,13 +16,18 @@ export default function Auth() {
     email: "",
     password: "",
     confirmPassword: "",
+    phone: "",
+    address: "",
+    company: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setIsLogin(mode === "login");
+    setError("");
   }, [mode]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,13 +35,81 @@ export default function Auth() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
     setIsLoading(true);
-    setTimeout(() => {
-      console.log(isLogin ? "Login:" : "Signup:", formData);
+
+    try {
+      if (isLogin) {
+        // Login
+        if (!formData.email || !formData.password) {
+          setError("Email and password are required");
+          setIsLoading(false);
+          return;
+        }
+
+        await authAPI.login({
+          email: formData.email,
+          password: formData.password,
+        });
+
+        toast({
+          title: "Success",
+          description: "You have successfully logged in!",
+        });
+
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      } else {
+        // Signup
+        if (!formData.email || !formData.password || !formData.name) {
+          setError("Email, password, and name are required");
+          setIsLoading(false);
+          return;
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+          setError("Passwords do not match");
+          setIsLoading(false);
+          return;
+        }
+
+        if (formData.password.length < 6) {
+          setError("Password must be at least 6 characters");
+          setIsLoading(false);
+          return;
+        }
+
+        await authAPI.signup({
+          email: formData.email,
+          password: formData.password,
+          name: formData.name,
+          phone: formData.phone || undefined,
+          address: formData.address || undefined,
+          company: formData.company || undefined,
+        });
+
+        toast({
+          title: "Success",
+          description: "Account created successfully! Welcome!",
+        });
+
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
+    } catch (err: any) {
+      setError(err.message || "An error occurred. Please try again.");
+      toast({
+        title: "Error",
+        description: err.message || "An error occurred",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
