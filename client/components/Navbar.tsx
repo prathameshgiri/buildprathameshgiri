@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-100 shadow-sm animate-slide-down">
@@ -53,12 +54,20 @@ export default function Navbar() {
         {/* Desktop Right Side Actions */}
         <div className="hidden md:flex items-center gap-4">
           <button
+            onClick={() => {
+              navigate("/auth");
+              setIsMenuOpen(false);
+            }}
             className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up"
             style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
           >
             Sign In
           </button>
           <button
+            onClick={() => {
+              navigate("/auth");
+              setIsMenuOpen(false);
+            }}
             className="btn-primary opacity-0 animate-slide-up"
             style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
@@ -113,10 +122,22 @@ export default function Navbar() {
               Explore
             </a>
             <div className="border-t border-gray-100 pt-3 space-y-2">
-              <button className="w-full px-4 py-2 text-gray-700 text-left hover:text-orange-600 transition-colors duration-300">
+              <button
+                onClick={() => {
+                  navigate("/auth");
+                  setIsMenuOpen(false);
+                }}
+                className="w-full px-4 py-2 text-gray-700 text-left hover:text-orange-600 transition-colors duration-300"
+              >
                 Sign In
               </button>
-              <button className="w-full px-4 py-2 rounded-full bg-orange-500 text-white font-medium hover:bg-orange-600 transition-all duration-300">
+              <button
+                onClick={() => {
+                  navigate("/auth");
+                  setIsMenuOpen(false);
+                }}
+                className="w-full px-4 py-2 rounded-full bg-orange-500 text-white font-medium hover:bg-orange-600 transition-all duration-300"
+              >
                 Sign Up
               </button>
             </div>
