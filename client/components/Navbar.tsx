@@ -55,7 +55,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={() => {
-              navigate("/auth");
+              navigate("/auth?mode=login");
               setIsMenuOpen(false);
             }}
             className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up"
@@ -65,7 +65,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => {
-              navigate("/auth");
+              navigate("/auth?mode=signup");
               setIsMenuOpen(false);
             }}
             className="btn-primary opacity-0 animate-slide-up"
@@ -124,7 +124,7 @@ export default function Navbar() {
             <div className="border-t border-gray-100 pt-3 space-y-2">
               <button
                 onClick={() => {
-                  navigate("/auth");
+                  navigate("/auth?mode=login");
                   setIsMenuOpen(false);
                 }}
                 className="w-full px-4 py-2 text-gray-700 text-left hover:text-orange-600 transition-colors duration-300"
@@ -133,7 +133,7 @@ export default function Navbar() {
               </button>
               <button
                 onClick={() => {
-                  navigate("/auth");
+                  navigate("/auth?mode=signup");
                   setIsMenuOpen(false);
                 }}
                 className="w-full px-4 py-2 rounded-full bg-orange-500 text-white font-medium hover:bg-orange-600 transition-all duration-300"
