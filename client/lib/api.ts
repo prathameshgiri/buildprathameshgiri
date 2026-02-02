@@ -1,4 +1,16 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "/api";
+import { createClient } from "@supabase/supabase-js";
+
+// Initialize Supabase client
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error(
+    "Missing Supabase environment variables. Please check VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY"
+  );
+}
+
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export interface SignupData {
   email: string;
@@ -14,164 +26,266 @@ export interface LoginData {
   password: string;
 }
 
-export interface AuthResponse {
-  user: {
-    id: number;
-    email: string;
-    name: string;
-    phone?: string;
-    address?: string;
-    company?: string;
-  };
-  token: string;
-}
-
 export interface UserProfile {
-  id: number;
+  id: string;
   email: string;
   name: string;
   phone?: string;
   address?: string;
   company?: string;
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
-export interface LoginHistoryEntry {
-  id: number;
-  login_time: string;
-  logout_time?: string;
-  ip_address: string;
-  device_info: Record<string, any>;
+export interface AuthResponse {
+  user: UserProfile;
+  token?: string;
 }
 
 class AuthAPI {
-  private getAuthToken(): string | null {
-    return localStorage.getItem("authToken");
-  }
-
-  private getHeaders(includeAuth: boolean = false): HeadersInit {
-    const headers: HeadersInit = {
-      "Content-Type": "application/json",
-    };
-
-    if (includeAuth) {
-      const token = this.getAuthToken();
-      if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
-      }
-    }
-
-    return headers;
-  }
-
   async signup(data: SignupData): Promise<AuthResponse> {
-    const response = await fetch(`${API_BASE_URL}/auth/signup`, {
-      method: "POST",
-      headers: this.getHeaders(),
-      body: JSON.stringify(data),
+    // Sign up with Supabase Auth
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: data.email,
+      password: data.password,
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || "Signup failed");
+    if (authError) {
+      throw new Error(authError.message);
     }
 
-    const result: AuthResponse = await response.json();
-    localStorage.setItem("authToken", result.token);
-    localStorage.setItem("user", JSON.stringify(result.user));
-    return result;
+    if (!authData.user) {
+      throw new Error("Signup failed - no user returned");
+    }
+
+    // Create user profile in database
+    const { error: profileError } = await supabase.from("profiles").insert([
+      {
+        id: authData.user.id,
+        email: data.email,
+        name: data.name,
+        phone: data.phone || null,
+        address: data.address || null,
+        company: data.company || null,
+      },
+    ]);
+
+    if (profileError) {
+      throw new Error(profileError.message);
+    }
+
+    // Record login in history
+    await this.recordLogin(authData.user.id);
+
+    return {
+      user: {
+        id: authData.user.id,
+        email: data.email,
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+        company: data.company,
+      },
+    };
   }
 
   async login(data: LoginData): Promise<AuthResponse> {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: "POST",
-      headers: this.getHeaders(),
-      body: JSON.stringify(data),
-    });
+    const { data: authData, error: authError } =
+      await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      });
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || "Login failed");
+    if (authError) {
+      throw new Error(authError.message);
     }
 
-    const result: AuthResponse = await response.json();
-    localStorage.setItem("authToken", result.token);
-    localStorage.setItem("user", JSON.stringify(result.user));
-    return result;
-  }
+    if (!authData.user) {
+      throw new Error("Login failed - no user returned");
+    }
 
-  async getProfile(): Promise<UserProfile> {
-    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
-      method: "GET",
-      headers: this.getHeaders(true),
-    });
+    // Get user profile
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", authData.user.id)
+      .single();
 
-    if (!response.ok) {
+    if (profileError) {
       throw new Error("Failed to fetch profile");
     }
 
-    return response.json();
+    // Record login in history
+    await this.recordLogin(authData.user.id);
+
+    return {
+      user: profile,
+    };
+  }
+
+  async getProfile(): Promise<UserProfile> {
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError || !user) {
+      throw new Error("Not authenticated");
+    }
+
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", user.id)
+      .single();
+
+    if (profileError) {
+      throw new Error("Failed to fetch profile");
+    }
+
+    return profile;
   }
 
   async updateProfile(data: Partial<UserProfile>): Promise<UserProfile> {
-    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
-      method: "PUT",
-      headers: this.getHeaders(true),
-      body: JSON.stringify(data),
-    });
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
 
-    if (!response.ok) {
+    if (authError || !user) {
+      throw new Error("Not authenticated");
+    }
+
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        name: data.name || undefined,
+        phone: data.phone || null,
+        address: data.address || null,
+        company: data.company || null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", user.id)
+      .select()
+      .single();
+
+    if (profileError) {
       throw new Error("Failed to update profile");
     }
 
-    const result = await response.json();
-    localStorage.setItem("user", JSON.stringify(result));
-    return result;
+    return profile;
   }
 
-  async getLoginHistory(limit: number = 10): Promise<LoginHistoryEntry[]> {
-    const response = await fetch(
-      `${API_BASE_URL}/auth/login-history?limit=${limit}`,
-      {
-        method: "GET",
-        headers: this.getHeaders(true),
-      },
-    );
+  async getLoginHistory(limit: number = 10): Promise<any[]> {
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
 
-    if (!response.ok) {
+    if (authError || !user) {
+      throw new Error("Not authenticated");
+    }
+
+    const { data: history, error: historyError } = await supabase
+      .from("login_history")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("login_time", { ascending: false })
+      .limit(limit);
+
+    if (historyError) {
       throw new Error("Failed to fetch login history");
     }
 
-    return response.json();
+    return history || [];
+  }
+
+  async recordLogin(userId: string): Promise<void> {
+    const userAgent = navigator.userAgent;
+    const ipAddress = await this.getClientIP();
+
+    const deviceInfo = {
+      browser: this.getBrowser(userAgent),
+      os: this.getOS(userAgent),
+      userAgent: userAgent,
+    };
+
+    await supabase.from("login_history").insert([
+      {
+        user_id: userId,
+        ip_address: ipAddress,
+        device_info: deviceInfo,
+        login_time: new Date().toISOString(),
+      },
+    ]);
   }
 
   async logout(): Promise<void> {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      // Update the last login record with logout time
+      await supabase
+        .from("login_history")
+        .update({ logout_time: new Date().toISOString() })
+        .eq("user_id", user.id)
+        .is("logout_time", null)
+        .order("login_time", { ascending: false })
+        .limit(1);
+    }
+
+    await supabase.auth.signOut();
+  }
+
+  async isAuthenticated(): Promise<boolean> {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    return !!user;
+  }
+
+  async getCurrentUser(): Promise<UserProfile | null> {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return null;
+    }
+
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", user.id)
+      .single();
+
+    return profile || null;
+  }
+
+  private async getClientIP(): Promise<string> {
     try {
-      await fetch(`${API_BASE_URL}/auth/logout`, {
-        method: "POST",
-        headers: this.getHeaders(true),
-      });
-    } catch (error) {
-      console.error("Logout error:", error);
-    } finally {
-      localStorage.removeItem("authToken");
-      localStorage.removeItem("user");
+      const response = await fetch("https://api.ipify.org?format=json");
+      const data = await response.json();
+      return data.ip || "unknown";
+    } catch {
+      return "unknown";
     }
   }
 
-  isAuthenticated(): boolean {
-    return !!this.getAuthToken();
+  private getBrowser(userAgent: string): string {
+    const match = userAgent.match(
+      /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/
+    );
+    return match ? match[0] : "Unknown";
   }
 
-  getCurrentUser(): any {
-    const user = localStorage.getItem("user");
-    return user ? JSON.parse(user) : null;
-  }
-
-  clearAuth(): void {
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("user");
+  private getOS(userAgent: string): string {
+    const match = userAgent.match(
+      /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/
+    );
+    return match ? match[0] : "Unknown";
   }
 }
 
