@@ -138,6 +138,13 @@ export default function Auth() {
             </p>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.25s" }}>
+              {error}
+            </div>
+          )}
+
           {/* Form Card */}
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl border border-gray-100/50 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
             <form onSubmit={handleSubmit} className="space-y-5">
