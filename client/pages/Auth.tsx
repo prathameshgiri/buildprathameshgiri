@@ -82,7 +82,7 @@ export default function Auth() {
           return;
         }
 
-        await authAPI.signup({
+        const result = await authAPI.signup({
           email: formData.email,
           password: formData.password,
           name: formData.name,
