@@ -55,7 +55,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
+    <section id="pricing" className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
       <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-fade-in" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
