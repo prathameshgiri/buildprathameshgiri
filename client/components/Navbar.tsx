@@ -43,7 +43,7 @@ export default function Navbar() {
             Pricing
           </a>
           <a
-            href="#explore"
+            href="/#explore"
             className="nav-link opacity-0 animate-slide-up"
             style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
           >
@@ -115,7 +115,7 @@ export default function Navbar() {
               Pricing
             </a>
             <a
-              href="#explore"
+              href="/#explore"
               className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
               onClick={() => setIsMenuOpen(false)}
             >
