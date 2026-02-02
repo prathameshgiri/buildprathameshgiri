@@ -199,16 +199,12 @@ export default function Auth() {
               <div className="text-center pt-4 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.7s" : "0.9s" }}>
                 <p className="text-gray-600 text-sm">
                   {isLogin ? "Don't have an account? " : "Already have an account? "}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsLogin(!isLogin);
-                      setFormData({ name: "", email: "", password: "", confirmPassword: "" });
-                    }}
+                  <Link
+                    to={isLogin ? "/auth?mode=signup" : "/auth?mode=login"}
                     className="text-orange-600 font-semibold hover:text-orange-700 transition-colors duration-200"
                   >
                     {isLogin ? "Sign Up" : "Sign In"}
-                  </button>
+                  </Link>
                 </p>
               </div>
 
