@@ -258,6 +258,56 @@ export default function Auth() {
                 </div>
               )}
 
+              {/* Optional Profile Fields (Signup Only) */}
+              {!isLogin && (
+                <>
+                  <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-3">
+                      Phone (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Your phone number"
+                      className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
+                    />
+                  </div>
+
+                  <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.85s" }}>
+                    <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-3">
+                      Company (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Your company name"
+                      className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
+                    />
+                  </div>
+
+                  <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.9s" }}>
+                    <label htmlFor="address" className="block text-sm font-semibold text-gray-700 mb-3">
+                      Address (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      placeholder="Your address"
+                      className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
+                    />
+                  </div>
+                </>
+              )}
+
               {/* Submit Button */}
               <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: isLogin ? "0.6s" : "0.8s" }}>
                 <button
