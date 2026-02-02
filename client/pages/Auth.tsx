@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function Auth() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [searchParams] = useSearchParams();
+  const mode = searchParams.get("mode") || "signup";
+  const [isLogin, setIsLogin] = useState(mode === "login");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +16,10 @@ export default function Auth() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLogin(mode === "login");
+  }, [mode]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
