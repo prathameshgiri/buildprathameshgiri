@@ -4,13 +4,22 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error(
-    "Missing Supabase environment variables. Please check VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY",
-  );
+let supabase: any = null;
+
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
 }
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+function getSupabase() {
+  if (!supabase) {
+    throw new Error(
+      "Supabase not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env.local"
+    );
+  }
+  return supabase;
+}
+
+export { getSupabase };
 
 export interface SignupData {
   email: string;
@@ -44,8 +53,9 @@ export interface AuthResponse {
 
 class AuthAPI {
   async signup(data: SignupData): Promise<AuthResponse> {
+    const sb = getSupabase();
     // Sign up with Supabase Auth
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    const { data: authData, error: authError } = await sb.auth.signUp({
       email: data.email,
       password: data.password,
     });
@@ -59,7 +69,7 @@ class AuthAPI {
     }
 
     // Create user profile in database
-    const { error: profileError } = await supabase.from("profiles").insert([
+    const { error: profileError } = await sb.from("profiles").insert([
       {
         id: authData.user.id,
         email: data.email,
@@ -90,8 +100,9 @@ class AuthAPI {
   }
 
   async login(data: LoginData): Promise<AuthResponse> {
+    const sb = getSupabase();
     const { data: authData, error: authError } =
-      await supabase.auth.signInWithPassword({
+      await sb.auth.signInWithPassword({
         email: data.email,
         password: data.password,
       });
@@ -105,7 +116,7 @@ class AuthAPI {
     }
 
     // Get user profile
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile, error: profileError } = await sb
       .from("profiles")
       .select("*")
       .eq("id", authData.user.id)
@@ -124,16 +135,17 @@ class AuthAPI {
   }
 
   async getProfile(): Promise<UserProfile> {
+    const sb = getSupabase();
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser();
+    } = await sb.auth.getUser();
 
     if (authError || !user) {
       throw new Error("Not authenticated");
     }
 
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile, error: profileError } = await sb
       .from("profiles")
       .select("*")
       .eq("id", user.id)
@@ -147,16 +159,17 @@ class AuthAPI {
   }
 
   async updateProfile(data: Partial<UserProfile>): Promise<UserProfile> {
+    const sb = getSupabase();
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser();
+    } = await sb.auth.getUser();
 
     if (authError || !user) {
       throw new Error("Not authenticated");
     }
 
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile, error: profileError } = await sb
       .from("profiles")
       .update({
         name: data.name || undefined,
@@ -177,16 +190,17 @@ class AuthAPI {
   }
 
   async getLoginHistory(limit: number = 10): Promise<any[]> {
+    const sb = getSupabase();
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser();
+    } = await sb.auth.getUser();
 
     if (authError || !user) {
       throw new Error("Not authenticated");
     }
 
-    const { data: history, error: historyError } = await supabase
+    const { data: history, error: historyError } = await sb
       .from("login_history")
       .select("*")
       .eq("user_id", user.id)
@@ -201,6 +215,7 @@ class AuthAPI {
   }
 
   async recordLogin(userId: string): Promise<void> {
+    const sb = getSupabase();
     const userAgent = navigator.userAgent;
     const ipAddress = await this.getClientIP();
 
@@ -210,7 +225,7 @@ class AuthAPI {
       userAgent: userAgent,
     };
 
-    await supabase.from("login_history").insert([
+    await sb.from("login_history").insert([
       {
         user_id: userId,
         ip_address: ipAddress,
@@ -221,13 +236,14 @@ class AuthAPI {
   }
 
   async logout(): Promise<void> {
+    const sb = getSupabase();
     const {
       data: { user },
-    } = await supabase.auth.getUser();
+    } = await sb.auth.getUser();
 
     if (user) {
       // Update the last login record with logout time
-      await supabase
+      await sb
         .from("login_history")
         .update({ logout_time: new Date().toISOString() })
         .eq("user_id", user.id)
@@ -236,26 +252,28 @@ class AuthAPI {
         .limit(1);
     }
 
-    await supabase.auth.signOut();
+    await sb.auth.signOut();
   }
 
   async isAuthenticated(): Promise<boolean> {
+    const sb = getSupabase();
     const {
       data: { user },
-    } = await supabase.auth.getUser();
+    } = await sb.auth.getUser();
     return !!user;
   }
 
   async getCurrentUser(): Promise<UserProfile | null> {
+    const sb = getSupabase();
     const {
       data: { user },
-    } = await supabase.auth.getUser();
+    } = await sb.auth.getUser();
 
     if (!user) {
       return null;
     }
 
-    const { data: profile } = await supabase
+    const { data: profile } = await sb
       .from("profiles")
       .select("*")
       .eq("id", user.id)
@@ -276,14 +294,14 @@ class AuthAPI {
 
   private getBrowser(userAgent: string): string {
     const match = userAgent.match(
-      /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/,
+      /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/
     );
     return match ? match[0] : "Unknown";
   }
 
   private getOS(userAgent: string): string {
     const match = userAgent.match(
-      /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/,
+      /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/
     );
     return match ? match[0] : "Unknown";
   }
