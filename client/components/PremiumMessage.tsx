@@ -80,7 +80,7 @@ export default function PremiumMessage() {
           {/* CTA Button */}
           <div className="pt-2">
             <Link
-              to="/auth"
+              to="/auth?mode=signup"
               className="w-full group/btn relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95"
             >
               {/* Button Glow Effect */}
