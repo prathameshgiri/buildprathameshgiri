@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
-import { authAPI } from "@/lib/api";
+import { authAPI, getSupabase } from "@/lib/api";
 import { useToast } from "@/components/ui/use-toast";
+import { AlertCircle } from "lucide-react";
 
 export default function Auth() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const isSupabaseConfigured = !!getSupabase();
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
   const [formData, setFormData] = useState({
@@ -149,6 +151,37 @@ export default function Auth() {
             </p>
           </div>
 
+          {/* Configuration Warning */}
+          {!isSupabaseConfigured && (
+            <div
+              className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 opacity-0 animate-slide-up"
+              style={{ animationFillMode: "forwards", animationDelay: "0.25s" }}
+            >
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-sm mb-1">
+                    Supabase Not Configured
+                  </h3>
+                  <p className="text-xs text-amber-700 leading-relaxed">
+                    Authentication is currently disabled. Please connect Supabase by
+                    setting <strong>VITE_SUPABASE_URL</strong> and{" "}
+                    <strong>VITE_SUPABASE_ANON_KEY</strong> in your environment
+                    variables.
+                  </p>
+                  <a
+                    href="https://supabase.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 text-xs font-semibold underline hover:text-amber-900"
+                  >
+                    Learn how to set up Supabase →
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Error Message */}
           {error && (
             <div
@@ -161,7 +194,9 @@ export default function Auth() {
 
           {/* Form Card */}
           <div
-            className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl border border-gray-100/50 opacity-0 animate-slide-up"
+            className={`bg-white/80 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl border border-gray-100/50 opacity-0 animate-slide-up ${
+              !isSupabaseConfigured ? "grayscale opacity-50 pointer-events-none" : ""
+            }`}
             style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
           >
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -412,7 +447,7 @@ export default function Auth() {
               >
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || !isSupabaseConfigured}
                   className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                 >
                   {isLoading ? (
@@ -422,8 +457,16 @@ export default function Auth() {
                     </>
                   ) : (
                     <>
-                      <span>{isLogin ? "Sign In" : "Create Account"}</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                      <span>
+                        {!isSupabaseConfigured
+                          ? "Auth Disabled"
+                          : isLogin
+                          ? "Sign In"
+                          : "Create Account"}
+                      </span>
+                      {isSupabaseConfigured && (
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                      )}
                     </>
                   )}
                 </button>
