@@ -148,8 +148,8 @@ export default function PremiumMessage() {
           )}
           {isLoggedIn && (
             <div className="pt-2">
-              <a
-                href="#explore"
+              <Link
+                to="/premium-projects"
                 className="w-full group/btn relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
@@ -157,7 +157,7 @@ export default function PremiumMessage() {
                   <Star className="w-5 h-5 group-hover/btn:animate-pulse" strokeWidth={2} />
                   <span className="relative">Explore Premium Projects</span>
                 </div>
-              </a>
+              </Link>
             </div>
           )}
         </div>
