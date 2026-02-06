@@ -157,12 +157,16 @@ export default function PremiumProjects() {
       </section>
 
       {/* Success Banner */}
-      <section className="bg-orange-600 py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Want something similar for your business?</h2>
+      <section className="relative py-20 overflow-hidden bg-slate-950">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-orange-500 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Want something similar for your business?</h2>
           <Link
             to="/#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-600 font-bold rounded-full hover:shadow-2xl transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-all duration-300 hover:scale-105"
           >
             Start a Custom Project
           </Link>
