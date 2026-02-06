@@ -35,7 +35,7 @@ export default function ServiceDetailPage({
   features,
   process,
   benefits,
-  cta = { text: "Get Started", action: "/auth" },
+  cta = { text: "Get Started", action: "/auth?mode=signup" },
 }: ServiceDetailPageProps) {
   return (
     <div className="min-h-screen bg-white">
