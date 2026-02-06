@@ -144,7 +144,7 @@ export default function Pricing() {
 
                 {/* CTA Button */}
                 <Link
-                  to="/auth"
+                  to="/auth?mode=signup"
                   className={`block w-full py-3 rounded-full font-semibold text-center mb-8 transition-all duration-300 ${
                     plan.highlighted
                       ? "bg-white text-emerald-600 hover:shadow-lg"
