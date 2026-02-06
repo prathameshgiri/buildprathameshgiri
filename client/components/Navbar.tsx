@@ -26,7 +26,9 @@ export default function Navbar() {
     // Set up auth state change listener
     const sb = getSupabase();
     if (sb) {
-      const { data: { subscription } } = sb.auth.onAuthStateChange((_event, session) => {
+      const {
+        data: { subscription },
+      } = sb.auth.onAuthStateChange((_event, session) => {
         if (session?.user) {
           checkUser();
         } else {
@@ -119,7 +121,10 @@ export default function Navbar() {
                   setIsMenuOpen(false);
                 }}
                 className="text-gray-700 text-sm font-medium hover:text-orange-600 transition-colors duration-300 opacity-0 animate-slide-up"
-                style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
+                style={{
+                  animationDelay: "0.35s",
+                  animationFillMode: "forwards",
+                }}
               >
                 Sign In
               </button>
@@ -129,7 +134,10 @@ export default function Navbar() {
                   setIsMenuOpen(false);
                 }}
                 className="btn-primary opacity-0 animate-slide-up"
-                style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+                style={{
+                  animationDelay: "0.4s",
+                  animationFillMode: "forwards",
+                }}
               >
                 Sign Up
               </button>

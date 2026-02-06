@@ -54,7 +54,9 @@ class AuthAPI {
   async signup(data: SignupData): Promise<AuthResponse> {
     const sb = getSupabase();
     if (!sb) {
-      throw new Error("Supabase is not configured. Please set environment variables.");
+      throw new Error(
+        "Supabase is not configured. Please set environment variables.",
+      );
     }
     // Sign up with Supabase Auth
     const { data: authData, error: authError } = await sb.auth.signUp({
@@ -104,7 +106,9 @@ class AuthAPI {
   async login(data: LoginData): Promise<AuthResponse> {
     const sb = getSupabase();
     if (!sb) {
-      throw new Error("Supabase is not configured. Please set environment variables.");
+      throw new Error(
+        "Supabase is not configured. Please set environment variables.",
+      );
     }
     const { data: authData, error: authError } =
       await sb.auth.signInWithPassword({
@@ -312,14 +316,14 @@ class AuthAPI {
 
   private getBrowser(userAgent: string): string {
     const match = userAgent.match(
-      /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/
+      /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/,
     );
     return match ? match[0] : "Unknown";
   }
 
   private getOS(userAgent: string): string {
     const match = userAgent.match(
-      /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/
+      /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/,
     );
     return match ? match[0] : "Unknown";
   }

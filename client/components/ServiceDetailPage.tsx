@@ -45,11 +45,17 @@ export default function ServiceDetailPage({
       <div className="relative w-full overflow-hidden bg-white">
         {/* Gradient Background Blobs */}
         <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" />
-        <div className="absolute top-40 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in" style={{ animationDelay: "0.2s" }} />
+        <div
+          className="absolute top-40 -right-4 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-fade-in"
+          style={{ animationDelay: "0.2s" }}
+        />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
           {/* Breadcrumb */}
-          <div className="mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}>
+          <div
+            className="mb-8 opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}
+          >
             <Link
               to="/#services"
               className="text-orange-600 font-semibold flex items-center gap-1 hover:gap-2 transition-all duration-300"
@@ -59,7 +65,10 @@ export default function ServiceDetailPage({
           </div>
 
           {/* Header */}
-          <div className="flex items-start gap-6 mb-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
+          <div
+            className="flex items-start gap-6 mb-8 opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
+          >
             <div className="p-4 bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl">
               <Icon className="w-12 h-12 text-orange-600" strokeWidth={1.5} />
             </div>
@@ -72,7 +81,10 @@ export default function ServiceDetailPage({
           </div>
 
           {/* Description */}
-          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}>
+          <p
+            className="text-lg text-gray-600 leading-relaxed max-w-3xl opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}
+          >
             {description}
           </p>
         </div>
@@ -83,8 +95,14 @@ export default function ServiceDetailPage({
       {/* Key Points Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
-            Key <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Highlights</span>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
+          >
+            Key{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Highlights
+            </span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -92,7 +110,10 @@ export default function ServiceDetailPage({
               <div
                 key={index}
                 className="opacity-0 animate-slide-up flex items-start gap-4 p-6 bg-white rounded-xl border-2 border-orange-100 hover:border-orange-300 transition-colors duration-300"
-                style={{ animationFillMode: "forwards", animationDelay: `${0.4 + index * 0.08}s` }}
+                style={{
+                  animationFillMode: "forwards",
+                  animationDelay: `${0.4 + index * 0.08}s`,
+                }}
               >
                 <CheckCircle className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
                 <p className="text-gray-700 font-medium">{point}</p>
@@ -105,8 +126,14 @@ export default function ServiceDetailPage({
       {/* Features Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
-            What We <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Include</span>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
+          >
+            What We{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Include
+            </span>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -114,13 +141,23 @@ export default function ServiceDetailPage({
               <div
                 key={index}
                 className="opacity-0 animate-slide-up p-8 bg-gradient-to-br from-white to-orange-50 rounded-2xl border-2 border-orange-100 hover:border-orange-300 transition-all duration-300 hover:shadow-xl"
-                style={{ animationFillMode: "forwards", animationDelay: `${0.4 + index * 0.1}s` }}
+                style={{
+                  animationFillMode: "forwards",
+                  animationDelay: `${0.4 + index * 0.1}s`,
+                }}
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{feature.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  {feature.description}
+                </p>
                 <ul className="space-y-2">
                   {feature.items.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-sm text-gray-700"
+                    >
                       <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-1.5 flex-shrink-0" />
                       {item}
                     </li>
@@ -135,8 +172,14 @@ export default function ServiceDetailPage({
       {/* Process Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
-            Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Process</span>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
+          >
+            Our{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Process
+            </span>
           </h2>
 
           <div className="space-y-8">
@@ -144,7 +187,10 @@ export default function ServiceDetailPage({
               <div
                 key={index}
                 className="opacity-0 animate-slide-up"
-                style={{ animationFillMode: "forwards", animationDelay: `${0.4 + index * 0.1}s` }}
+                style={{
+                  animationFillMode: "forwards",
+                  animationDelay: `${0.4 + index * 0.1}s`,
+                }}
               >
                 <div className="flex gap-6">
                   {/* Step Number */}
@@ -159,8 +205,12 @@ export default function ServiceDetailPage({
 
                   {/* Content */}
                   <div className="pb-8 flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -172,8 +222,14 @@ export default function ServiceDetailPage({
       {/* Benefits Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}>
-            Key <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Benefits</span>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
+          >
+            Key{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Benefits
+            </span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -181,11 +237,24 @@ export default function ServiceDetailPage({
               <div
                 key={index}
                 className="opacity-0 animate-slide-up flex items-start gap-4 p-6"
-                style={{ animationFillMode: "forwards", animationDelay: `${0.4 + index * 0.08}s` }}
+                style={{
+                  animationFillMode: "forwards",
+                  animationDelay: `${0.4 + index * 0.08}s`,
+                }}
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4" />
+                  <svg
+                    className="w-6 h-6 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M9 12l2 2 4-4"
+                    />
                   </svg>
                 </div>
                 <p className="text-gray-700 text-lg font-medium">{benefit}</p>
@@ -197,12 +266,16 @@ export default function ServiceDetailPage({
 
       {/* CTA Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}>
+        <div
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center opacity-0 animate-slide-up"
+          style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Ready to Get Started?
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can bring your vision to life with our expert {title.toLowerCase()} services.
+            Let's discuss how we can bring your vision to life with our expert{" "}
+            {title.toLowerCase()} services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -19,7 +19,9 @@ export default function PremiumMessage() {
 
     const sb = getSupabase();
     if (sb) {
-      const { data: { subscription } } = sb.auth.onAuthStateChange((_event, session) => {
+      const {
+        data: { subscription },
+      } = sb.auth.onAuthStateChange((_event, session) => {
         setIsLoggedIn(!!session?.user);
       });
       return () => subscription.unsubscribe();
@@ -55,11 +57,18 @@ export default function PremiumMessage() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-lg" />
 
                 {/* Icon Container */}
-                <div className={`relative flex items-center justify-center w-16 h-16 bg-gradient-to-br rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all duration-500 ${
-                  isLoggedIn ? 'from-teal-500 to-teal-600' : 'from-orange-500 to-orange-600'
-                }`}>
+                <div
+                  className={`relative flex items-center justify-center w-16 h-16 bg-gradient-to-br rounded-2xl shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all duration-500 ${
+                    isLoggedIn
+                      ? "from-teal-500 to-teal-600"
+                      : "from-orange-500 to-orange-600"
+                  }`}
+                >
                   {isLoggedIn ? (
-                    <CheckCircle className="w-8 h-8 text-white" strokeWidth={1.5} />
+                    <CheckCircle
+                      className="w-8 h-8 text-white"
+                      strokeWidth={1.5}
+                    />
                   ) : (
                     <Lock className="w-8 h-8 text-white" strokeWidth={1.5} />
                   )}
@@ -68,14 +77,20 @@ export default function PremiumMessage() {
             </div>
 
             {/* Premium Badge */}
-            <div className={`flex items-center gap-2 px-3 py-1 bg-gradient-to-r rounded-full border transition-colors duration-300 ${
-              isLoggedIn
-                ? 'from-teal-100 to-teal-50 border-teal-200 group-hover:border-teal-300'
-                : 'from-orange-100 to-orange-50 border-orange-200 group-hover:border-orange-300'
-            }`}>
-              <Star className={`w-4 h-4 ${isLoggedIn ? 'text-teal-500 fill-teal-500' : 'text-orange-500 fill-orange-500'}`} />
-              <span className={`text-xs font-semibold ${isLoggedIn ? 'text-teal-700' : 'text-orange-700'}`}>
-                {isLoggedIn ? 'Premium Unlocked' : 'Premium Access'}
+            <div
+              className={`flex items-center gap-2 px-3 py-1 bg-gradient-to-r rounded-full border transition-colors duration-300 ${
+                isLoggedIn
+                  ? "from-teal-100 to-teal-50 border-teal-200 group-hover:border-teal-300"
+                  : "from-orange-100 to-orange-50 border-orange-200 group-hover:border-orange-300"
+              }`}
+            >
+              <Star
+                className={`w-4 h-4 ${isLoggedIn ? "text-teal-500 fill-teal-500" : "text-orange-500 fill-orange-500"}`}
+              />
+              <span
+                className={`text-xs font-semibold ${isLoggedIn ? "text-teal-700" : "text-orange-700"}`}
+              >
+                {isLoggedIn ? "Premium Unlocked" : "Premium Access"}
               </span>
             </div>
           </div>
@@ -83,31 +98,39 @@ export default function PremiumMessage() {
           {/* Content */}
           <div className="space-y-4">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-              {isLoggedIn ? 'Welcome to Premium' : 'Unlock Premium Projects'}
+              {isLoggedIn ? "Welcome to Premium" : "Unlock Premium Projects"}
             </h3>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
               {isLoggedIn
-                ? 'You now have full access to our exclusive, real-world projects. Explore the Premium category in our portfolio below.'
-                : 'Sign up or log in to access exclusive, real-world projects built for serious developers and businesses.'}
+                ? "You now have full access to our exclusive, real-world projects. Explore the Premium category in our portfolio below."
+                : "Sign up or log in to access exclusive, real-world projects built for serious developers and businesses."}
             </p>
           </div>
 
           {/* Features Grid */}
           <div className="grid grid-cols-2 gap-3 opacity-75 group-hover:opacity-100 transition-opacity duration-300">
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? 'bg-teal-500' : 'bg-orange-500'}`} />
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? "bg-teal-500" : "bg-orange-500"}`}
+              />
               Real-world Projects
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? 'bg-teal-500' : 'bg-orange-500'}`} />
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? "bg-teal-500" : "bg-orange-500"}`}
+              />
               Expert Guidance
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? 'bg-teal-500' : 'bg-orange-500'}`} />
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? "bg-teal-500" : "bg-orange-500"}`}
+              />
               Community Access
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? 'bg-teal-500' : 'bg-orange-500'}`} />
+              <div
+                className={`w-1.5 h-1.5 rounded-full ${isLoggedIn ? "bg-teal-500" : "bg-orange-500"}`}
+              />
               Career Growth
             </div>
           </div>
@@ -154,7 +177,10 @@ export default function PremiumMessage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex items-center justify-center gap-3">
-                  <Star className="w-5 h-5 group-hover/btn:animate-pulse" strokeWidth={2} />
+                  <Star
+                    className="w-5 h-5 group-hover/btn:animate-pulse"
+                    strokeWidth={2}
+                  />
                   <span className="relative">Explore Premium Projects</span>
                 </div>
               </Link>

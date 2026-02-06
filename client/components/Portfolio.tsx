@@ -23,7 +23,9 @@ export default function Portfolio() {
 
     const sb = getSupabase();
     if (sb) {
-      const { data: { subscription } } = sb.auth.onAuthStateChange((_event, session) => {
+      const {
+        data: { subscription },
+      } = sb.auth.onAuthStateChange((_event, session) => {
         setIsLoggedIn(!!session?.user);
       });
       return () => subscription.unsubscribe();
@@ -115,13 +117,23 @@ export default function Portfolio() {
               {/* Content */}
               <div className="p-6 bg-white flex-grow flex flex-col">
                 <div className="flex items-center justify-between mb-3">
-                  <div className={`inline-block px-3 py-1 rounded-full w-fit ${
-                    project.category === 'Premium' ? 'bg-orange-100' : 'bg-teal-100'
-                  }`}>
-                    <span className={`text-xs font-semibold flex items-center gap-1 ${
-                      project.category === 'Premium' ? 'text-orange-700' : 'text-teal-700'
-                    }`}>
-                      {project.category === 'Premium' && <Lock className="w-3 h-3" />}
+                  <div
+                    className={`inline-block px-3 py-1 rounded-full w-fit ${
+                      project.category === "Premium"
+                        ? "bg-orange-100"
+                        : "bg-teal-100"
+                    }`}
+                  >
+                    <span
+                      className={`text-xs font-semibold flex items-center gap-1 ${
+                        project.category === "Premium"
+                          ? "text-orange-700"
+                          : "text-teal-700"
+                      }`}
+                    >
+                      {project.category === "Premium" && (
+                        <Lock className="w-3 h-3" />
+                      )}
                       {project.category}
                     </span>
                   </div>

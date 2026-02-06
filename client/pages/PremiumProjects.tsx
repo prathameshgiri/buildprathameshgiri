@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { ExternalLink, Github, Info, Lock, ArrowLeft, Star } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Info,
+  Lock,
+  ArrowLeft,
+  Star,
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { projects, Project } from "@/data/projects";
@@ -47,7 +54,10 @@ export default function PremiumProjects() {
       {/* Hero Section */}
       <div className="relative pt-20 pb-12 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-orange-50">
         <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: "1s" }} />
+        <div
+          className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Link
@@ -64,7 +74,8 @@ export default function PremiumProjects() {
             </h1>
           </div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Exclusive access to enterprise-grade, real-world applications designed for serious growth and professional impact.
+            Exclusive access to enterprise-grade, real-world applications
+            designed for serious growth and professional impact.
           </p>
         </div>
       </div>
@@ -83,7 +94,9 @@ export default function PremiumProjects() {
                   {/* Premium Badge Overlay */}
                   <div className="absolute top-4 right-4 z-20 flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-orange-100">
                     <Star className="w-4 h-4 text-orange-500 fill-orange-500" />
-                    <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">Premium</span>
+                    <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
+                      Premium
+                    </span>
                   </div>
 
                   {/* Image Container */}
@@ -100,7 +113,10 @@ export default function PremiumProjects() {
                   <div className="p-8 flex-grow flex flex-col">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((t) => (
-                        <span key={t} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full border border-gray-200">
+                        <span
+                          key={t}
+                          className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full border border-gray-200"
+                        >
                           {t}
                         </span>
                       ))}
@@ -149,8 +165,12 @@ export default function PremiumProjects() {
           ) : (
             <div className="text-center py-20 bg-orange-50 rounded-3xl border-2 border-dashed border-orange-200">
               <Lock className="w-16 h-16 text-orange-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">No Premium Projects Yet</h3>
-              <p className="text-gray-600">Check back soon for our latest high-end developments.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                No Premium Projects Yet
+              </h3>
+              <p className="text-gray-600">
+                Check back soon for our latest high-end developments.
+              </p>
             </div>
           )}
         </div>
@@ -163,7 +183,9 @@ export default function PremiumProjects() {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">Want something similar for your business?</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
+            Want something similar for your business?
+          </h2>
           <Link
             to="/#contact"
             className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-all duration-300 hover:scale-105"

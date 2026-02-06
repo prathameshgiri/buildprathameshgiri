@@ -164,8 +164,8 @@ export default function Auth() {
                     Supabase Not Configured
                   </h3>
                   <p className="text-xs text-amber-700 leading-relaxed">
-                    Authentication is currently disabled. Please connect Supabase by
-                    setting <strong>VITE_SUPABASE_URL</strong> and{" "}
+                    Authentication is currently disabled. Please connect
+                    Supabase by setting <strong>VITE_SUPABASE_URL</strong> and{" "}
                     <strong>VITE_SUPABASE_ANON_KEY</strong> in your environment
                     variables.
                   </p>
@@ -195,7 +195,9 @@ export default function Auth() {
           {/* Form Card */}
           <div
             className={`bg-white/80 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl border border-gray-100/50 opacity-0 animate-slide-up ${
-              !isSupabaseConfigured ? "grayscale opacity-50 pointer-events-none" : ""
+              !isSupabaseConfigured
+                ? "grayscale opacity-50 pointer-events-none"
+                : ""
             }`}
             style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
           >
@@ -461,8 +463,8 @@ export default function Auth() {
                         {!isSupabaseConfigured
                           ? "Auth Disabled"
                           : isLogin
-                          ? "Sign In"
-                          : "Create Account"}
+                            ? "Sign In"
+                            : "Create Account"}
                       </span>
                       {isSupabaseConfigured && (
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

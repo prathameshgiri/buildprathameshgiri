@@ -19,12 +19,12 @@ export const projects: Project[] = [
     id: 1,
     name: "E-Commerce Dashboard",
     category: "Web Apps",
-    description: "Modern e-commerce admin dashboard for business analytics and management",
+    description:
+      "Modern e-commerce admin dashboard for business analytics and management",
     fullDescription:
       "A clean and responsive e-commerce admin dashboard designed to monitor and manage online store performance efficiently. The dashboard provides real-time insights into new orders, daily income, total revenue, and user growth. It features interactive charts for yearly statistics and sales revenue analysis, helping administrators track trends and make data-driven decisions. With an intuitive sidebar navigation, search functionality, notifications, and user profile management, the dashboard ensures smooth and organized store operations from a single control panel.",
-    tech: ["React", "Node.js", "MongoDB"],    
-    image:
-      "https://pro.prathameshgiri.in/res/projects/dashboard.png",
+    tech: ["React", "Node.js", "MongoDB"],
+    image: "https://pro.prathameshgiri.in/res/projects/dashboard.png",
     liveLink: "https://pro.prathameshgiri.in/Dashboard/",
     githubLink: "https://github.com/prathameshgiri/Dashboard",
     features: [
@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "Product and inventory overview dashboard",
       "Admin notifications and activity alerts",
       "Responsive sidebar navigation with search",
-      "Role-based admin profile management"
+      "Role-based admin profile management",
     ],
 
     challenge:
@@ -45,7 +45,7 @@ export const projects: Project[] = [
       "Built a modular and optimized dashboard using React for dynamic UI updates and MongoDB for scalable data handling. Implemented efficient API structures, optimized database queries, and chart-based visualizations to ensure fast data rendering and real-time insights.",
 
     results:
-      "Improved operational efficiency by 40%, enabled faster decision-making through real-time analytics, and delivered a stable, user-friendly admin experience with consistent performance under heavy data load."
+      "Improved operational efficiency by 40%, enabled faster decision-making through real-time analytics, and delivered a stable, user-friendly admin experience with consistent performance under heavy data load.",
   },
   {
     id: 2,
@@ -186,10 +186,13 @@ export const projects: Project[] = [
     id: 7,
     name: "FinTech Trading Platform",
     category: "Premium",
-    description: "Advanced trading platform with real-time stock market data and AI insights",
-    fullDescription: "A high-performance trading platform designed for professional traders, offering real-time data streaming, advanced charting tools, and AI-driven market predictions. The platform handles thousands of concurrent data points with sub-second latency.",
+    description:
+      "Advanced trading platform with real-time stock market data and AI insights",
+    fullDescription:
+      "A high-performance trading platform designed for professional traders, offering real-time data streaming, advanced charting tools, and AI-driven market predictions. The platform handles thousands of concurrent data points with sub-second latency.",
     tech: ["Next.js", "WebSockets", "Redis", "OpenAI API"],
-    image: "https://images.unsplash.com/photo-1611974717482-48cd7c1b821d?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1611974717482-48cd7c1b821d?w=500&h=300&fit=crop",
     liveLink: "#",
     githubLink: "#",
     features: [
@@ -198,20 +201,25 @@ export const projects: Project[] = [
       "Advanced technical indicators",
       "Instant trade execution",
       "Portfolio risk management",
-      "Secure wallet integration"
+      "Secure wallet integration",
     ],
-    challenge: "Handling real-time WebSocket data without UI lag and ensuring secure financial transactions.",
-    solution: "Implemented efficient data buffering, optimized React rendering, and used robust encryption for transactions.",
-    results: "Achieved 99.99% uptime and 200ms average trade execution time."
+    challenge:
+      "Handling real-time WebSocket data without UI lag and ensuring secure financial transactions.",
+    solution:
+      "Implemented efficient data buffering, optimized React rendering, and used robust encryption for transactions.",
+    results: "Achieved 99.99% uptime and 200ms average trade execution time.",
   },
   {
     id: 8,
     name: "AI Content Generator Pro",
     category: "Premium",
-    description: "Enterprise-grade AI platform for content creation and marketing automation",
-    fullDescription: "A sophisticated AI platform that generates high-quality articles, social media posts, and marketing copy. Includes team collaboration features and multi-channel publishing.",
+    description:
+      "Enterprise-grade AI platform for content creation and marketing automation",
+    fullDescription:
+      "A sophisticated AI platform that generates high-quality articles, social media posts, and marketing copy. Includes team collaboration features and multi-channel publishing.",
     tech: ["React", "Python", "FastAPI", "OpenAI", "Supabase"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
     liveLink: "#",
     githubLink: "#",
     features: [
@@ -220,10 +228,13 @@ export const projects: Project[] = [
       "Custom brand voice training",
       "Automated SEO optimization",
       "Bulk content generation",
-      "Social media auto-posting"
+      "Social media auto-posting",
     ],
-    challenge: "Managing complex AI prompts and ensuring consistent output quality across different domains.",
-    solution: "Developed a sophisticated prompt engineering layer and implemented a human-in-the-loop review system.",
-    results: "Reduced content production time by 80% and increased organic traffic by 150%."
-  }
+    challenge:
+      "Managing complex AI prompts and ensuring consistent output quality across different domains.",
+    solution:
+      "Developed a sophisticated prompt engineering layer and implemented a human-in-the-loop review system.",
+    results:
+      "Reduced content production time by 80% and increased organic traffic by 150%.",
+  },
 ];

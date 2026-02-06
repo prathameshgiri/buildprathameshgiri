@@ -40,11 +40,13 @@ export default function ProjectDetailsModal({
           {/* Category and Tech */}
           <div className="mb-8">
             <div className="flex flex-wrap gap-3 mb-6">
-              <span className={`px-4 py-2 rounded-full font-semibold ${
-                project.category === 'Premium'
-                  ? 'bg-orange-100 text-orange-700'
-                  : 'bg-teal-100 text-teal-700'
-              }`}>
+              <span
+                className={`px-4 py-2 rounded-full font-semibold ${
+                  project.category === "Premium"
+                    ? "bg-orange-100 text-orange-700"
+                    : "bg-teal-100 text-teal-700"
+                }`}
+              >
                 {project.category}
               </span>
             </div>
