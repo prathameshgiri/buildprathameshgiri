@@ -7,15 +7,14 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 let supabase: any = null;
 
 if (supabaseUrl && supabaseKey) {
-  supabase = createClient(supabaseUrl, supabaseKey);
+  try {
+    supabase = createClient(supabaseUrl, supabaseKey);
+  } catch (error) {
+    console.error("Failed to initialize Supabase client:", error);
+  }
 }
 
 function getSupabase() {
-  if (!supabase) {
-    throw new Error(
-      "Supabase not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env.local"
-    );
-  }
   return supabase;
 }
 
@@ -54,6 +53,9 @@ export interface AuthResponse {
 class AuthAPI {
   async signup(data: SignupData): Promise<AuthResponse> {
     const sb = getSupabase();
+    if (!sb) {
+      throw new Error("Supabase is not configured. Please set environment variables.");
+    }
     // Sign up with Supabase Auth
     const { data: authData, error: authError } = await sb.auth.signUp({
       email: data.email,
@@ -101,6 +103,9 @@ class AuthAPI {
 
   async login(data: LoginData): Promise<AuthResponse> {
     const sb = getSupabase();
+    if (!sb) {
+      throw new Error("Supabase is not configured. Please set environment variables.");
+    }
     const { data: authData, error: authError } =
       await sb.auth.signInWithPassword({
         email: data.email,
@@ -136,6 +141,9 @@ class AuthAPI {
 
   async getProfile(): Promise<UserProfile> {
     const sb = getSupabase();
+    if (!sb) {
+      throw new Error("Supabase is not configured");
+    }
     const {
       data: { user },
       error: authError,
@@ -160,6 +168,9 @@ class AuthAPI {
 
   async updateProfile(data: Partial<UserProfile>): Promise<UserProfile> {
     const sb = getSupabase();
+    if (!sb) {
+      throw new Error("Supabase is not configured");
+    }
     const {
       data: { user },
       error: authError,
@@ -191,6 +202,9 @@ class AuthAPI {
 
   async getLoginHistory(limit: number = 10): Promise<any[]> {
     const sb = getSupabase();
+    if (!sb) {
+      return [];
+    }
     const {
       data: { user },
       error: authError,
@@ -216,6 +230,7 @@ class AuthAPI {
 
   async recordLogin(userId: string): Promise<void> {
     const sb = getSupabase();
+    if (!sb) return;
     const userAgent = navigator.userAgent;
     const ipAddress = await this.getClientIP();
 
@@ -237,6 +252,7 @@ class AuthAPI {
 
   async logout(): Promise<void> {
     const sb = getSupabase();
+    if (!sb) return;
     const {
       data: { user },
     } = await sb.auth.getUser();
@@ -257,6 +273,7 @@ class AuthAPI {
 
   async isAuthenticated(): Promise<boolean> {
     const sb = getSupabase();
+    if (!sb) return false;
     const {
       data: { user },
     } = await sb.auth.getUser();
@@ -265,6 +282,7 @@ class AuthAPI {
 
   async getCurrentUser(): Promise<UserProfile | null> {
     const sb = getSupabase();
+    if (!sb) return null;
     const {
       data: { user },
     } = await sb.auth.getUser();
