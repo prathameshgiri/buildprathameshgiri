@@ -113,34 +113,34 @@ export default function PremiumProjects() {
                     </p>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-md"
-                      >
-                        <Info className="w-4 h-4" />
-                        Project Details
-                      </button>
-                      <div className="flex gap-2">
+                    <div className="flex flex-col gap-3 pt-6 border-t border-gray-100 mt-auto">
+                      <div className="flex gap-3">
                         <a
                           href={project.liveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-3 bg-gray-50 text-gray-700 rounded-xl hover:bg-orange-50 hover:text-orange-600 border border-gray-200 transition-all duration-300"
-                          title="View Live"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl hover:shadow-[0_10px_20px_rgba(249,115,22,0.3)] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-sm"
                         >
-                          <ExternalLink className="w-5 h-5" />
+                          <ExternalLink className="w-4 h-4" />
+                          Live Demo
                         </a>
                         <a
                           href={project.githubLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-3 bg-gray-50 text-gray-700 rounded-xl hover:bg-orange-50 hover:text-orange-600 border border-gray-200 transition-all duration-300"
-                          title="View Source"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-sm"
                         >
-                          <Github className="w-5 h-5" />
+                          <Github className="w-4 h-4" />
+                          Visit Code
                         </a>
                       </div>
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-orange-50 text-orange-600 font-bold rounded-xl hover:bg-orange-100 border border-orange-100 transition-all duration-300 hover:scale-[1.01] active:scale-95 text-sm"
+                      >
+                        <Info className="w-4 h-4" />
+                        View Details
+                      </button>
                     </div>
                   </div>
                 </div>
