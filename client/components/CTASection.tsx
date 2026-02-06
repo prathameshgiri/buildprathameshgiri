@@ -25,7 +25,7 @@ export default function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/auth"
+              to="/auth?mode=signup"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-orange-600 font-bold rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               Start Your Project
