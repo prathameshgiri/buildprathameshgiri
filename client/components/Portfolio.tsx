@@ -1,16 +1,48 @@
-import { ExternalLink, Github, Info } from "lucide-react";
-import { useState } from "react";
+import { ExternalLink, Github, Info, Lock } from "lucide-react";
+import { useState, useEffect } from "react";
 import { projects } from "@/data/projects";
 import { Project } from "@/data/projects";
 import ProjectDetailsModal from "./ProjectDetailsModal";
+import { authAPI, getSupabase } from "@/lib/api";
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isSupabaseConfigured = !!getSupabase();
+
+  useEffect(() => {
+    if (!isSupabaseConfigured) return;
+
+    const checkAuth = async () => {
+      const authStatus = await authAPI.isAuthenticated();
+      setIsLoggedIn(authStatus);
+    };
+
+    checkAuth();
+
+    const sb = getSupabase();
+    if (sb) {
+      const { data: { subscription } } = sb.auth.onAuthStateChange((_event, session) => {
+        setIsLoggedIn(!!session?.user);
+      });
+      return () => subscription.unsubscribe();
+    }
+  }, [isSupabaseConfigured]);
 
   const categories = ["All", "Websites", "Web Apps", "Admin Panels"];
-  const filteredProjects =
-    filter === "All" ? projects : projects.filter((p) => p.category === filter);
+  if (isLoggedIn) {
+    categories.push("Premium");
+  }
+
+  const filteredProjects = projects.filter((p) => {
+    if (filter === "All") {
+      // Don't show Premium in "All" if not logged in
+      if (p.category === "Premium" && !isLoggedIn) return false;
+      return true;
+    }
+    return p.category === filter;
+  });
 
   return (
     <section
@@ -82,10 +114,17 @@ export default function Portfolio() {
 
               {/* Content */}
               <div className="p-6 bg-white flex-grow flex flex-col">
-                <div className="mb-3 inline-block px-3 py-1 bg-teal-100 rounded-full w-fit">
-                  <span className="text-xs font-semibold text-teal-700">
-                    {project.category}
-                  </span>
+                <div className="flex items-center justify-between mb-3">
+                  <div className={`inline-block px-3 py-1 rounded-full w-fit ${
+                    project.category === 'Premium' ? 'bg-orange-100' : 'bg-teal-100'
+                  }`}>
+                    <span className={`text-xs font-semibold flex items-center gap-1 ${
+                      project.category === 'Premium' ? 'text-orange-700' : 'text-teal-700'
+                    }`}>
+                      {project.category === 'Premium' && <Lock className="w-3 h-3" />}
+                      {project.category}
+                    </span>
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {project.name}
