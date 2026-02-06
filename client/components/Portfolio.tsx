@@ -144,31 +144,33 @@ export default function Portfolio() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-200">
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    View
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-800 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
-                  >
-                    <Github className="w-4 h-4" />
-                    Code
-                  </a>
+                <div className="flex flex-col gap-3 pt-6 border-t border-gray-100 mt-auto">
+                  <div className="flex gap-3">
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-bold rounded-xl hover:shadow-[0_10px_20px_rgba(20,184,166,0.3)] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-sm"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-sm"
+                    >
+                      <Github className="w-4 h-4" />
+                      Visit Code
+                    </a>
+                  </div>
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-orange-100 text-orange-700 font-semibold rounded-lg hover:bg-orange-200 transition-all duration-300 hover:scale-105 text-sm"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-orange-50 text-orange-600 font-bold rounded-xl hover:bg-orange-100 border border-orange-100 transition-all duration-300 hover:scale-[1.01] active:scale-95 text-sm"
                   >
                     <Info className="w-4 h-4" />
-                    Details
+                    View Details
                   </button>
                 </div>
               </div>
