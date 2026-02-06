@@ -538,7 +538,7 @@ export default function About() {
             your vision into reality.
           </p>
           <Link
-            to="/auth"
+            to="/auth?mode=signup"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-full hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Start Your Project
