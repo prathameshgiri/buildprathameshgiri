@@ -94,7 +94,7 @@ export default function Portfolio() {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-12">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.slice(0, 4).map((project, index) => (
             <div
               key={project.id}
               className="opacity-0 animate-slide-up overflow-hidden rounded-2xl border-2 border-teal-100 hover:border-teal-300 hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
