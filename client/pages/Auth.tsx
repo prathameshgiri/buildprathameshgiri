@@ -13,8 +13,12 @@ export default function Auth() {
   const isSupabaseConfigured = !!getSupabase();
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
-  const [isForgotPassword, setIsForgotPassword] = useState(mode === "forgot-password");
-  const [isResetPassword, setIsResetPassword] = useState(mode === "reset-password");
+  const [isForgotPassword, setIsForgotPassword] = useState(
+    mode === "forgot-password",
+  );
+  const [isResetPassword, setIsResetPassword] = useState(
+    mode === "reset-password",
+  );
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -400,7 +404,7 @@ export default function Auth() {
               )}
 
               {/* Confirm Password Field (Signup or Reset Only) */}
-              {(!isLogin && !isForgotPassword) && (
+              {!isLogin && !isForgotPassword && (
                 <div
                   className="opacity-0 animate-slide-up"
                   style={{
@@ -447,7 +451,7 @@ export default function Auth() {
               )}
 
               {/* Optional Profile Fields (Signup Only) */}
-              {(!isLogin && !isForgotPassword && !isResetPassword) && (
+              {!isLogin && !isForgotPassword && !isResetPassword && (
                 <>
                   <div
                     className="opacity-0 animate-slide-up"
