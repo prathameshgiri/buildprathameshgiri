@@ -12,7 +12,9 @@ export default function ProjectIdeaForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -33,15 +35,23 @@ export default function ProjectIdeaForm() {
     } catch (error: any) {
       console.error("Error submitting idea:", error);
       setIsSubmitting(false);
-      toast.error(error.message || "Failed to send your idea. Please try again.");
+      toast.error(
+        error.message || "Failed to send your idea. Please try again.",
+      );
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-4">
       {/* Name Field */}
-      <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "1s" }}>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+      <div
+        className="opacity-0 animate-slide-up"
+        style={{ animationFillMode: "forwards", animationDelay: "1s" }}
+      >
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-orange-500" />
             Name
@@ -60,8 +70,14 @@ export default function ProjectIdeaForm() {
       </div>
 
       {/* Email Field */}
-      <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "1.1s" }}>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+      <div
+        className="opacity-0 animate-slide-up"
+        style={{ animationFillMode: "forwards", animationDelay: "1.1s" }}
+      >
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-orange-500" />
             Email
@@ -80,8 +96,14 @@ export default function ProjectIdeaForm() {
       </div>
 
       {/* Idea Field */}
-      <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "1.2s" }}>
-        <label htmlFor="idea" className="block text-sm font-medium text-gray-700 mb-2">
+      <div
+        className="opacity-0 animate-slide-up"
+        style={{ animationFillMode: "forwards", animationDelay: "1.2s" }}
+      >
+        <label
+          htmlFor="idea"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
           <div className="flex items-center gap-2">
             <Lightbulb className="w-4 h-4 text-orange-500" />
             Your Idea
@@ -100,7 +122,10 @@ export default function ProjectIdeaForm() {
       </div>
 
       {/* Submit Button */}
-      <div className="opacity-0 animate-slide-up" style={{ animationFillMode: "forwards", animationDelay: "1.3s" }}>
+      <div
+        className="opacity-0 animate-slide-up"
+        style={{ animationFillMode: "forwards", animationDelay: "1.3s" }}
+      >
         <button
           type="submit"
           disabled={isSubmitting}
