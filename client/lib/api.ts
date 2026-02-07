@@ -311,6 +311,26 @@ class AuthAPI {
     await sb.auth.signOut();
   }
 
+  async resetPassword(email: string): Promise<void> {
+    const sb = getSupabase();
+    if (!sb) throw new Error("Supabase is not configured");
+
+    const { error } = await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/auth?mode=reset-password`,
+    });
+
+    if (error) throw new Error(error.message);
+  }
+
+  async updateUserPassword(password: string): Promise<void> {
+    const sb = getSupabase();
+    if (!sb) throw new Error("Supabase is not configured");
+
+    const { error } = await sb.auth.updateUser({ password });
+
+    if (error) throw new Error(error.message);
+  }
+
   async isAuthenticated(): Promise<boolean> {
     const sb = getSupabase();
     if (!sb) return false;
