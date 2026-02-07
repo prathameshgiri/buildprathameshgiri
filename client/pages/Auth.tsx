@@ -291,36 +291,38 @@ export default function Auth() {
               )}
 
               {/* Email Field */}
-              <div
-                className="opacity-0 animate-slide-up"
-                style={{
-                  animationFillMode: "forwards",
-                  animationDelay: isLogin ? "0.4s" : "0.5s",
-                }}
-              >
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold text-gray-700 mb-3"
+              {!isResetPassword && (
+                <div
+                  className="opacity-0 animate-slide-up"
+                  style={{
+                    animationFillMode: "forwards",
+                    animationDelay: isLogin ? "0.4s" : "0.5s",
+                  }}
                 >
-                  Email Address
-                </label>
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative flex items-center">
-                    <Mail className="absolute left-4 w-5 h-5 text-orange-500 transition-all duration-300 group-hover:scale-110" />
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
-                      required
-                    />
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-gray-700 mb-3"
+                  >
+                    Email Address
+                  </label>
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="relative flex items-center">
+                      <Mail className="absolute left-4 w-5 h-5 text-orange-500 transition-all duration-300 group-hover:scale-110" />
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@example.com"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
+                        required={!isResetPassword}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               {/* Password Field */}
               {(isLogin || !isForgotPassword) && (
