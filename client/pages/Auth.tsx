@@ -36,6 +36,20 @@ export default function Auth() {
     setError("");
   }, [mode]);
 
+  useEffect(() => {
+    const sb = getSupabase();
+    if (sb) {
+      const {
+        data: { subscription },
+      } = sb.auth.onAuthStateChange((event) => {
+        if (event === "PASSWORD_RECOVERY") {
+          navigate("/auth?mode=reset-password");
+        }
+      });
+      return () => subscription.unsubscribe();
+    }
+  }, [navigate]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
