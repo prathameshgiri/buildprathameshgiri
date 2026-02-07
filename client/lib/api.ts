@@ -50,7 +50,43 @@ export interface AuthResponse {
   token?: string;
 }
 
+export interface ContactData {
+  name: string;
+  email: string;
+  phone?: string;
+  subject?: string;
+  message: string;
+}
+
+export interface ProjectIdeaData {
+  name: string;
+  email: string;
+  idea: string;
+}
+
 class AuthAPI {
+  async submitContact(data: ContactData): Promise<void> {
+    const sb = getSupabase();
+    if (!sb) {
+      throw new Error("Supabase is not configured.");
+    }
+    const { error } = await sb.from("contact_submissions").insert([data]);
+    if (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async submitProjectIdea(data: ProjectIdeaData): Promise<void> {
+    const sb = getSupabase();
+    if (!sb) {
+      throw new Error("Supabase is not configured.");
+    }
+    const { error } = await sb.from("project_ideas").insert([data]);
+    if (error) {
+      throw new Error(error.message);
+    }
+  }
+
   async signup(data: SignupData): Promise<AuthResponse> {
     const sb = getSupabase();
     if (!sb) {
