@@ -13,6 +13,8 @@ export default function Auth() {
   const isSupabaseConfigured = !!getSupabase();
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
+  const [isForgotPassword, setIsForgotPassword] = useState(mode === "forgot-password");
+  const [isResetPassword, setIsResetPassword] = useState(mode === "reset-password");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,6 +31,8 @@ export default function Auth() {
 
   useEffect(() => {
     setIsLogin(mode === "login");
+    setIsForgotPassword(mode === "forgot-password");
+    setIsResetPassword(mode === "reset-password");
     setError("");
   }, [mode]);
 
@@ -43,6 +47,46 @@ export default function Auth() {
     setIsLoading(true);
 
     try {
+      if (isForgotPassword) {
+        if (!formData.email) {
+          setError("Email is required");
+          setIsLoading(false);
+          return;
+        }
+
+        await authAPI.resetPassword(formData.email);
+        toast({
+          title: "Email Sent",
+          description: "Check your email for the password reset link!",
+        });
+        return;
+      }
+
+      if (isResetPassword) {
+        if (!formData.password) {
+          setError("New password is required");
+          setIsLoading(false);
+          return;
+        }
+
+        if (formData.password !== formData.confirmPassword) {
+          setError("Passwords do not match");
+          setIsLoading(false);
+          return;
+        }
+
+        await authAPI.updateUserPassword(formData.password);
+        toast({
+          title: "Success",
+          description: "Your password has been updated! You can now log in.",
+        });
+
+        setTimeout(() => {
+          navigate("/auth?mode=login");
+        }, 1500);
+        return;
+      }
+
       if (isLogin) {
         // Login
         if (!formData.email || !formData.password) {
@@ -141,13 +185,23 @@ export default function Auth() {
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-3">
               <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                {isLogin ? "Welcome Back" : "Get Started"}
+                {isForgotPassword
+                  ? "Reset Password"
+                  : isResetPassword
+                    ? "New Password"
+                    : isLogin
+                      ? "Welcome Back"
+                      : "Get Started"}
               </span>
             </h1>
             <p className="text-gray-600 text-lg">
-              {isLogin
-                ? "Access your exclusive projects"
-                : "Join our community of developers"}
+              {isForgotPassword
+                ? "Enter your email to receive a reset link"
+                : isResetPassword
+                  ? "Enter your new strong password"
+                  : isLogin
+                    ? "Access your exclusive projects"
+                    : "Join our community of developers"}
             </p>
           </div>
 
@@ -269,54 +323,68 @@ export default function Auth() {
               </div>
 
               {/* Password Field */}
-              <div
-                className="opacity-0 animate-slide-up"
-                style={{
-                  animationFillMode: "forwards",
-                  animationDelay: isLogin ? "0.5s" : "0.6s",
-                }}
-              >
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-semibold text-gray-700 mb-3"
+              {(isLogin || !isForgotPassword) && (
+                <div
+                  className="opacity-0 animate-slide-up"
+                  style={{
+                    animationFillMode: "forwards",
+                    animationDelay: isLogin ? "0.5s" : "0.6s",
+                  }}
                 >
-                  Password
-                </label>
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative flex items-center">
-                    <Lock className="absolute left-4 w-5 h-5 text-orange-500 transition-all duration-300 group-hover:scale-110" />
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      id="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder={
-                        isLogin
-                          ? "Enter your password"
-                          : "Create a strong password"
-                      }
-                      className="w-full pl-12 pr-12 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 text-gray-500 hover:text-orange-500 transition-colors duration-200"
+                  <div className="flex items-center justify-between mb-3">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-semibold text-gray-700"
                     >
-                      {showPassword ? (
-                        <EyeOff className="w-5 h-5" />
-                      ) : (
-                        <Eye className="w-5 h-5" />
-                      )}
-                    </button>
+                      {isResetPassword ? "New Password" : "Password"}
+                    </label>
+                    {isLogin && (
+                      <Link
+                        to="/auth?mode=forgot-password"
+                        className="text-xs font-semibold text-orange-600 hover:text-orange-700"
+                      >
+                        Forgot Password?
+                      </Link>
+                    )}
+                  </div>
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="relative flex items-center">
+                      <Lock className="absolute left-4 w-5 h-5 text-orange-500 transition-all duration-300 group-hover:scale-110" />
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        id="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        placeholder={
+                          isResetPassword
+                            ? "Enter new password"
+                            : isLogin
+                              ? "Enter your password"
+                              : "Create a strong password"
+                        }
+                        className="w-full pl-12 pr-12 py-3 bg-gray-50 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200/50 focus:bg-white transition-all duration-300 hover:border-gray-300 hover:bg-white"
+                        required={!isForgotPassword}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-4 text-gray-500 hover:text-orange-500 transition-colors duration-200"
+                      >
+                        {showPassword ? (
+                          <EyeOff className="w-5 h-5" />
+                        ) : (
+                          <Eye className="w-5 h-5" />
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* Confirm Password Field (Signup Only) */}
-              {!isLogin && (
+              {/* Confirm Password Field (Signup or Reset Only) */}
+              {(!isLogin && !isForgotPassword) && (
                 <div
                   className="opacity-0 animate-slide-up"
                   style={{
@@ -363,7 +431,7 @@ export default function Auth() {
               )}
 
               {/* Optional Profile Fields (Signup Only) */}
-              {!isLogin && (
+              {(!isLogin && !isForgotPassword && !isResetPassword) && (
                 <>
                   <div
                     className="opacity-0 animate-slide-up"
@@ -462,9 +530,13 @@ export default function Auth() {
                       <span>
                         {!isSupabaseConfigured
                           ? "Auth Disabled"
-                          : isLogin
-                            ? "Sign In"
-                            : "Create Account"}
+                          : isForgotPassword
+                            ? "Send Reset Link"
+                            : isResetPassword
+                              ? "Update Password"
+                              : isLogin
+                                ? "Sign In"
+                                : "Create Account"}
                       </span>
                       {isSupabaseConfigured && (
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -483,14 +555,26 @@ export default function Auth() {
                 }}
               >
                 <p className="text-gray-600 text-sm">
-                  {isLogin
-                    ? "Don't have an account? "
-                    : "Already have an account? "}
+                  {isForgotPassword || isResetPassword
+                    ? "Remember your password? "
+                    : isLogin
+                      ? "Don't have an account? "
+                      : "Already have an account? "}
                   <Link
-                    to={isLogin ? "/auth?mode=signup" : "/auth?mode=login"}
+                    to={
+                      isForgotPassword || isResetPassword
+                        ? "/auth?mode=login"
+                        : isLogin
+                          ? "/auth?mode=signup"
+                          : "/auth?mode=login"
+                    }
                     className="text-orange-600 font-semibold hover:text-orange-700 transition-colors duration-200"
                   >
-                    {isLogin ? "Sign Up" : "Sign In"}
+                    {isForgotPassword || isResetPassword
+                      ? "Sign In"
+                      : isLogin
+                        ? "Sign Up"
+                        : "Sign In"}
                   </Link>
                 </p>
               </div>
