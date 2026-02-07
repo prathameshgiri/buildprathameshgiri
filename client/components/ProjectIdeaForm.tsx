@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Mail, User, Lightbulb, Send } from "lucide-react";
+import { authAPI } from "@/lib/api";
+import { toast } from "sonner";
 
 export default function ProjectIdeaForm() {
   const [formData, setFormData] = useState({
@@ -19,16 +21,20 @@ export default function ProjectIdeaForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
+    try {
+      await authAPI.submitProjectIdea(formData);
       setIsSubmitting(false);
       setSubmitted(true);
       setFormData({ name: "", email: "", idea: "" });
+      toast.success("Thank you! Your idea has been sent.");
 
       // Reset success message after 3 seconds
       setTimeout(() => setSubmitted(false), 3000);
-    }, 500);
+    } catch (error: any) {
+      console.error("Error submitting idea:", error);
+      setIsSubmitting(false);
+      toast.error(error.message || "Failed to send your idea. Please try again.");
+    }
   };
 
   return (
