@@ -1,5 +1,7 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
+import { authAPI } from "@/lib/api";
+import { toast } from "sonner";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -17,10 +20,26 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setIsSubmitting(true);
+
+    try {
+      await authAPI.submitContact(formData);
+      setIsSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      toast.success("Message sent! We'll get back to you soon.");
+    } catch (error: any) {
+      console.error("Error submitting contact form:", error);
+      setIsSubmitting(false);
+      toast.error(error.message || "Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -182,9 +201,10 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300"
+              disabled={isSubmitting}
+              className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
 
