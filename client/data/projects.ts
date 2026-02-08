@@ -68,8 +68,8 @@ export const projects: Project[] = [
       "A sophisticated AI platform that generates high-quality articles, social media posts, and marketing copy. Includes team collaboration features and multi-channel publishing.",
     tech: ["React", "Python", "FastAPI", "OpenAI", "Supabase"],
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
-    liveLink: "#",
+      "https://res.prathameshgiri.in/projects/feastly.png",
+    liveLink: "https://feastly-gps.netlify.app/",
     githubLink: "#",
     features: [
       "Multi-model AI integration (GPT-4, Claude)",
