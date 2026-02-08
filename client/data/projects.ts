@@ -60,32 +60,40 @@ export const projects: Project[] = [
   
   {
     id: 8,
-    name: "AI Content Generator Pro",
+    name: "Feastly – Food Ordering Platform",
     category: "Premium",
     description:
-      "Enterprise-grade AI platform for content creation and marketing automation",
+      "Modern food ordering web application with a clean UI, fast navigation, and seamless ordering experience.",
     fullDescription:
-      "A sophisticated AI platform that generates high-quality articles, social media posts, and marketing copy. Includes team collaboration features and multi-channel publishing.",
-    tech: ["React", "Python", "FastAPI", "OpenAI", "Supabase"],
+      "Feastly is a modern, responsive food ordering web platform designed to deliver a smooth and delightful user experience. Built with a mobile-first approach, the application allows users to browse curated dishes, manage orders, view profiles, and access admin features. The interface focuses on speed, accessibility, and visual appeal, making food discovery and checkout effortless.",
+    tech: [
+      "React.js",
+      "TypeScript",
+      "CSS3",
+      "Responsive Design"
+    ],
     image:
       "https://res.prathameshgiri.in/projects/feastly.png",
     liveLink: "https://feastly-gps.netlify.app/",
     githubLink: "#",
     features: [
-      "Multi-model AI integration (GPT-4, Claude)",
-      "Collaborative editor with real-time sync",
-      "Custom brand voice training",
-      "Automated SEO optimization",
-      "Bulk content generation",
-      "Social media auto-posting",
+      "Attractive hero section with CTA",
+      "Browse menu & featured dishes",
+      "Category tags (Popular, Vegetarian)",
+      "Real-time cart UI",
+      "User profile & order management",
+      "Admin panel navigation",
+      "Responsive & mobile-first layout",
+      "Clean and accessible UI design"
     ],
     challenge:
-      "Managing complex AI prompts and ensuring consistent output quality across different domains.",
+      "Designing a visually rich food ordering interface while maintaining performance and responsiveness across devices.",
     solution:
-      "Developed a sophisticated prompt engineering layer and implemented a human-in-the-loop review system.",
+      "Used React with TypeScript for scalable UI components, optimized layouts, and reusable components to ensure consistency and speed.",
     results:
-      "Reduced content production time by 80% and increased organic traffic by 150%.",
+      "Delivered a premium food ordering UI with smooth navigation, improved user engagement, and fast load performance."
   },
+
 
 
 
