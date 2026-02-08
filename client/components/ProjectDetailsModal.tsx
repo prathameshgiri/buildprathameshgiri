@@ -34,7 +34,7 @@ export default function ProjectDetailsModal({
           <img
             src={project.image}
             alt={project.name}
-            className="w-full h-64 object-cover rounded-2xl mb-8"
+            className="w-full h-full object-cover rounded-2xl mb-8"
           />
 
           {/* Category and Tech */}
