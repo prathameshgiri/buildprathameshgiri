@@ -15,6 +15,82 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+
+
+
+
+
+
+  
+
+  {
+    id: 7,
+    name: "FinTech Trading Platform",
+    category: "Premium",
+    description:
+      "Advanced trading platform with real-time stock market data and AI insights",
+    fullDescription:
+      "A high-performance trading platform designed for professional traders, offering real-time data streaming, advanced charting tools, and AI-driven market predictions. The platform handles thousands of concurrent data points with sub-second latency.",
+    tech: ["Next.js", "WebSockets", "Redis", "OpenAI API"],
+    image:
+      "https://images.unsplash.com/photo-1611974717482-48cd7c1b821d?w=500&h=300&fit=crop",
+    liveLink: "#",
+    githubLink: "#",
+    features: [
+      "Real-time market data streaming",
+      "AI-powered sentiment analysis",
+      "Advanced technical indicators",
+      "Instant trade execution",
+      "Portfolio risk management",
+      "Secure wallet integration",
+    ],
+    challenge:
+      "Handling real-time WebSocket data without UI lag and ensuring secure financial transactions.",
+    solution:
+      "Implemented efficient data buffering, optimized React rendering, and used robust encryption for transactions.",
+    results: "Achieved 99.99% uptime and 200ms average trade execution time.",
+  },
+  {
+    id: 8,
+    name: "AI Content Generator Pro",
+    category: "Premium",
+    description:
+      "Enterprise-grade AI platform for content creation and marketing automation",
+    fullDescription:
+      "A sophisticated AI platform that generates high-quality articles, social media posts, and marketing copy. Includes team collaboration features and multi-channel publishing.",
+    tech: ["React", "Python", "FastAPI", "OpenAI", "Supabase"],
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
+    liveLink: "#",
+    githubLink: "#",
+    features: [
+      "Multi-model AI integration (GPT-4, Claude)",
+      "Collaborative editor with real-time sync",
+      "Custom brand voice training",
+      "Automated SEO optimization",
+      "Bulk content generation",
+      "Social media auto-posting",
+    ],
+    challenge:
+      "Managing complex AI prompts and ensuring consistent output quality across different domains.",
+    solution:
+      "Developed a sophisticated prompt engineering layer and implemented a human-in-the-loop review system.",
+    results:
+      "Reduced content production time by 80% and increased organic traffic by 150%.",
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
     id: 1,
     name: "E-Commerce Dashboard",
@@ -182,59 +258,5 @@ export const projects: Project[] = [
     results:
       "Reduced time-to-action by 60% and achieved 4.8-star rating on app stores.",
   },
-  {
-    id: 7,
-    name: "FinTech Trading Platform",
-    category: "Premium",
-    description:
-      "Advanced trading platform with real-time stock market data and AI insights",
-    fullDescription:
-      "A high-performance trading platform designed for professional traders, offering real-time data streaming, advanced charting tools, and AI-driven market predictions. The platform handles thousands of concurrent data points with sub-second latency.",
-    tech: ["Next.js", "WebSockets", "Redis", "OpenAI API"],
-    image:
-      "https://images.unsplash.com/photo-1611974717482-48cd7c1b821d?w=500&h=300&fit=crop",
-    liveLink: "#",
-    githubLink: "#",
-    features: [
-      "Real-time market data streaming",
-      "AI-powered sentiment analysis",
-      "Advanced technical indicators",
-      "Instant trade execution",
-      "Portfolio risk management",
-      "Secure wallet integration",
-    ],
-    challenge:
-      "Handling real-time WebSocket data without UI lag and ensuring secure financial transactions.",
-    solution:
-      "Implemented efficient data buffering, optimized React rendering, and used robust encryption for transactions.",
-    results: "Achieved 99.99% uptime and 200ms average trade execution time.",
-  },
-  {
-    id: 8,
-    name: "AI Content Generator Pro",
-    category: "Premium",
-    description:
-      "Enterprise-grade AI platform for content creation and marketing automation",
-    fullDescription:
-      "A sophisticated AI platform that generates high-quality articles, social media posts, and marketing copy. Includes team collaboration features and multi-channel publishing.",
-    tech: ["React", "Python", "FastAPI", "OpenAI", "Supabase"],
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
-    liveLink: "#",
-    githubLink: "#",
-    features: [
-      "Multi-model AI integration (GPT-4, Claude)",
-      "Collaborative editor with real-time sync",
-      "Custom brand voice training",
-      "Automated SEO optimization",
-      "Bulk content generation",
-      "Social media auto-posting",
-    ],
-    challenge:
-      "Managing complex AI prompts and ensuring consistent output quality across different domains.",
-    solution:
-      "Developed a sophisticated prompt engineering layer and implemented a human-in-the-loop review system.",
-    results:
-      "Reduced content production time by 80% and increased organic traffic by 150%.",
-  },
+  
 ];
