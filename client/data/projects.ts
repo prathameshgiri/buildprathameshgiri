@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "A high-performance trading platform designed for professional traders, offering real-time data streaming, advanced charting tools, and AI-driven market predictions. The platform handles thousands of concurrent data points with sub-second latency.",
     tech: ["Next.js", "WebSockets", "Redis", "OpenAI API"],
     image:
-      "https://res.prathameshgiri.in/projects/dashboard.png",
+      "https://images.unsplash.com/photo-1611974717482-48cd7c1b821d?w=500&h=300&fit=crop",
     liveLink: "#",
     githubLink: "#",
     features: [
