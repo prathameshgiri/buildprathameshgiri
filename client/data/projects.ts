@@ -18,10 +18,10 @@ export const projects: Project[] = [
 
 
 
-  {/* Premimum Projects */ }
 
 
 
+  
 
   {
     id: 7,
@@ -85,7 +85,7 @@ export const projects: Project[] = [
 
 
 
-  {/* Project Category */ }
+
 
 
 
