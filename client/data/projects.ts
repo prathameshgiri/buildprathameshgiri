@@ -25,31 +25,43 @@ export const projects: Project[] = [
 
   {
     id: 7,
-    name: "FinTech Trading Platform",
+    name: "E-Commerce Admin Dashboard",
     category: "Premium",
     description:
-      "Advanced trading platform with real-time stock market data and AI insights",
+      "Modern admin dashboard to track e-commerce orders, revenue, users, and business analytics in real time.",
     fullDescription:
-      "A high-performance trading platform designed for professional traders, offering real-time data streaming, advanced charting tools, and AI-driven market predictions. The platform handles thousands of concurrent data points with sub-second latency.",
-    tech: ["Next.js", "WebSockets", "Redis", "OpenAI API"],
+      "A professional and scalable e-commerce admin dashboard built for business owners and administrators. It provides a complete overview of key metrics such as new orders, daily income, total revenue, and user growth. Interactive charts and clean UI components enable quick insights and data-driven decision-making with excellent performance and responsiveness.",
+    tech: [
+      "Next.js",
+      "React.js",
+      "Tailwind CSS",
+      "Chart.js / Recharts",
+      "REST API"
+    ],
     image:
       "https://res.prathameshgiri.in/projects/dashboard.png",
-    liveLink: "#",
-    githubLink: "#",
+    liveLink: "x.prathameshgiri.in/Dashboard/",
+    githubLink: "",
     features: [
-      "Real-time market data streaming",
-      "AI-powered sentiment analysis",
-      "Advanced technical indicators",
-      "Instant trade execution",
-      "Portfolio risk management",
-      "Secure wallet integration",
+      "E-commerce analytics overview",
+      "New orders & user tracking",
+      "Daily and total income monitoring",
+      "Yearly sales and revenue charts",
+      "Interactive statistic cards",
+      "Responsive admin layout",
+      "Sidebar navigation system",
+      "Admin profile & notification panel"
     ],
     challenge:
-      "Handling real-time WebSocket data without UI lag and ensuring secure financial transactions.",
+      "Designing a clean, data-rich dashboard without overwhelming the user while maintaining high performance.",
     solution:
-      "Implemented efficient data buffering, optimized React rendering, and used robust encryption for transactions.",
-    results: "Achieved 99.99% uptime and 200ms average trade execution time.",
+      "Used modular React components, optimized chart rendering, and a clean UI hierarchy with Tailwind CSS for clarity and speed.",
+    results:
+      "Delivered a fast, responsive dashboard with smooth data visualization and improved business monitoring efficiency."
   },
+
+
+  
   {
     id: 8,
     name: "AI Content Generator Pro",
