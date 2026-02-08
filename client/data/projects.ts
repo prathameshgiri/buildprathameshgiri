@@ -24,37 +24,37 @@ export const projects: Project[] = [
     name: "E-Commerce Admin Dashboard",
     category: "Premium",
     description:
-      "Modern admin dashboard to track e-commerce orders, revenue, users, and business analytics in real time.",
+      "Responsive e-commerce admin dashboard built using pure HTML, CSS, and JavaScript for business analytics.",
     fullDescription:
-      "A professional and scalable e-commerce admin dashboard built for business owners and administrators. It provides a complete overview of key metrics such as new orders, daily income, total revenue, and user growth. Interactive charts and clean UI components enable quick insights and data-driven decision-making with excellent performance and responsiveness.",
+      "A modern and lightweight e-commerce admin dashboard developed using vanilla HTML, CSS, and JavaScript. The dashboard provides a clear overview of key business metrics such as new orders, daily income, total revenue, and user growth. Interactive charts, statistic cards, and a clean admin interface make monitoring performance efficient without relying on heavy frameworks.",
     tech: [
-      "Next.js",
-      "React.js",
-      "Tailwind CSS",
-      "Chart.js / Recharts",
-      "REST API"
+      "HTML5",
+      "CSS3",
+      "JavaScript (Vanilla)",
+      "Chart.js"
     ],
     image:
       "https://res.prathameshgiri.in/projects/dashboard.png",
     liveLink: "x.prathameshgiri.in/Dashboard/",
     githubLink: "",
     features: [
-      "E-commerce analytics overview",
-      "New orders & user tracking",
-      "Daily and total income monitoring",
+      "E-commerce performance overview",
+      "New orders & user statistics",
+      "Daily and total income tracking",
       "Yearly sales and revenue charts",
       "Interactive statistic cards",
-      "Responsive admin layout",
-      "Sidebar navigation system",
-      "Admin profile & notification panel"
+      "Fully responsive admin layout",
+      "Sidebar navigation menu",
+      "Admin profile & notification UI"
     ],
     challenge:
-      "Designing a clean, data-rich dashboard without overwhelming the user while maintaining high performance.",
+      "Building a scalable and interactive dashboard using only vanilla technologies without frameworks.",
     solution:
-      "Used modular React components, optimized chart rendering, and a clean UI hierarchy with Tailwind CSS for clarity and speed.",
+      "Implemented modular JavaScript logic, optimized DOM updates, and used Chart.js for smooth and responsive data visualization.",
     results:
-      "Delivered a fast, responsive dashboard with smooth data visualization and improved business monitoring efficiency."
+      "Delivered a fast-loading, responsive admin dashboard with clean UI and smooth analytics interactions."
   },
+
 
 
   
