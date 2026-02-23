@@ -19,7 +19,7 @@ export default function Footer() {
                 to="/"
                 className="flex items-center gap-1 text-2xl font-bold mb-6"
               >
-                <span className="text-orange-500">PS</span>
+                <span className="text-orange-500">Prathamesh</span>
                 <span>Giri</span>
               </Link>
               <p className="text-gray-400 mb-6">
