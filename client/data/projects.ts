@@ -180,36 +180,44 @@ export const projects: Project[] = [
 
   {
     id: 1,
-    name: "E-Commerce Dashboard",
+    name: "HealthMate – Doctor Appointment Booking System",
     category: "Web Apps",
     description:
-      "Modern e-commerce admin dashboard for business analytics and management",
+      "Online doctor appointment booking website for patients and healthcare providers",
     fullDescription:
-      "A clean and responsive e-commerce admin dashboard designed to monitor and manage online store performance efficiently. The dashboard provides real-time insights into new orders, daily income, total revenue, and user growth. It features interactive charts for yearly statistics and sales revenue analysis, helping administrators track trends and make data-driven decisions. With an intuitive sidebar navigation, search functionality, notifications, and user profile management, the dashboard ensures smooth and organized store operations from a single control panel.",
-    tech: ["React", "Node.js", "MongoDB"],
-    image: "https://pro.prathameshgiri.in/res/projects/dashboard.png",
-    liveLink: "https://pro.prathameshgiri.in/Dashboard/",
-    githubLink: "https://github.com/prathameshgiri/Dashboard",
+      "HealthMate is a responsive healthcare web application designed to simplify the process of booking doctor appointments online. The platform allows patients to browse doctors, view available time slots, and book appointments seamlessly. Built with a clean and user-friendly interface, HealthMate helps clinics and doctors manage appointments efficiently while providing patients with a smooth and reliable booking experience. The system focuses on accessibility, clarity, and fast interactions using lightweight technologies.",
+    tech: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (Vanilla)",
+      "Node.js",
+      "Express.js"
+    ],
+    image:
+      "https://res.prathameshgiri.in/projects/healthmate.png",
+    liveLink: "https://x.prathameshgiri.in/HealthMate/",
+    githubLink: "",
     features: [
-      "Real-time order tracking and management",
-      "Daily, monthly, and yearly revenue insights",
-      "User growth and customer analytics",
-      "Interactive charts for sales and performance trends",
-      "Product and inventory overview dashboard",
-      "Admin notifications and activity alerts",
-      "Responsive sidebar navigation with search",
-      "Role-based admin profile management",
+      "Online doctor appointment booking",
+      "Doctor listing with specialization details",
+      "Available time-slot selection",
+      "Patient appointment request system",
+      "Admin/clinic-side appointment management",
+      "Responsive and clean healthcare UI",
+      "Form validation for patient details",
+      "User-friendly navigation and layout"
     ],
 
     challenge:
-      "Designing a high-performance admin dashboard capable of handling large volumes of orders, users, and analytics data while maintaining a smooth and responsive user experience.",
+      "Creating a simple yet reliable appointment booking system using vanilla frontend technologies while ensuring smooth backend handling of appointment data.",
 
     solution:
-      "Built a modular and optimized dashboard using React for dynamic UI updates and MongoDB for scalable data handling. Implemented efficient API structures, optimized database queries, and chart-based visualizations to ensure fast data rendering and real-time insights.",
+      "Developed a structured frontend using HTML, CSS, and JavaScript, and implemented backend logic with Node.js and Express.js to manage appointments efficiently with clean API routes and validations.",
 
     results:
-      "Improved operational efficiency by 40%, enabled faster decision-making through real-time analytics, and delivered a stable, user-friendly admin experience with consistent performance under heavy data load.",
-  },
+      "Delivered a functional and responsive doctor appointment website that streamlines patient bookings, improves clinic workflow, and enhances the overall healthcare user experience.",
+  }, 
+
   {
     id: 2,
     name: "Corporate Website",
