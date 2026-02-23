@@ -132,6 +132,41 @@ export const projects: Project[] = [
       "Successfully delivered a fast, real-time bakery ordering system with a functional admin panel, improving order management efficiency and user experience."
   },
 
+  {
+    id: 10,
+    name: "LUXE – Fashion E-Commerce Platform",
+    category: "Premium",
+    description:
+      "A modern fashion e-commerce website for dresses, jewellery, bags, and shoes with a premium shopping experience.",
+    fullDescription:
+      "LUXE is a stylish and responsive fashion e-commerce web application designed to showcase and sell dresses, jewellery, bags, and shoes. The platform focuses on elegant UI/UX, smooth animations, and a clean product browsing experience. With well-structured product sections and responsive layouts, LUXE delivers a premium brand feel suitable for modern fashion businesses.",
+    tech: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (Vanilla)"
+    ],
+    image:
+      "https://res.prathameshgiri.in/projects/luxe.png",
+    liveLink: "https://luxe-prathameshgiri.netlify.app/",
+    githubLink: "",
+    features: [
+      "Multi-category fashion products (Dresses, Jewellery, Bags, Shoes)",
+      "Modern and premium UI design",
+      "Responsive layout for all devices",
+      "Smooth animations and transitions",
+      "Clean product cards and sections",
+      "Optimized image loading",
+      "User-friendly navigation",
+      "Brand-focused aesthetic design"
+    ],
+    challenge:
+      "Creating a visually premium and smooth fashion UI using only vanilla frontend technologies.",
+    solution:
+      "Designed a clean layout with reusable CSS components, implemented smooth animations using pure CSS and JavaScript, and optimized UI responsiveness for multiple screen sizes.",
+    results:
+      "Delivered a visually appealing and responsive fashion e-commerce website that provides a premium shopping experience and strong brand presentation."
+  },
+
 
 
 
