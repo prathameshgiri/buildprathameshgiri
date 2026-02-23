@@ -255,60 +255,8 @@ export const projects: Project[] = [
     results:
       "Successfully delivered a lightweight and responsive dress shop website that enhances product visibility and provides a pleasant browsing experience for users.",
   },
-  {
-    id: 4,
-    name: "SaaS Platform",
-    category: "Web Apps",
-    description: "Subscription-based SaaS application with user management",
-    fullDescription:
-      "A full-featured SaaS platform with subscription management, team collaboration features, and comprehensive API documentation.",
-    tech: ["Next.js", "Supabase", "Stripe", "TypeScript"],
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/example",
-    features: [
-      "Stripe subscription management",
-      "Team collaboration workspace",
-      "API access for integrations",
-      "Usage analytics dashboard",
-      "Invoice and billing history",
-      "SSO authentication",
-    ],
-    challenge:
-      "Building a secure multi-tenant platform that scales automatically and handles complex billing scenarios.",
-    solution:
-      "Used Supabase for secure data isolation, implemented row-level security, and automated billing workflows.",
-    results:
-      "Onboarded 500+ customers in the first year with 95% customer retention rate.",
-  },
-  {
-    id: 5,
-    name: "Portfolio Website",
-    category: "Websites",
-    description: "Creative portfolio with smooth animations and interactions",
-    fullDescription:
-      "An interactive portfolio website showcasing creative work with smooth animations, engaging interactions, and optimal performance.",
-    tech: ["React", "Framer Motion", "Tailwind CSS"],
-    image:
-      "https://images.unsplash.com/photo-1563062407-98eeb66db05f?w=500&h=300&fit=crop",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/example",
-    features: [
-      "Smooth page transitions",
-      "Interactive animations",
-      "Project showcase gallery",
-      "Contact form",
-      "Dark mode support",
-      "Case study pages",
-    ],
-    challenge:
-      "Creating impressive animations without sacrificing performance or accessibility.",
-    solution:
-      "Used Framer Motion for GPU-accelerated animations and optimized components with React.memo.",
-    results:
-      "Increased portfolio inquiries by 200% and improved average session duration to 5+ minutes.",
-  },
+  
+  
   {
     id: 6,
     name: "Mobile App Interface",
