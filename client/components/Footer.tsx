@@ -179,7 +179,7 @@ export default function Footer() {
           {/* Bottom Footer */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-gray-400 text-sm">
-              © {currentYear} PS Giri. All rights reserved.
+              © {currentYear} Prathamesh Giri. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
               Made with <span className="text-orange-500">❤</span> for amazing
