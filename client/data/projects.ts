@@ -141,9 +141,11 @@ export const projects: Project[] = [
     fullDescription:
       "LUXE is a stylish and responsive fashion e-commerce web application designed to showcase and sell dresses, jewellery, bags, and shoes. The platform focuses on elegant UI/UX, smooth animations, and a clean product browsing experience. With well-structured product sections and responsive layouts, LUXE delivers a premium brand feel suitable for modern fashion businesses.",
     tech: [
+      "React.js",
+      "TypeScript",
+      "Node.js",
       "HTML5",
-      "CSS3",
-      "JavaScript (Vanilla)"
+      "CSS3"
     ],
     image:
       "https://res.prathameshgiri.in/projects/luxe.png",
