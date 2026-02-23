@@ -182,8 +182,7 @@ export default function Footer() {
               © 2024 - {currentYear} | Prathamesh Giri. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
-              Made with <span className="text-orange-500">❤</span> for amazing
-              clients
+              Engineered with passion. Delivered with precision.
             </p>
           </div>
         </div>
