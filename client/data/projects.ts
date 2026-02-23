@@ -220,57 +220,40 @@ export const projects: Project[] = [
 
   {
     id: 2,
-    name: "Corporate Website",
-    category: "Websites",
-    description: "Modern, responsive corporate website with CMS",
+    name: "Dress Shop – Online Clothing Store",
+    category: "Web Apps",
+    description:
+      "A modern and responsive online dress shop website for showcasing and selling fashion products",
     fullDescription:
-      "A sleek and professional corporate website built with modern technologies, featuring a headless CMS for easy content management and SEO optimization.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity"],
-    image:
-      "https://images.unsplash.com/photo-1507238691619-20f6629c3368?w=500&h=300&fit=crop",
-    liveLink: "prathameshgiri.github.io/HealthMate/",
-    githubLink: "https://github.com/prathameshgiri/HealthMate",
-    features: [
-      "Headless CMS integration",
-      "SEO-optimized pages",
-      "Mobile-first responsive design",
-      "Fast loading performance",
-      "Contact form with email notifications",
-      "Blog management system",
+      "Dress Shop is a clean and visually appealing online clothing store website built using pure HTML, CSS, and JavaScript. The platform is designed to display a variety of fashion dresses with an attractive layout, smooth interactions, and easy navigation. It focuses on delivering a simple yet effective shopping experience, allowing users to browse collections, view product details, and explore styles effortlessly.",
+    tech: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (Vanilla)"
     ],
-    challenge:
-      "Creating a website that maintains brand consistency while allowing content editors to manage pages without technical knowledge.",
-    solution:
-      "Integrated Sanity CMS with Next.js for dynamic content rendering and built a reusable component library.",
-    results:
-      "Improved page load speed by 60% and reduced content management overhead by 80%.",
-  },
-  {
-    id: 3,
-    name: "Admin Dashboard",
-    category: "Admin Panels",
-    description: "Real-time analytics and user management dashboard",
-    fullDescription:
-      "A comprehensive admin dashboard providing real-time analytics, user management, and detailed reporting capabilities for enterprise applications.",
-    tech: ["React", "Firebase", "Chart.js", "Redux"],
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/example",
+      "https://res.prathameshgiri.in/projects/dressshop.png",
+    liveLink: "https://x.prathameshgiri.in/dress-shop/",
+    githubLink: "",
     features: [
-      "Real-time analytics with charts and graphs",
-      "User role management",
-      "Data export functionality",
-      "Custom report generation",
-      "Activity logging and audit trails",
-      "User behavior analytics",
+      "Fashion dress product showcase",
+      "Clean and modern UI design",
+      "Responsive layout for all devices",
+      "Smooth hover effects and transitions",
+      "Product cards with images and details",
+      "Simple and intuitive navigation",
+      "Optimized frontend performance",
+      "Brand-focused visual presentation"
     ],
+
     challenge:
-      "Displaying large amounts of data in real-time while maintaining smooth performance and providing intuitive navigation.",
+      "Designing an attractive and responsive fashion storefront using only basic frontend technologies without frameworks.",
+
     solution:
-      "Implemented data virtualization, optimized Redux selectors, and used Chart.js for efficient rendering.",
+      "Implemented a structured HTML layout, reusable CSS styles, and interactive JavaScript for smooth UI behavior while maintaining simplicity and performance.",
+
     results:
-      "Reduced data loading time by 70% and improved user productivity by 50%.",
+      "Successfully delivered a lightweight and responsive dress shop website that enhances product visibility and provides a pleasant browsing experience for users.",
   },
   {
     id: 4,
