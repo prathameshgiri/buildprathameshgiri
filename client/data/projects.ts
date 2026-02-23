@@ -257,32 +257,6 @@ export const projects: Project[] = [
   },
   
   
-  {
-    id: 6,
-    name: "Mobile App Interface",
-    category: "Admin Panels",
-    description: "Mobile-first responsive application interface",
-    fullDescription:
-      "A mobile-first admin interface optimized for on-the-go management with touch-friendly controls and intuitive navigation.",
-    tech: ["React Native", "Firebase", "Redux"],
-    image:
-      "https://images.unsplash.com/photo-1512941691920-25bda36dc643?w=500&h=300&fit=crop",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/example",
-    features: [
-      "Touch-optimized interface",
-      "Offline-first functionality",
-      "Real-time notifications",
-      "Biometric authentication",
-      "Cross-platform compatibility",
-      "Background sync",
-    ],
-    challenge:
-      "Providing a desktop-quality experience on mobile devices with limited screen space and connectivity.",
-    solution:
-      "Designed with mobile-first approach, implemented offline capabilities, and optimized for low bandwidth.",
-    results:
-      "Reduced time-to-action by 60% and achieved 4.8-star rating on app stores.",
-  },
+  
   
 ];
