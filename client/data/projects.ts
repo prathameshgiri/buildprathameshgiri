@@ -94,6 +94,48 @@ export const projects: Project[] = [
       "Delivered a premium food ordering UI with smooth navigation, improved user engagement, and fast load performance."
   },
 
+  {
+    id: 9,
+    name: "Shiv Bakery – Real-Time Ordering & Admin Panel",
+    category: "Premium",
+    description:
+      "A real-time bakery ordering system with an admin dashboard to manage orders, users, and messages efficiently.",
+    fullDescription:
+      "Shiv Bakery is a full-stack web application designed for managing bakery orders in real time. Built with a clean and responsive UI, the platform allows users to place orders online while the admin panel provides live updates of incoming orders, customer messages, and user activity. Using Socket.IO, the system ensures instant order notifications and seamless communication between users and the admin without page refreshes.",
+    tech: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (Vanilla)",
+      "Node.js",
+      "Express.js",
+      "Socket.IO"
+    ],
+    image:
+      "https://res.prathameshgiri.in/projects/sbakery.png",
+    liveLink: "https://bakery-dm80.onrender.com/",
+    githubLink: "",
+    features: [
+      "Real-time order placement and updates",
+      "Live admin dashboard with Socket.IO",
+      "User order history tracking",
+      "Admin view for all orders and messages",
+      "Instant order notifications",
+      "Responsive UI for users and admin",
+      "User-friendly bakery menu interface",
+      "Secure admin panel layout"
+    ],
+    challenge:
+      "Implementing real-time communication for orders and messages while maintaining performance and simplicity.",
+    solution:
+      "Integrated Socket.IO with Node.js and Express.js to handle real-time events, optimized backend routes, and ensured smooth frontend updates using vanilla JavaScript.",
+    results:
+      "Successfully delivered a fast, real-time bakery ordering system with a functional admin panel, improving order management efficiency and user experience."
+  },
+
+
+
+
+
 
 
 
