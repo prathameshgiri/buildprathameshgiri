@@ -154,19 +154,19 @@ export const projects: Project[] = [
     features: [
       "Multi-category fashion products (Dresses, Jewellery, Bags, Shoes)",
       "Modern and premium UI design",
+      "Reusable React components",
+      "Type-safe codebase with TypeScript",
       "Responsive layout for all devices",
       "Smooth animations and transitions",
-      "Clean product cards and sections",
       "Optimized image loading",
-      "User-friendly navigation",
-      "Brand-focused aesthetic design"
+      "User-friendly navigation"
     ],
     challenge:
-      "Creating a visually premium and smooth fashion UI using only vanilla frontend technologies.",
+      "Building a scalable and premium fashion UI while maintaining type safety and performance.",
     solution:
-      "Designed a clean layout with reusable CSS components, implemented smooth animations using pure CSS and JavaScript, and optimized UI responsiveness for multiple screen sizes.",
+      "Used React’s component-driven approach with TypeScript for better structure and reliability, combined with optimized styling and responsive design techniques.",
     results:
-      "Delivered a visually appealing and responsive fashion e-commerce website that provides a premium shopping experience and strong brand presentation."
+      "Delivered a scalable, maintainable, and visually premium fashion e-commerce platform with smooth performance and a strong brand presence."
   },
 
 
