@@ -256,43 +256,7 @@ export const projects: Project[] = [
       "Successfully delivered a lightweight and responsive dress shop website that enhances product visibility and provides a pleasant browsing experience for users.",
   },
 
-  {
-    id: 2,
-    name: "Dress Shop – Online Clothing Store",
-    category: "Web Apps",
-    description:
-      "A modern and responsive online dress shop website for showcasing and selling fashion products",
-    fullDescription:
-      "Dress Shop is a clean and visually appealing online clothing store website built using pure HTML, CSS, and JavaScript. The platform is designed to display a variety of fashion dresses with an attractive layout, smooth interactions, and easy navigation. It focuses on delivering a simple yet effective shopping experience, allowing users to browse collections, view product details, and explore styles effortlessly.",
-    tech: [
-      "HTML5",
-      "CSS3",
-      "JavaScript (Vanilla)"
-    ],
-    image:
-      "https://res.prathameshgiri.in/projects/dressshop.png",
-    liveLink: "https://x.prathameshgiri.in/dress-shop/",
-    githubLink: "",
-    features: [
-      "Fashion dress product showcase",
-      "Clean and modern UI design",
-      "Responsive layout for all devices",
-      "Smooth hover effects and transitions",
-      "Product cards with images and details",
-      "Simple and intuitive navigation",
-      "Optimized frontend performance",
-      "Brand-focused visual presentation"
-    ],
-
-    challenge:
-      "Designing an attractive and responsive fashion storefront using only basic frontend technologies without frameworks.",
-
-    solution:
-      "Implemented a structured HTML layout, reusable CSS styles, and interactive JavaScript for smooth UI behavior while maintaining simplicity and performance.",
-
-    results:
-      "Successfully delivered a lightweight and responsive dress shop website that enhances product visibility and provides a pleasant browsing experience for users.",
-  },
+  
   
   
   
