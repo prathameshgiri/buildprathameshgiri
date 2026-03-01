@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import ConnectivityDiagnostic from "@/components/ConnectivityDiagnostic";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { authAPI, getSupabase } from "@/lib/api";
 import { useToast } from "@/components/ui/use-toast";
@@ -262,6 +263,9 @@ export default function Auth() {
               </div>
             </div>
           )}
+
+          {/* Connectivity Diagnostic */}
+          <ConnectivityDiagnostic />
 
           {/* Error Message */}
           {error && (

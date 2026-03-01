@@ -79,11 +79,19 @@ class AuthAPI {
     try {
       const { error } = await sb.from("contact_submissions").insert([data]);
       if (error) {
-        console.error("Supabase insert error (contact_submissions):", error);
+        console.error(
+          "Supabase insert error (contact_submissions):",
+          JSON.stringify(error, null, 2),
+        );
         throw new Error(error.message);
       }
     } catch (err: any) {
-      console.error("Network error during submitContact:", err);
+      console.error(
+        "Network error during submitContact:",
+        err,
+        "Full error:",
+        JSON.stringify(err, Object.getOwnPropertyNames(err), 2),
+      );
       if (err.message === "Failed to fetch") {
         throw new Error(
           "Network error: Failed to reach Supabase. Please check your internet connection or adblocker.",
@@ -102,11 +110,19 @@ class AuthAPI {
     try {
       const { error } = await sb.from("project_ideas").insert([data]);
       if (error) {
-        console.error("Supabase insert error (project_ideas):", error);
+        console.error(
+          "Supabase insert error (project_ideas):",
+          JSON.stringify(error, null, 2),
+        );
         throw new Error(error.message);
       }
     } catch (err: any) {
-      console.error("Network error during submitProjectIdea:", err);
+      console.error(
+        "Network error during submitProjectIdea:",
+        err,
+        "Full error:",
+        JSON.stringify(err, Object.getOwnPropertyNames(err), 2),
+      );
       if (err.message === "Failed to fetch") {
         throw new Error(
           "Network error: Failed to reach Supabase. Please check your internet connection or adblocker.",
