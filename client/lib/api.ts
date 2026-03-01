@@ -68,22 +68,46 @@ class AuthAPI {
   async submitContact(data: ContactData): Promise<void> {
     const sb = getSupabase();
     if (!sb) {
+      console.error("Supabase not configured during submitContact");
       throw new Error("Supabase is not configured.");
     }
-    const { error } = await sb.from("contact_submissions").insert([data]);
-    if (error) {
-      throw new Error(error.message);
+    try {
+      const { error } = await sb.from("contact_submissions").insert([data]);
+      if (error) {
+        console.error("Supabase insert error (contact_submissions):", error);
+        throw new Error(error.message);
+      }
+    } catch (err: any) {
+      console.error("Network error during submitContact:", err);
+      if (err.message === "Failed to fetch") {
+        throw new Error(
+          "Network error: Failed to reach Supabase. Please check your internet connection or adblocker.",
+        );
+      }
+      throw err;
     }
   }
 
   async submitProjectIdea(data: ProjectIdeaData): Promise<void> {
     const sb = getSupabase();
     if (!sb) {
+      console.error("Supabase not configured during submitProjectIdea");
       throw new Error("Supabase is not configured.");
     }
-    const { error } = await sb.from("project_ideas").insert([data]);
-    if (error) {
-      throw new Error(error.message);
+    try {
+      const { error } = await sb.from("project_ideas").insert([data]);
+      if (error) {
+        console.error("Supabase insert error (project_ideas):", error);
+        throw new Error(error.message);
+      }
+    } catch (err: any) {
+      console.error("Network error during submitProjectIdea:", err);
+      if (err.message === "Failed to fetch") {
+        throw new Error(
+          "Network error: Failed to reach Supabase. Please check your internet connection or adblocker.",
+        );
+      }
+      throw err;
     }
   }
 

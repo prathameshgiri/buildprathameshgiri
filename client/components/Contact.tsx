@@ -1,9 +1,10 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, AlertCircle } from "lucide-react";
 import { useState } from "react";
-import { authAPI } from "@/lib/api";
+import { authAPI, getSupabase } from "@/lib/api";
 import { toast } from "sonner";
 
 export default function Contact() {
+  const isSupabaseConfigured = !!getSupabase();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -125,6 +126,16 @@ export default function Contact() {
             className="opacity-0 animate-slide-up space-y-6"
             style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
           >
+            {!isSupabaseConfigured && (
+              <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm flex items-start gap-3 mb-6">
+                <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+                <p>
+                  <strong>Supabase Not Configured:</strong> Contact form is
+                  disabled. Please set up your Supabase project as described in
+                  the setup guide.
+                </p>
+              </div>
+            )}
             <div>
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Name
@@ -201,10 +212,14 @@ export default function Contact() {
 
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !isSupabaseConfigured}
               className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {!isSupabaseConfigured
+                ? "Form Disabled"
+                : isSubmitting
+                  ? "Sending..."
+                  : "Send Message"}
             </button>
           </form>
 

@@ -114,6 +114,48 @@ CREATE INDEX idx_login_history_login_time ON login_history(login_time DESC);
 CREATE INDEX idx_profiles_email ON profiles(email);
 ```
 
+### 4. Create Contact Submissions & Project Ideas Tables
+
+```sql
+-- Create contact_submissions table
+CREATE TABLE IF NOT EXISTS contact_submissions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(20),
+  subject VARCHAR(255),
+  message TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Enable RLS for contact_submissions
+ALTER TABLE contact_submissions ENABLE ROW LEVEL SECURITY;
+
+-- Allow anonymous inserts (anyone can submit the form)
+CREATE POLICY "Allow anonymous inserts"
+  ON contact_submissions
+  FOR INSERT
+  WITH CHECK (true);
+
+-- Create project_ideas table
+CREATE TABLE IF NOT EXISTS project_ideas (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  idea TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Enable RLS for project_ideas
+ALTER TABLE project_ideas ENABLE ROW LEVEL SECURITY;
+
+-- Allow anonymous inserts (anyone can submit the form)
+CREATE POLICY "Allow anonymous inserts"
+  ON project_ideas
+  FOR INSERT
+  WITH CHECK (true);
+```
+
 ## Step 5: Enable Authentication Providers
 
 1. Go to **Authentication → Providers**

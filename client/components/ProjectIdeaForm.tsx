@@ -1,9 +1,10 @@
 import { FormEvent, useState } from "react";
-import { Mail, User, Lightbulb, Send } from "lucide-react";
-import { authAPI } from "@/lib/api";
+import { Mail, User, Lightbulb, Send, AlertCircle } from "lucide-react";
+import { authAPI, getSupabase } from "@/lib/api";
 import { toast } from "sonner";
 
 export default function ProjectIdeaForm() {
+  const isSupabaseConfigured = !!getSupabase();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,6 +44,16 @@ export default function ProjectIdeaForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-4">
+      {!isSupabaseConfigured && (
+        <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm flex items-start gap-3 mb-4">
+          <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+          <p>
+            <strong>Supabase Not Configured:</strong> Form submission is
+            disabled. Please set up your Supabase project as described in the
+            setup guide.
+          </p>
+        </div>
+      )}
       {/* Name Field */}
       <div
         className="opacity-0 animate-slide-up"
@@ -128,11 +139,17 @@ export default function ProjectIdeaForm() {
       >
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isSupabaseConfigured}
           className="w-full btn-primary text-lg py-3 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed group"
         >
           <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          <span>{isSubmitting ? "Sending..." : "Send My Idea"}</span>
+          <span>
+            {!isSupabaseConfigured
+              ? "Form Disabled"
+              : isSubmitting
+                ? "Sending..."
+                : "Send My Idea"}
+          </span>
         </button>
       </div>
 
