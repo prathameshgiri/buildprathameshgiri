@@ -36,8 +36,13 @@ export default function ConnectivityDiagnostic() {
         setDetails(`Successfully connected to Supabase! Response time: ${duration}ms. Tables are reachable.`);
       }
     } catch (err: any) {
+      console.error("Diagnostic error caught:", err);
       setStatus("error");
-      setDetails(`Failed to reach Supabase: ${err.message}. If this is 'Failed to fetch', it is likely an adblocker blocking the request.`);
+      let message = err.message;
+      if (message === "TypeError: Failed to fetch") {
+        message = "TypeError: Failed to fetch. This usually means your browser or ISP is blocking direct connection to Supabase. I have added a proxy to help with this, please try refreshing the page.";
+      }
+      setDetails(`Failed to reach Supabase: ${message}`);
     }
   };
 

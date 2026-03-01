@@ -1,11 +1,19 @@
 import { createClient } from "@supabase/supabase-js";
 
 // Initialize Supabase client
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseUrlRaw = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (import.meta.env.DEV) {
+// Use local proxy if in development to bypass browser-level blocking (ISP, Adblockers)
+const isDev = import.meta.env.DEV;
+const supabaseUrl =
+  isDev && supabaseUrlRaw
+    ? `${window.location.origin}/supabase-proxy`
+    : supabaseUrlRaw;
+
+if (isDev) {
   console.log("Supabase URL initialized:", !!supabaseUrl, supabaseUrl);
+  console.log("Supabase Original URL:", supabaseUrlRaw);
   console.log("Supabase Key initialized:", !!supabaseKey);
 }
 
