@@ -4,11 +4,11 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrlRaw = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// Use local proxy if in development to bypass browser-level blocking (ISP, Adblockers)
+// Use local proxy in development to bypass browser-level blocking
 const isDev = import.meta.env.DEV;
 const supabaseUrl =
   isDev && supabaseUrlRaw
-    ? `${window.location.origin}/supabase-proxy`
+    ? "/supabase-proxy"
     : supabaseUrlRaw;
 
 if (isDev) {

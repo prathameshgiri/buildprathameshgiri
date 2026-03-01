@@ -22,7 +22,19 @@ export default defineConfig(({ mode }) => {
               "/supabase-proxy": {
                 target: supabaseUrl,
                 changeOrigin: true,
+                secure: false, // Bypass SSL cert validation issues in proxy if any
                 rewrite: (path) => path.replace(/^\/supabase-proxy/, ""),
+                configure: (proxy, options) => {
+                  proxy.on("error", (err, req, res) => {
+                    console.error("Vite proxy error:", err);
+                  });
+                  proxy.on("proxyReq", (proxyReq, req, res) => {
+                    // console.log('Sending Request to the Target:', req.method, req.url);
+                  });
+                  proxy.on("proxyRes", (proxyRes, req, res) => {
+                    // console.log('Received Response from the Target:', proxyRes.statusCode, req.url);
+                  });
+                },
               },
             }
           : undefined,
