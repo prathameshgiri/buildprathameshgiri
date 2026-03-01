@@ -10,7 +10,10 @@ export default function Auth() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const isSupabaseConfigured = !!getSupabase();
+  const sb = getSupabase();
+  const isSupabaseConfigured = !!sb;
+  const isUrlMissing = !import.meta.env.VITE_SUPABASE_URL;
+  const isKeyMissing = !import.meta.env.VITE_SUPABASE_ANON_KEY;
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
   const [isForgotPassword, setIsForgotPassword] = useState(
@@ -237,10 +240,16 @@ export default function Auth() {
                   </h3>
                   <p className="text-xs text-amber-700 leading-relaxed">
                     Authentication is currently disabled. Please connect
-                    Supabase by setting <strong>VITE_SUPABASE_URL</strong> and{" "}
-                    <strong>VITE_SUPABASE_ANON_KEY</strong> in your environment
-                    variables.
+                    Supabase by setting the following environment variables:
                   </p>
+                  <ul className="text-xs text-amber-700 list-disc list-inside mt-2 space-y-1">
+                    <li className={isUrlMissing ? "font-bold" : "opacity-50"}>
+                      VITE_SUPABASE_URL {isUrlMissing ? "(MISSING)" : "✓"}
+                    </li>
+                    <li className={isKeyMissing ? "font-bold" : "opacity-50"}>
+                      VITE_SUPABASE_ANON_KEY {isKeyMissing ? "(MISSING)" : "✓"}
+                    </li>
+                  </ul>
                   <a
                     href="https://supabase.com"
                     target="_blank"

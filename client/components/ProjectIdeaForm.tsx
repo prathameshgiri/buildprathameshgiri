@@ -39,6 +39,9 @@ export default function ProjectIdeaForm() {
       toast.error(
         error.message || "Failed to send your idea. Please try again.",
       );
+      if (error.message.includes("Network error") || error.message.includes("Failed to fetch")) {
+        toast.info("Please ensure you've set up the tables and RLS policies as described in SUPABASE_SETUP.md", { duration: 8000 });
+      }
     }
   };
 

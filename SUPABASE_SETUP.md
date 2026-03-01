@@ -68,6 +68,27 @@ CREATE POLICY "Users can insert own profile"
   ON profiles
   FOR INSERT
   WITH CHECK (auth.uid() = id);
+
+### 1.1 Create Profile Trigger (Recommended)
+
+Run this to automatically create a profile when a user signs up. This is much more reliable than doing it from the frontend:
+
+```sql
+-- Create a trigger function
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, name)
+  VALUES (new.id, new.email, new.raw_user_meta_data->>'name');
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Trigger the function every time a user is created
+CREATE OR REPLACE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+```
 ```
 
 ### 2. Create Login History Table

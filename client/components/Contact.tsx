@@ -40,6 +40,9 @@ export default function Contact() {
       console.error("Error submitting contact form:", error);
       setIsSubmitting(false);
       toast.error(error.message || "Failed to send message. Please try again.");
+      if (error.message.includes("Network error") || error.message.includes("Failed to fetch")) {
+        toast.info("Check SUPABASE_SETUP.md to ensure tables and RLS are configured.", { duration: 8000 });
+      }
     }
   };
 

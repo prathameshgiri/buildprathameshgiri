@@ -127,9 +127,15 @@ class AuthAPI {
     const { data: authData, error: authError } = await sb.auth.signUp({
       email: data.email,
       password: data.password,
+      options: {
+        data: {
+          name: data.name,
+        },
+      },
     });
 
     if (authError) {
+      console.error("Supabase signup error:", authError);
       throw new Error(authError.message);
     }
 
@@ -137,24 +143,28 @@ class AuthAPI {
       throw new Error("Signup failed - no user returned");
     }
 
-    // Create user profile in database
-    const { error: profileError } = await sb.from("profiles").insert([
-      {
-        id: authData.user.id,
-        email: data.email,
-        name: data.name,
-        phone: data.phone || null,
-        address: data.address || null,
-        company: data.company || null,
-      },
-    ]);
-
-    if (profileError) {
-      throw new Error(profileError.message);
+    // Try to create user profile in database as fallback
+    // (Ideally handled by the trigger in Step 1.1 of SUPABASE_SETUP.md)
+    try {
+      await sb.from("profiles").insert([
+        {
+          id: authData.user.id,
+          email: data.email,
+          name: data.name,
+          phone: data.phone || null,
+          address: data.address || null,
+          company: data.company || null,
+        },
+      ]);
+    } catch (profileError) {
+      // Ignore profile error if it's already created by trigger or RLS blocks it
+      console.log("Note: Profile creation via client skipped or already exists.");
     }
 
-    // Record login in history
-    await this.recordLogin(authData.user.id);
+    // Record login in history if session exists
+    if (authData.session) {
+      await this.recordLogin(authData.user.id);
+    }
 
     return {
       user: {
@@ -182,6 +192,7 @@ class AuthAPI {
       });
 
     if (authError) {
+      console.error("Supabase login error:", authError);
       throw new Error(authError.message);
     }
 
@@ -197,11 +208,22 @@ class AuthAPI {
       .single();
 
     if (profileError) {
-      throw new Error("Failed to fetch profile");
+      console.warn("Profile not found, returning minimal user object");
+      return {
+        user: {
+          id: authData.user.id,
+          email: authData.user.email || data.email,
+          name: authData.user.user_metadata?.name || "User",
+        },
+      };
     }
 
     // Record login in history
-    await this.recordLogin(authData.user.id);
+    try {
+      await this.recordLogin(authData.user.id);
+    } catch (err) {
+      console.error("Failed to record login history:", err);
+    }
 
     return {
       user: profile,
