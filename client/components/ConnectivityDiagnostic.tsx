@@ -24,7 +24,13 @@ export default function ConnectivityDiagnostic() {
 
       if (error) {
         setStatus("error");
-        setDetails(`Connected to Supabase but got error: ${error.message} (Code: ${error.code}). This usually means your RLS policies are missing.`);
+        let extra = "";
+        if (error.message === "TypeError: Failed to fetch") {
+          extra = " This usually means your Browser (Adblocker, Brave Shields, or Tracking Protection) is blocking the connection to Supabase.";
+        } else if (error.code === "PGRST116") {
+          extra = " Table exists but you don't have permission to view it (Check RLS).";
+        }
+        setDetails(`Connected to Supabase but got error: ${error.message} (Code: ${error.code || "None"}).${extra}`);
       } else {
         setStatus("success");
         setDetails(`Successfully connected to Supabase! Response time: ${duration}ms. Tables are reachable.`);
