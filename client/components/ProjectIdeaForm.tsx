@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react";
 import { Mail, User, Lightbulb, Send, AlertCircle } from "lucide-react";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
 import { toast } from "sonner";
 
 export default function ProjectIdeaForm() {
-  const isSupabaseConfigured = !!getSupabase();
+  const isFirebaseConfigured = !!import.meta.env.VITE_FIREBASE_API_KEY;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,21 +39,17 @@ export default function ProjectIdeaForm() {
       toast.error(
         error.message || "Failed to send your idea. Please try again.",
       );
-      if (error.message.includes("Network error") || error.message.includes("Failed to fetch")) {
-        toast.info("Please ensure you've set up the tables and RLS policies as described in SUPABASE_SETUP.md", { duration: 8000 });
-      }
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-4">
-      {!isSupabaseConfigured && (
+      {!isFirebaseConfigured && (
         <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm flex items-start gap-3 mb-4">
           <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
           <p>
-            <strong>Supabase Not Configured:</strong> Form submission is
-            disabled. Please set up your Supabase project as described in the
-            setup guide.
+            <strong>Firebase Not Configured:</strong> Form submission is
+            disabled. Please set up your Firebase project.
           </p>
         </div>
       )}
@@ -142,12 +138,12 @@ export default function ProjectIdeaForm() {
       >
         <button
           type="submit"
-          disabled={isSubmitting || !isSupabaseConfigured}
+          disabled={isSubmitting || !isFirebaseConfigured}
           className="w-full btn-primary text-lg py-3 flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed group"
         >
           <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           <span>
-            {!isSupabaseConfigured
+            {!isFirebaseConfigured
               ? "Form Disabled"
               : isSubmitting
                 ? "Sending..."

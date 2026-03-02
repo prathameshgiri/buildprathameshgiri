@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import ConnectivityDiagnostic from "@/components/ConnectivityDiagnostic";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
 import { useToast } from "@/components/ui/use-toast";
 import { AlertCircle } from "lucide-react";
 
@@ -11,10 +10,9 @@ export default function Auth() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const sb = getSupabase();
-  const isSupabaseConfigured = !!sb;
-  const isUrlMissing = !import.meta.env.VITE_SUPABASE_URL;
-  const isKeyMissing = !import.meta.env.VITE_SUPABASE_ANON_KEY;
+  
+  const isFirebaseConfigured = !!import.meta.env.VITE_FIREBASE_API_KEY;
+  
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
   const [isForgotPassword, setIsForgotPassword] = useState(
@@ -43,20 +41,6 @@ export default function Auth() {
     setIsResetPassword(mode === "reset-password");
     setError("");
   }, [mode]);
-
-  useEffect(() => {
-    const sb = getSupabase();
-    if (sb) {
-      const {
-        data: { subscription },
-      } = sb.auth.onAuthStateChange((event) => {
-        if (event === "PASSWORD_RECOVERY") {
-          navigate("/auth?mode=reset-password");
-        }
-      });
-      return () => subscription.unsubscribe();
-    }
-  }, [navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -150,7 +134,7 @@ export default function Auth() {
           return;
         }
 
-        const result = await authAPI.signup({
+        await authAPI.signup({
           email: formData.email,
           password: formData.password,
           name: formData.name,
@@ -228,7 +212,7 @@ export default function Auth() {
           </div>
 
           {/* Configuration Warning */}
-          {!isSupabaseConfigured && (
+          {!isFirebaseConfigured && (
             <div
               className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 opacity-0 animate-slide-up"
               style={{ animationFillMode: "forwards", animationDelay: "0.25s" }}
@@ -237,35 +221,24 @@ export default function Auth() {
                 <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
                 <div>
                   <h3 className="font-semibold text-sm mb-1">
-                    Supabase Not Configured
+                    Firebase Not Configured
                   </h3>
                   <p className="text-xs text-amber-700 leading-relaxed">
                     Authentication is currently disabled. Please connect
-                    Supabase by setting the following environment variables:
+                    Firebase by setting the environment variables in your project settings.
                   </p>
-                  <ul className="text-xs text-amber-700 list-disc list-inside mt-2 space-y-1">
-                    <li className={isUrlMissing ? "font-bold" : "opacity-50"}>
-                      VITE_SUPABASE_URL {isUrlMissing ? "(MISSING)" : "✓"}
-                    </li>
-                    <li className={isKeyMissing ? "font-bold" : "opacity-50"}>
-                      VITE_SUPABASE_ANON_KEY {isKeyMissing ? "(MISSING)" : "✓"}
-                    </li>
-                  </ul>
                   <a
-                    href="https://supabase.com"
+                    href="https://console.firebase.google.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-xs font-semibold underline hover:text-amber-900"
                   >
-                    Learn how to set up Supabase →
+                    Go to Firebase Console →
                   </a>
                 </div>
               </div>
             </div>
           )}
-
-          {/* Connectivity Diagnostic */}
-          <ConnectivityDiagnostic />
 
           {/* Error Message */}
           {error && (
@@ -280,7 +253,7 @@ export default function Auth() {
           {/* Form Card */}
           <div
             className={`bg-white/80 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl border border-gray-100/50 opacity-0 animate-slide-up ${
-              !isSupabaseConfigured
+              !isFirebaseConfigured
                 ? "grayscale opacity-50 pointer-events-none"
                 : ""
             }`}
@@ -550,7 +523,7 @@ export default function Auth() {
               >
                 <button
                   type="submit"
-                  disabled={isLoading || !isSupabaseConfigured}
+                  disabled={isLoading || !isFirebaseConfigured}
                   className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                 >
                   {isLoading ? (
@@ -561,7 +534,7 @@ export default function Auth() {
                   ) : (
                     <>
                       <span>
-                        {!isSupabaseConfigured
+                        {!isFirebaseConfigured
                           ? "Auth Disabled"
                           : isForgotPassword
                             ? "Send Reset Link"
@@ -571,7 +544,7 @@ export default function Auth() {
                                 ? "Sign In"
                                 : "Create Account"}
                       </span>
-                      {isSupabaseConfigured && (
+                      {isFirebaseConfigured && (
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                       )}
                     </>

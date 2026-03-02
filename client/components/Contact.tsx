@@ -1,10 +1,10 @@
 import { Mail, Phone, MapPin, AlertCircle } from "lucide-react";
 import { useState } from "react";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
 import { toast } from "sonner";
 
 export default function Contact() {
-  const isSupabaseConfigured = !!getSupabase();
+  const isFirebaseConfigured = !!import.meta.env.VITE_FIREBASE_API_KEY;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,9 +40,6 @@ export default function Contact() {
       console.error("Error submitting contact form:", error);
       setIsSubmitting(false);
       toast.error(error.message || "Failed to send message. Please try again.");
-      if (error.message.includes("Network error") || error.message.includes("Failed to fetch")) {
-        toast.info("Check SUPABASE_SETUP.md to ensure tables and RLS are configured.", { duration: 8000 });
-      }
     }
   };
 
@@ -129,13 +126,12 @@ export default function Contact() {
             className="opacity-0 animate-slide-up space-y-6"
             style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
           >
-            {!isSupabaseConfigured && (
+            {!isFirebaseConfigured && (
               <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm flex items-start gap-3 mb-6">
                 <AlertCircle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
                 <p>
-                  <strong>Supabase Not Configured:</strong> Contact form is
-                  disabled. Please set up your Supabase project as described in
-                  the setup guide.
+                  <strong>Firebase Not Configured:</strong> Contact form is
+                  disabled. Please set up your Firebase project.
                 </p>
               </div>
             )}
@@ -215,10 +211,10 @@ export default function Contact() {
 
             <button
               type="submit"
-              disabled={isSubmitting || !isSupabaseConfigured}
+              disabled={isSubmitting || !isFirebaseConfigured}
               className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {!isSupabaseConfigured
+              {!isFirebaseConfigured
                 ? "Form Disabled"
                 : isSubmitting
                   ? "Sending..."

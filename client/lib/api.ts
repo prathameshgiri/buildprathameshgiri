@@ -1,37 +1,28 @@
-import { createClient } from "@supabase/supabase-js";
-
-// Initialize Supabase client
-const supabaseUrlRaw = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-// Use local proxy in development to bypass browser-level blocking
-const isDev = import.meta.env.DEV;
-const supabaseUrl =
-  isDev && supabaseUrlRaw
-    ? "/supabase-proxy"
-    : supabaseUrlRaw;
-
-if (isDev) {
-  console.log("Supabase URL initialized:", !!supabaseUrl, supabaseUrl);
-  console.log("Supabase Original URL:", supabaseUrlRaw);
-  console.log("Supabase Key initialized:", !!supabaseKey);
-}
-
-let supabase: any = null;
-
-if (supabaseUrl && supabaseKey) {
-  try {
-    supabase = createClient(supabaseUrl, supabaseKey);
-  } catch (error) {
-    console.error("Failed to initialize Supabase client:", error);
-  }
-}
-
-function getSupabase() {
-  return supabase;
-}
-
-export { getSupabase };
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  updatePassword,
+  User as FirebaseUser
+} from "firebase/auth";
+import { 
+  doc, 
+  setDoc, 
+  getDoc, 
+  updateDoc, 
+  collection, 
+  addDoc, 
+  query, 
+  where, 
+  orderBy, 
+  limit, 
+  getDocs,
+  Timestamp,
+  serverTimestamp
+} from "firebase/firestore";
+import { auth, db } from "./firebase";
 
 export interface SignupData {
   email: string;
@@ -54,8 +45,8 @@ export interface UserProfile {
   phone?: string;
   address?: string;
   company?: string;
-  created_at?: string;
-  updated_at?: string;
+  created_at?: any;
+  updated_at?: any;
 }
 
 export interface AuthResponse {
@@ -79,295 +70,122 @@ export interface ProjectIdeaData {
 
 class AuthAPI {
   async submitContact(data: ContactData): Promise<void> {
-    const sb = getSupabase();
-    if (!sb) {
-      console.error("Supabase not configured during submitContact");
-      throw new Error("Supabase is not configured.");
-    }
     try {
-      const { error } = await sb.from("contact_submissions").insert([data]);
-      if (error) {
-        console.error(
-          "Supabase insert error (contact_submissions):",
-          JSON.stringify(error, null, 2),
-        );
-        throw new Error(error.message);
-      }
+      await addDoc(collection(db, "contact_submissions"), {
+        ...data,
+        created_at: serverTimestamp(),
+      });
     } catch (err: any) {
-      console.error(
-        "Network error during submitContact:",
-        err,
-        "Full error:",
-        JSON.stringify(err, Object.getOwnPropertyNames(err), 2),
-      );
-      if (err.message === "Failed to fetch") {
-        throw new Error(
-          "Network error: Failed to reach Supabase. Please check your internet connection or adblocker.",
-        );
-      }
-      throw err;
+      console.error("Firebase submitContact error:", err);
+      throw new Error(err.message || "Failed to submit contact form");
     }
   }
 
   async submitProjectIdea(data: ProjectIdeaData): Promise<void> {
-    const sb = getSupabase();
-    if (!sb) {
-      console.error("Supabase not configured during submitProjectIdea");
-      throw new Error("Supabase is not configured.");
-    }
     try {
-      const { error } = await sb.from("project_ideas").insert([data]);
-      if (error) {
-        console.error(
-          "Supabase insert error (project_ideas):",
-          JSON.stringify(error, null, 2),
-        );
-        throw new Error(error.message);
-      }
+      await addDoc(collection(db, "project_ideas"), {
+        ...data,
+        created_at: serverTimestamp(),
+      });
     } catch (err: any) {
-      console.error(
-        "Network error during submitProjectIdea:",
-        err,
-        "Full error:",
-        JSON.stringify(err, Object.getOwnPropertyNames(err), 2),
-      );
-      if (err.message === "Failed to fetch") {
-        throw new Error(
-          "Network error: Failed to reach Supabase. Please check your internet connection or adblocker.",
-        );
-      }
-      throw err;
+      console.error("Firebase submitProjectIdea error:", err);
+      throw new Error(err.message || "Failed to submit project idea");
     }
   }
 
   async signup(data: SignupData): Promise<AuthResponse> {
-    const sb = getSupabase();
-    if (!sb) {
-      throw new Error(
-        "Supabase is not configured. Please set environment variables.",
-      );
-    }
-    // Sign up with Supabase Auth
-    const { data: authData, error: authError } = await sb.auth.signUp({
-      email: data.email,
-      password: data.password,
-      options: {
-        data: {
-          name: data.name,
-        },
-      },
-    });
-
-    if (authError) {
-      console.error("Supabase signup error:", authError);
-      throw new Error(authError.message);
-    }
-
-    if (!authData.user) {
-      throw new Error("Signup failed - no user returned");
-    }
-
-    // Try to create user profile in database as fallback
-    // (Ideally handled by the trigger in Step 1.1 of SUPABASE_SETUP.md)
     try {
-      await sb.from("profiles").insert([
-        {
-          id: authData.user.id,
-          email: data.email,
-          name: data.name,
-          phone: data.phone || null,
-          address: data.address || null,
-          company: data.company || null,
-        },
-      ]);
-    } catch (profileError) {
-      // Ignore profile error if it's already created by trigger or RLS blocks it
-      console.log("Note: Profile creation via client skipped or already exists.");
-    }
+      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
 
-    // Record login in history if session exists
-    if (authData.session) {
-      await this.recordLogin(authData.user.id);
-    }
-
-    return {
-      user: {
-        id: authData.user.id,
+      const profile: UserProfile = {
+        id: user.uid,
         email: data.email,
         name: data.name,
-        phone: data.phone,
-        address: data.address,
-        company: data.company,
-      },
-    };
+        phone: data.phone || "",
+        address: data.address || "",
+        company: data.company || "",
+        created_at: serverTimestamp(),
+        updated_at: serverTimestamp(),
+      };
+
+      await setDoc(doc(db, "profiles", user.uid), profile);
+      await this.recordLogin(user.uid);
+
+      return { user: profile };
+    } catch (err: any) {
+      console.error("Firebase signup error:", err);
+      throw new Error(err.message || "Signup failed");
+    }
   }
 
   async login(data: LoginData): Promise<AuthResponse> {
-    const sb = getSupabase();
-    if (!sb) {
-      throw new Error(
-        "Supabase is not configured. Please set environment variables.",
-      );
-    }
-
-    if (import.meta.env.DEV) {
-      console.log("Attempting login via proxy...");
-    }
-
     try {
-      const { data: authData, error: authError } =
-        await sb.auth.signInWithPassword({
-          email: data.email,
-          password: data.password,
-        });
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
 
-      if (authError) {
-        console.error("Supabase login error:", authError);
-        throw new Error(authError.message);
-      }
-
-      if (!authData.user) {
-        throw new Error("Login failed - no user returned");
-      }
-
-      // Get user profile
-      let profile = null;
-      try {
-        const { data: profileData, error: profileError } = await sb
-          .from("profiles")
-          .select("*")
-          .eq("id", authData.user.id)
-          .single();
-
-        if (!profileError) {
-          profile = profileData;
-        }
-      } catch (e) {
-        console.warn("Could not fetch profile during login, continuing...");
-      }
-
-      if (!profile) {
-        console.warn("Profile not found, returning minimal user object");
-        profile = {
-          id: authData.user.id,
-          email: authData.user.email || data.email,
-          name: authData.user.user_metadata?.name || "User",
+      const profileDoc = await getDoc(doc(db, "profiles", user.uid));
+      if (!profileDoc.exists()) {
+        const minimalProfile = {
+          id: user.uid,
+          email: user.email || data.email,
+          name: "User",
         };
+        return { user: minimalProfile as UserProfile };
       }
 
-      // Record login in history (Don't let this fail the whole login)
-      try {
-        await this.recordLogin(authData.user.id);
-      } catch (err) {
-        console.warn("Failed to record login history (skipped):", err);
-      }
-
-      return {
-        user: profile,
-      };
+      await this.recordLogin(user.uid);
+      return { user: profileDoc.data() as UserProfile };
     } catch (err: any) {
-      console.error("Detailed login error caught in api.ts:", err);
-      if (err.message && err.message.includes("JSON input")) {
-        throw new Error(
-          "Network connectivity issue during login. Please try refreshing or using a different browser/network.",
-        );
-      }
-      throw err;
+      console.error("Firebase login error:", err);
+      throw new Error(err.message || "Login failed");
     }
   }
 
   async getProfile(): Promise<UserProfile> {
-    const sb = getSupabase();
-    if (!sb) {
-      throw new Error("Supabase is not configured");
-    }
-    const {
-      data: { user },
-      error: authError,
-    } = await sb.auth.getUser();
+    const user = auth.currentUser;
+    if (!user) throw new Error("Not authenticated");
 
-    if (authError || !user) {
-      throw new Error("Not authenticated");
-    }
+    const profileDoc = await getDoc(doc(db, "profiles", user.uid));
+    if (!profileDoc.exists()) throw new Error("Profile not found");
 
-    const { data: profile, error: profileError } = await sb
-      .from("profiles")
-      .select("*")
-      .eq("id", user.id)
-      .single();
-
-    if (profileError) {
-      throw new Error("Failed to fetch profile");
-    }
-
-    return profile;
+    return profileDoc.data() as UserProfile;
   }
 
   async updateProfile(data: Partial<UserProfile>): Promise<UserProfile> {
-    const sb = getSupabase();
-    if (!sb) {
-      throw new Error("Supabase is not configured");
-    }
-    const {
-      data: { user },
-      error: authError,
-    } = await sb.auth.getUser();
+    const user = auth.currentUser;
+    if (!user) throw new Error("Not authenticated");
 
-    if (authError || !user) {
-      throw new Error("Not authenticated");
-    }
+    const docRef = doc(db, "profiles", user.uid);
+    await updateDoc(docRef, {
+      ...data,
+      updated_at: serverTimestamp(),
+    });
 
-    const { data: profile, error: profileError } = await sb
-      .from("profiles")
-      .update({
-        name: data.name || undefined,
-        phone: data.phone || null,
-        address: data.address || null,
-        company: data.company || null,
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", user.id)
-      .select()
-      .single();
-
-    if (profileError) {
-      throw new Error("Failed to update profile");
-    }
-
-    return profile;
+    const updatedDoc = await getDoc(docRef);
+    return updatedDoc.data() as UserProfile;
   }
 
-  async getLoginHistory(limit: number = 10): Promise<any[]> {
-    const sb = getSupabase();
-    if (!sb) {
+  async getLoginHistory(limitNum: number = 10): Promise<any[]> {
+    const user = auth.currentUser;
+    if (!user) return [];
+
+    try {
+      const q = query(
+        collection(db, "login_history"),
+        where("user_id", "==", user.uid),
+        orderBy("login_time", "desc"),
+        limit(limitNum)
+      );
+      const querySnapshot = await getDocs(q);
+      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (err) {
+      console.error("Failed to fetch login history:", err);
       return [];
     }
-    const {
-      data: { user },
-      error: authError,
-    } = await sb.auth.getUser();
-
-    if (authError || !user) {
-      throw new Error("Not authenticated");
-    }
-
-    const { data: history, error: historyError } = await sb
-      .from("login_history")
-      .select("*")
-      .eq("user_id", user.id)
-      .order("login_time", { ascending: false })
-      .limit(limit);
-
-    if (historyError) {
-      throw new Error("Failed to fetch login history");
-    }
-
-    return history || [];
   }
 
   async recordLogin(userId: string): Promise<void> {
-    const sb = getSupabase();
-    if (!sb) return;
     const userAgent = navigator.userAgent;
     const ipAddress = await this.getClientIP();
 
@@ -377,115 +195,66 @@ class AuthAPI {
       userAgent: userAgent,
     };
 
-    await sb.from("login_history").insert([
-      {
-        user_id: userId,
-        ip_address: ipAddress,
-        device_info: deviceInfo,
-        login_time: new Date().toISOString(),
-      },
-    ]);
+    await addDoc(collection(db, "login_history"), {
+      user_id: userId,
+      ip_address: ipAddress,
+      device_info: deviceInfo,
+      login_time: serverTimestamp(),
+    });
   }
 
   async logout(): Promise<void> {
-    const sb = getSupabase();
-    if (!sb) return;
-    const {
-      data: { user },
-    } = await sb.auth.getUser();
-
-    if (user) {
-      // Update the last login record with logout time
-      await sb
-        .from("login_history")
-        .update({ logout_time: new Date().toISOString() })
-        .eq("user_id", user.id)
-        .is("logout_time", null)
-        .order("login_time", { ascending: false })
-        .limit(1);
-    }
-
-    await sb.auth.signOut();
+    await signOut(auth);
   }
 
   async resetPassword(email: string): Promise<void> {
-    const sb = getSupabase();
-    if (!sb) throw new Error("Supabase is not configured");
-
-    const { error } = await sb.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth?mode=reset-password`,
-    });
-
-    if (error) throw new Error(error.message);
+    await sendPasswordResetEmail(auth, email);
   }
 
   async updateUserPassword(password: string): Promise<void> {
-    const sb = getSupabase();
-    if (!sb) throw new Error("Supabase is not configured");
-
-    const { error } = await sb.auth.updateUser({ password });
-
-    if (error) throw new Error(error.message);
+    const user = auth.currentUser;
+    if (!user) throw new Error("Not authenticated");
+    await updatePassword(user, password);
   }
 
   async isAuthenticated(): Promise<boolean> {
-    const sb = getSupabase();
-    if (!sb) return false;
-    const {
-      data: { user },
-    } = await sb.auth.getUser();
-    return !!user;
+    return new Promise((resolve) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        unsubscribe();
+        resolve(!!user);
+      });
+    });
   }
 
   async getCurrentUser(): Promise<UserProfile | null> {
-    const sb = getSupabase();
-    if (!sb) return null;
-    const {
-      data: { user },
-    } = await sb.auth.getUser();
+    const user = auth.currentUser;
+    if (!user) return null;
 
-    if (!user) {
-      return null;
-    }
-
-    const { data: profile } = await sb
-      .from("profiles")
-      .select("*")
-      .eq("id", user.id)
-      .single();
-
-    return profile || null;
+    const profileDoc = await getDoc(doc(db, "profiles", user.uid));
+    return profileDoc.exists() ? (profileDoc.data() as UserProfile) : null;
   }
 
   private async getClientIP(): Promise<string> {
     try {
       const response = await fetch("https://api.ipify.org?format=json");
       if (!response.ok) return "unknown";
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        return "unknown";
-      }
       const data = await response.json();
       return data.ip || "unknown";
-    } catch (err) {
-      console.warn("IP detection failed:", err);
+    } catch {
       return "unknown";
     }
   }
 
   private getBrowser(userAgent: string): string {
-    const match = userAgent.match(
-      /(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/,
-    );
+    const match = userAgent.match(/(?:Chrome|Safari|Firefox|Edge|Opera)\/[\d.]+/);
     return match ? match[0] : "Unknown";
   }
 
   private getOS(userAgent: string): string {
-    const match = userAgent.match(
-      /(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/,
-    );
+    const match = userAgent.match(/(?:Windows|Macintosh|Linux|Android|iOS)[\w\s;]*/);
     return match ? match[0] : "Unknown";
   }
 }
 
 export const authAPI = new AuthAPI();
+export const getSupabase = () => null; // To avoid breaking imports during migration
