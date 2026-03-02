@@ -438,9 +438,15 @@ class AuthAPI {
   private async getClientIP(): Promise<string> {
     try {
       const response = await fetch("https://api.ipify.org?format=json");
+      if (!response.ok) return "unknown";
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        return "unknown";
+      }
       const data = await response.json();
       return data.ip || "unknown";
-    } catch {
+    } catch (err) {
+      console.warn("IP detection failed:", err);
       return "unknown";
     }
   }
