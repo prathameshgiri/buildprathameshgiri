@@ -69,9 +69,16 @@ export interface ProjectIdeaData {
 }
 
 class AuthAPI {
+  private checkFirebase() {
+    if (!auth || !db) {
+      throw new Error("Firebase is not configured. Please set your VITE_FIREBASE_* environment variables.");
+    }
+  }
+
   async submitContact(data: ContactData): Promise<void> {
+    this.checkFirebase();
     try {
-      await addDoc(collection(db, "contact_submissions"), {
+      await addDoc(collection(db!, "contact_submissions"), {
         ...data,
         created_at: serverTimestamp(),
       });
@@ -82,8 +89,9 @@ class AuthAPI {
   }
 
   async submitProjectIdea(data: ProjectIdeaData): Promise<void> {
+    this.checkFirebase();
     try {
-      await addDoc(collection(db, "project_ideas"), {
+      await addDoc(collection(db!, "project_ideas"), {
         ...data,
         created_at: serverTimestamp(),
       });
@@ -94,8 +102,9 @@ class AuthAPI {
   }
 
   async signup(data: SignupData): Promise<AuthResponse> {
+    this.checkFirebase();
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const userCredential = await createUserWithEmailAndPassword(auth!, data.email, data.password);
       const user = userCredential.user;
 
       const profile: UserProfile = {
@@ -109,7 +118,7 @@ class AuthAPI {
         updated_at: serverTimestamp(),
       };
 
-      await setDoc(doc(db, "profiles", user.uid), profile);
+      await setDoc(doc(db!, "profiles", user.uid), profile);
       await this.recordLogin(user.uid);
 
       return { user: profile };
@@ -120,11 +129,12 @@ class AuthAPI {
   }
 
   async login(data: LoginData): Promise<AuthResponse> {
+    this.checkFirebase();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+      const userCredential = await signInWithEmailAndPassword(auth!, data.email, data.password);
       const user = userCredential.user;
 
-      const profileDoc = await getDoc(doc(db, "profiles", user.uid));
+      const profileDoc = await getDoc(doc(db!, "profiles", user.uid));
       if (!profileDoc.exists()) {
         const minimalProfile = {
           id: user.uid,
@@ -143,20 +153,22 @@ class AuthAPI {
   }
 
   async getProfile(): Promise<UserProfile> {
-    const user = auth.currentUser;
+    this.checkFirebase();
+    const user = auth!.currentUser;
     if (!user) throw new Error("Not authenticated");
 
-    const profileDoc = await getDoc(doc(db, "profiles", user.uid));
+    const profileDoc = await getDoc(doc(db!, "profiles", user.uid));
     if (!profileDoc.exists()) throw new Error("Profile not found");
 
     return profileDoc.data() as UserProfile;
   }
 
   async updateProfile(data: Partial<UserProfile>): Promise<UserProfile> {
-    const user = auth.currentUser;
+    this.checkFirebase();
+    const user = auth!.currentUser;
     if (!user) throw new Error("Not authenticated");
 
-    const docRef = doc(db, "profiles", user.uid);
+    const docRef = doc(db!, "profiles", user.uid);
     await updateDoc(docRef, {
       ...data,
       updated_at: serverTimestamp(),
@@ -167,6 +179,7 @@ class AuthAPI {
   }
 
   async getLoginHistory(limitNum: number = 10): Promise<any[]> {
+    if (!auth || !db) return [];
     const user = auth.currentUser;
     if (!user) return [];
 
@@ -186,6 +199,7 @@ class AuthAPI {
   }
 
   async recordLogin(userId: string): Promise<void> {
+    if (!auth || !db) return;
     const userAgent = navigator.userAgent;
     const ipAddress = await this.getClientIP();
 
@@ -204,20 +218,24 @@ class AuthAPI {
   }
 
   async logout(): Promise<void> {
+    if (!auth) return;
     await signOut(auth);
   }
 
   async resetPassword(email: string): Promise<void> {
-    await sendPasswordResetEmail(auth, email);
+    this.checkFirebase();
+    await sendPasswordResetEmail(auth!, email);
   }
 
   async updateUserPassword(password: string): Promise<void> {
-    const user = auth.currentUser;
+    this.checkFirebase();
+    const user = auth!.currentUser;
     if (!user) throw new Error("Not authenticated");
     await updatePassword(user, password);
   }
 
   async isAuthenticated(): Promise<boolean> {
+    if (!auth) return false;
     return new Promise((resolve) => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         unsubscribe();
@@ -227,6 +245,7 @@ class AuthAPI {
   }
 
   async getCurrentUser(): Promise<UserProfile | null> {
+    if (!auth || !db) return null;
     const user = auth.currentUser;
     if (!user) return null;
 

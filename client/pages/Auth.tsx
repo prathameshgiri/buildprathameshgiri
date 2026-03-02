@@ -3,6 +3,7 @@ import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { authAPI } from "@/lib/api";
+import { isFirebaseConfigured } from "@/lib/firebase";
 import { useToast } from "@/components/ui/use-toast";
 import { AlertCircle } from "lucide-react";
 
@@ -11,7 +12,7 @@ export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  const isFirebaseConfigured = !!import.meta.env.VITE_FIREBASE_API_KEY;
+  const isConfigured = isFirebaseConfigured();
   
   const mode = searchParams.get("mode") || "signup";
   const [isLogin, setIsLogin] = useState(mode === "login");
@@ -134,7 +135,7 @@ export default function Auth() {
           return;
         }
 
-        await authAPI.signup({
+        const result = await authAPI.signup({
           email: formData.email,
           password: formData.password,
           name: formData.name,
@@ -212,7 +213,7 @@ export default function Auth() {
           </div>
 
           {/* Configuration Warning */}
-          {!isFirebaseConfigured && (
+          {!isConfigured && (
             <div
               className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 opacity-0 animate-slide-up"
               style={{ animationFillMode: "forwards", animationDelay: "0.25s" }}
@@ -253,7 +254,7 @@ export default function Auth() {
           {/* Form Card */}
           <div
             className={`bg-white/80 backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-2xl border border-gray-100/50 opacity-0 animate-slide-up ${
-              !isFirebaseConfigured
+              !isConfigured
                 ? "grayscale opacity-50 pointer-events-none"
                 : ""
             }`}
@@ -523,7 +524,7 @@ export default function Auth() {
               >
                 <button
                   type="submit"
-                  disabled={isLoading || !isFirebaseConfigured}
+                  disabled={isLoading || !isConfigured}
                   className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                 >
                   {isLoading ? (
@@ -534,7 +535,7 @@ export default function Auth() {
                   ) : (
                     <>
                       <span>
-                        {!isFirebaseConfigured
+                        {!isConfigured
                           ? "Auth Disabled"
                           : isForgotPassword
                             ? "Send Reset Link"
@@ -544,7 +545,7 @@ export default function Auth() {
                                 ? "Sign In"
                                 : "Create Account"}
                       </span>
-                      {isFirebaseConfigured && (
+                      {isConfigured && (
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                       )}
                     </>
