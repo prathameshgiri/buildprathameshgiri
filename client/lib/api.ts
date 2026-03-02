@@ -209,49 +209,71 @@ class AuthAPI {
         "Supabase is not configured. Please set environment variables.",
       );
     }
-    const { data: authData, error: authError } =
-      await sb.auth.signInWithPassword({
-        email: data.email,
-        password: data.password,
-      });
 
-    if (authError) {
-      console.error("Supabase login error:", authError);
-      throw new Error(authError.message);
+    if (import.meta.env.DEV) {
+      console.log("Attempting login via proxy...");
     }
 
-    if (!authData.user) {
-      throw new Error("Login failed - no user returned");
-    }
+    try {
+      const { data: authData, error: authError } =
+        await sb.auth.signInWithPassword({
+          email: data.email,
+          password: data.password,
+        });
 
-    // Get user profile
-    const { data: profile, error: profileError } = await sb
-      .from("profiles")
-      .select("*")
-      .eq("id", authData.user.id)
-      .single();
+      if (authError) {
+        console.error("Supabase login error:", authError);
+        throw new Error(authError.message);
+      }
 
-    if (profileError) {
-      console.warn("Profile not found, returning minimal user object");
-      return {
-        user: {
+      if (!authData.user) {
+        throw new Error("Login failed - no user returned");
+      }
+
+      // Get user profile
+      let profile = null;
+      try {
+        const { data: profileData, error: profileError } = await sb
+          .from("profiles")
+          .select("*")
+          .eq("id", authData.user.id)
+          .single();
+
+        if (!profileError) {
+          profile = profileData;
+        }
+      } catch (e) {
+        console.warn("Could not fetch profile during login, continuing...");
+      }
+
+      if (!profile) {
+        console.warn("Profile not found, returning minimal user object");
+        profile = {
           id: authData.user.id,
           email: authData.user.email || data.email,
           name: authData.user.user_metadata?.name || "User",
-        },
+        };
+      }
+
+      // Record login in history (Don't let this fail the whole login)
+      try {
+        await this.recordLogin(authData.user.id);
+      } catch (err) {
+        console.warn("Failed to record login history (skipped):", err);
+      }
+
+      return {
+        user: profile,
       };
+    } catch (err: any) {
+      console.error("Detailed login error caught in api.ts:", err);
+      if (err.message && err.message.includes("JSON input")) {
+        throw new Error(
+          "Network connectivity issue during login. Please try refreshing or using a different browser/network.",
+        );
+      }
+      throw err;
     }
-
-    // Record login in history
-    try {
-      await this.recordLogin(authData.user.id);
-    } catch (err) {
-      console.error("Failed to record login history:", err);
-    }
-
-    return {
-      user: profile,
-    };
   }
 
   async getProfile(): Promise<UserProfile> {
