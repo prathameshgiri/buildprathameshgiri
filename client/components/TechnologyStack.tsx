@@ -32,7 +32,6 @@ export default function TechnologyStack() {
         "PostgreSQL",
         "Firebase",
         "Redis",
-        "Supabase",
       ],
     },
     {

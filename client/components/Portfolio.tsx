@@ -3,16 +3,18 @@ import { useState, useEffect } from "react";
 import { projects } from "@/data/projects";
 import { Project } from "@/data/projects";
 import ProjectDetailsModal from "./ProjectDetailsModal";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
+import { auth, isFirebaseConfigured } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isSupabaseConfigured = !!getSupabase();
+  const isConfigured = isFirebaseConfigured();
 
   useEffect(() => {
-    if (!isSupabaseConfigured) return;
+    if (!isConfigured || !auth) return;
 
     const checkAuth = async () => {
       const authStatus = await authAPI.isAuthenticated();
@@ -21,16 +23,12 @@ export default function Portfolio() {
 
     checkAuth();
 
-    const sb = getSupabase();
-    if (sb) {
-      const {
-        data: { subscription },
-      } = sb.auth.onAuthStateChange((_event, session) => {
-        setIsLoggedIn(!!session?.user);
-      });
-      return () => subscription.unsubscribe();
-    }
-  }, [isSupabaseConfigured]);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setIsLoggedIn(!!firebaseUser);
+    });
+
+    return () => unsubscribe();
+  }, [isConfigured]);
 
   const categories = ["All", "Websites", "Web Apps", "Admin Panels"];
   if (isLoggedIn) {

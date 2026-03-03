@@ -1,14 +1,16 @@
 import { Lock, Zap, Star, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
+import { auth, isFirebaseConfigured } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function PremiumMessage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const isSupabaseConfigured = !!getSupabase();
+  const isConfigured = isFirebaseConfigured();
 
   useEffect(() => {
-    if (!isSupabaseConfigured) return;
+    if (!isConfigured || !auth) return;
 
     const checkAuth = async () => {
       const authStatus = await authAPI.isAuthenticated();
@@ -17,16 +19,12 @@ export default function PremiumMessage() {
 
     checkAuth();
 
-    const sb = getSupabase();
-    if (sb) {
-      const {
-        data: { subscription },
-      } = sb.auth.onAuthStateChange((_event, session) => {
-        setIsLoggedIn(!!session?.user);
-      });
-      return () => subscription.unsubscribe();
-    }
-  }, [isSupabaseConfigured]);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setIsLoggedIn(!!firebaseUser);
+    });
+
+    return () => unsubscribe();
+  }, [isConfigured]);
 
   return (
     <div

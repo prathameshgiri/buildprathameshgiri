@@ -276,4 +276,3 @@ class AuthAPI {
 }
 
 export const authAPI = new AuthAPI();
-export const getSupabase = () => null; // To avoid breaking imports during migration

@@ -1,16 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, User, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
+import { auth, isFirebaseConfigured } from "@/lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
-  const isSupabaseConfigured = !!getSupabase();
+  const isConfigured = isFirebaseConfigured();
 
   useEffect(() => {
-    if (!isSupabaseConfigured) return;
+    if (!isConfigured || !auth) return;
 
     const checkUser = async () => {
       try {
@@ -23,22 +25,17 @@ export default function Navbar() {
 
     checkUser();
 
-    // Set up auth state change listener
-    const sb = getSupabase();
-    if (sb) {
-      const {
-        data: { subscription },
-      } = sb.auth.onAuthStateChange((_event, session) => {
-        if (session?.user) {
-          checkUser();
-        } else {
-          setUser(null);
-        }
-      });
+    // Set up auth state change listener using Firebase
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        checkUser();
+      } else {
+        setUser(null);
+      }
+    });
 
-      return () => subscription.unsubscribe();
-    }
-  }, [isSupabaseConfigured]);
+    return () => unsubscribe();
+  }, [isConfigured]);
 
   const handleLogout = async () => {
     try {

@@ -11,17 +11,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { projects, Project } from "@/data/projects";
 import ProjectDetailsModal from "@/components/ProjectDetailsModal";
-import { authAPI, getSupabase } from "@/lib/api";
+import { authAPI } from "@/lib/api";
+import { isFirebaseConfigured } from "@/lib/firebase";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function PremiumProjects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const navigate = useNavigate();
-  const isSupabaseConfigured = !!getSupabase();
+  const isConfigured = isFirebaseConfigured();
 
   useEffect(() => {
-    if (!isSupabaseConfigured) {
+    if (!isConfigured) {
       setIsLoggedIn(false);
       return;
     }
@@ -35,7 +36,7 @@ export default function PremiumProjects() {
     };
 
     checkAuth();
-  }, [isSupabaseConfigured, navigate]);
+  }, [isConfigured, navigate]);
 
   const premiumProjects = projects.filter((p) => p.category === "Premium");
 

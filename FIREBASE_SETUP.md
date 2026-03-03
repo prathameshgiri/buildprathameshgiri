@@ -81,6 +81,13 @@ VITE_FIREBASE_APP_ID=your-app-id
 3. Try signing up with a test email and password.
 4. Check your Firebase Console under **Authentication** and **Firestore Database** to see the data.
 
+## Step 7: Email Customization (Optional)
+
+To customize the emails sent for password resets:
+1. Go to **Authentication > Templates**.
+2. You can edit the "Password reset" email here.
+3. To use your own domain or SMTP, go to the **Settings** tab in Authentication and look for **Email customization**.
+
 ## Why Firebase?
 
 - **Stable in India**: Works perfectly without ISP blocking issues.
