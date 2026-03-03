@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
 import PremiumProjects from "./pages/PremiumProjects";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/premium-projects" element={<PremiumProjects />} />
             <Route
               path="/services/website-design"

@@ -96,12 +96,15 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           {user ? (
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-orange-50 rounded-full border border-orange-100">
-                <User className="w-4 h-4 text-orange-500" />
+              <Link
+                to="/profile"
+                className="flex items-center gap-2 px-3 py-1.5 bg-orange-50 rounded-full border border-orange-100 hover:bg-orange-100 transition-all duration-300 group"
+              >
+                <User className="w-4 h-4 text-orange-500 group-hover:scale-110 transition-transform" />
                 <span className="text-sm font-medium text-gray-700">
                   {user.name || user.email}
                 </span>
-              </div>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 text-gray-500 hover:text-red-500 transition-colors duration-300 text-sm font-medium"
@@ -191,12 +194,16 @@ export default function Navbar() {
             <div className="border-t border-gray-100 pt-3 space-y-2">
               {user ? (
                 <>
-                  <div className="px-4 py-2 flex items-center gap-3 bg-orange-50 rounded-lg">
-                    <User className="w-5 h-5 text-orange-500" />
+                  <Link
+                    to="/profile"
+                    className="px-4 py-3 flex items-center gap-3 bg-orange-50 rounded-lg group active:bg-orange-100 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <User className="w-5 h-5 text-orange-500 group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-medium text-gray-700">
                       {user.name || user.email}
                     </span>
-                  </div>
+                  </Link>
                   <button
                     onClick={() => {
                       handleLogout();

@@ -78,10 +78,31 @@ class AuthAPI {
   async submitContact(data: ContactData): Promise<void> {
     this.checkFirebase();
     try {
-      await addDoc(collection(db!, "contact_submissions"), {
+      const user = auth?.currentUser;
+      const submissionData = {
         ...data,
+        user_id: user?.uid || null,
         created_at: serverTimestamp(),
-      });
+      };
+
+      await addDoc(collection(db!, "contact_submissions"), submissionData);
+
+      // Trigger email notification via server
+      try {
+        await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            to: data.email,
+            subject: "We received your message!",
+            text: `Hi ${data.name},\n\nThank you for contacting us. We have received your message regarding "${data.subject || "No Subject"}". We will get back to you soon.\n\nMessage: ${data.message}`,
+            admin_subject: `New Contact Form Submission: ${data.subject || "No Subject"}`,
+            admin_text: `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || "N/A"}\nSubject: ${data.subject || "No Subject"}\nMessage: ${data.message}`,
+          }),
+        });
+      } catch (emailErr) {
+        console.warn("Could not send notification email:", emailErr);
+      }
     } catch (err: any) {
       console.error("Firebase submitContact error:", err);
       throw new Error(err.message || "Failed to submit contact form");
@@ -91,13 +112,72 @@ class AuthAPI {
   async submitProjectIdea(data: ProjectIdeaData): Promise<void> {
     this.checkFirebase();
     try {
-      await addDoc(collection(db!, "project_ideas"), {
+      const user = auth?.currentUser;
+      const submissionData = {
         ...data,
+        user_id: user?.uid || null,
         created_at: serverTimestamp(),
-      });
+      };
+
+      await addDoc(collection(db!, "project_ideas"), submissionData);
+
+      // Trigger email notification via server
+      try {
+        await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            to: data.email,
+            subject: "Your project idea was received!",
+            text: `Hi ${data.name},\n\nThank you for sharing your project idea with us:\n\n"${data.idea}"\n\nOur team will review it and get back to you soon!`,
+            admin_subject: "New Project Idea Submission",
+            admin_text: `Name: ${data.name}\nEmail: ${data.email}\nIdea: ${data.idea}`,
+          }),
+        });
+      } catch (emailErr) {
+        console.warn("Could not send notification email:", emailErr);
+      }
     } catch (err: any) {
       console.error("Firebase submitProjectIdea error:", err);
       throw new Error(err.message || "Failed to submit project idea");
+    }
+  }
+
+  async getUserSubmissions(): Promise<any[]> {
+    this.checkFirebase();
+    const user = auth!.currentUser;
+    if (!user) return [];
+
+    try {
+      const q = query(
+        collection(db!, "contact_submissions"),
+        where("user_id", "==", user.uid),
+        orderBy("created_at", "desc")
+      );
+      const querySnapshot = await getDocs(q);
+      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (err) {
+      console.error("Failed to fetch user submissions:", err);
+      return [];
+    }
+  }
+
+  async getUserIdeas(): Promise<any[]> {
+    this.checkFirebase();
+    const user = auth!.currentUser;
+    if (!user) return [];
+
+    try {
+      const q = query(
+        collection(db!, "project_ideas"),
+        where("user_id", "==", user.uid),
+        orderBy("created_at", "desc")
+      );
+      const querySnapshot = await getDocs(q);
+      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    } catch (err) {
+      console.error("Failed to fetch user ideas:", err);
+      return [];
     }
   }
 

@@ -33,7 +33,7 @@ Follow these steps to set up Firebase for your portfolio website.
 ### Set Firestore Security Rules
 
 1. Go to the **Rules** tab in Firestore.
-2. Replace the existing rules with these:
+2. Replace the existing rules with these updated ones:
 
 ```javascript
 rules_version = '2';
@@ -43,19 +43,23 @@ service cloud.firestore {
     match /profiles/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
-    
+
     // Allow users to write their own login history
     match /login_history/{docId} {
       allow create: if request.auth != null && request.resource.data.user_id == request.auth.uid;
       allow read: if request.auth != null && resource.data.user_id == request.auth.uid;
     }
-    
-    // Allow anyone to submit contact forms and project ideas
+
+    // Allow anyone to submit contact forms, and users to read their own
     match /contact_submissions/{docId} {
       allow create: if true;
+      allow read: if request.auth != null && resource.data.user_id == request.auth.uid;
     }
+
+    // Allow anyone to submit project ideas, and users to read their own
     match /project_ideas/{docId} {
       allow create: if true;
+      allow read: if request.auth != null && resource.data.user_id == request.auth.uid;
     }
   }
 }
@@ -87,6 +91,26 @@ To customize the emails sent for password resets:
 1. Go to **Authentication > Templates**.
 2. You can edit the "Password reset" email here.
 3. To use your own domain or SMTP, go to the **Settings** tab in Authentication and look for **Email customization**.
+
+## Step 8: Configure Email Notifications (SMTP)
+
+To enable automatic email notifications to users and yourself (admin), add these environment variables to your project:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-specific-password
+ADMIN_EMAIL=admin-email@gmail.com
+```
+
+### Gmail Setup:
+1. Go to your Google Account settings.
+2. Enable **2-Step Verification**.
+3. Search for **App Passwords** and create one for "Mail" and "Other (Custom Name)".
+4. Use that 16-character password for `SMTP_PASS`.
+
+---
 
 ## Why Firebase?
 
