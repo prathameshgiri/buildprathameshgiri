@@ -84,7 +84,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-start p-8">
                   <div>
                     <div className="text-5xl font-bold text-white mb-2">
-                      10+
+                      2+
                     </div>
                     <p className="text-white font-medium text-lg">
                       Years of Experience
@@ -165,7 +165,7 @@ export default function About() {
             >
               <div className="relative h-96 rounded-3xl overflow-hidden shadow-xl group">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                  src="https://i.pinimg.com/1200x/c1/f5/42/c1f5420d9d75061b0240a43920c484bf.jpg"
                   alt="Satisfied Clients - Happy team collaboration"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
