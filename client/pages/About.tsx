@@ -77,7 +77,7 @@ export default function About() {
             >
               <div className="relative h-96 rounded-3xl overflow-hidden shadow-xl group">
                 <img
-                  src="https://prathameshgiri.in/assets/hero.img.jpegp"
+                  src="https://prathameshgiri.in/assets/hero.img.jpeg"
                   alt="Years of Experience - Team working on project"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
