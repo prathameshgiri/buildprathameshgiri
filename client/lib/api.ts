@@ -149,16 +149,26 @@ class AuthAPI {
     if (!user) return [];
 
     try {
+      // Trying simpler query first to check for index/permission issues
       const q = query(
         collection(db!, "contact_submissions"),
-        where("user_id", "==", user.uid),
-        orderBy("created_at", "desc")
+        where("user_id", "==", user.uid)
       );
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (err) {
+      const docs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+      // Manual sorting if index isn't created yet
+      return docs.sort((a, b) => {
+        const timeA = a.created_at?.seconds || 0;
+        const timeB = b.created_at?.seconds || 0;
+        return timeB - timeA;
+      });
+    } catch (err: any) {
       console.error("Failed to fetch user submissions:", err);
-      return [];
+      if (err.message?.includes("index")) {
+        console.warn("Firestore index missing for contact_submissions. Please create it in the Firebase Console.");
+      }
+      throw err;
     }
   }
 
@@ -170,14 +180,23 @@ class AuthAPI {
     try {
       const q = query(
         collection(db!, "project_ideas"),
-        where("user_id", "==", user.uid),
-        orderBy("created_at", "desc")
+        where("user_id", "==", user.uid)
       );
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (err) {
+      const docs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+      // Manual sorting
+      return docs.sort((a, b) => {
+        const timeA = a.created_at?.seconds || 0;
+        const timeB = b.created_at?.seconds || 0;
+        return timeB - timeA;
+      });
+    } catch (err: any) {
       console.error("Failed to fetch user ideas:", err);
-      return [];
+      if (err.message?.includes("index")) {
+        console.warn("Firestore index missing for project_ideas. Please create it in the Firebase Console.");
+      }
+      throw err;
     }
   }
 

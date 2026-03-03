@@ -30,10 +30,20 @@ Follow these steps to set up Firebase for your portfolio website.
 4. Start in **Production mode**.
 5. Click **Create**.
 
-### Set Firestore Security Rules
+### Fix: Insufficient Permissions Error
 
-1. Go to the **Rules** tab in Firestore.
-2. Replace the existing rules with these updated ones:
+If you see "Missing or insufficient permissions" when trying to view your profile:
+1. Double-check your **Firestore Rules** are exactly as above.
+2. If you still see it, it might be due to missing **Composite Indexes**.
+3. Go to **Firestore Database > Indexes** in the Firebase Console.
+4. Click **Create Index**.
+5. Create an index for collection `contact_submissions`:
+   - Field 1: `user_id` (Ascending)
+   - Field 2: `created_at` (Descending)
+6. Create another index for collection `project_ideas`:
+   - Field 1: `user_id` (Ascending)
+   - Field 2: `created_at` (Descending)
+7. Wait a few minutes for the status to change from "Building" to "Enabled".
 
 ```javascript
 rules_version = '2';

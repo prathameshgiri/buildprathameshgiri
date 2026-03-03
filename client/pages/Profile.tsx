@@ -29,13 +29,26 @@ export default function Profile() {
         }
         setUser(currentUser);
 
-        const [userSubmissions, userIdeas] = await Promise.all([
-          authAPI.getUserSubmissions(),
-          authAPI.getUserIdeas(),
-        ]);
+        // Fetch submissions and ideas independently to handle errors
+        const fetchSubmissions = async () => {
+          try {
+            const data = await authAPI.getUserSubmissions();
+            setSubmissions(data);
+          } catch (err) {
+            console.error("Submissions fetch error:", err);
+          }
+        };
 
-        setSubmissions(userSubmissions);
-        setIdeas(userIdeas);
+        const fetchIdeas = async () => {
+          try {
+            const data = await authAPI.getUserIdeas();
+            setIdeas(data);
+          } catch (err) {
+            console.error("Ideas fetch error:", err);
+          }
+        };
+
+        await Promise.allSettled([fetchSubmissions(), fetchIdeas()]);
       } catch (error) {
         console.error("Error fetching profile data:", error);
       } finally {
