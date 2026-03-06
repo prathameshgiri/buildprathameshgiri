@@ -15,6 +15,8 @@ export default function Profile() {
   const isConfigured = isFirebaseConfigured();
 
   useEffect(() => {
+    let isMounted = true;
+
     if (!isConfigured) {
       navigate("/auth?mode=login");
       return;
@@ -23,6 +25,8 @@ export default function Profile() {
     const fetchData = async () => {
       try {
         const currentUser = await authAPI.getCurrentUser();
+        if (!isMounted) return;
+
         if (!currentUser) {
           navigate("/auth?mode=login");
           return;
@@ -33,7 +37,7 @@ export default function Profile() {
         const fetchSubmissions = async () => {
           try {
             const data = await authAPI.getUserSubmissions();
-            setSubmissions(data);
+            if (isMounted) setSubmissions(data);
           } catch (err) {
             console.error("Submissions fetch error:", err);
           }
@@ -42,7 +46,7 @@ export default function Profile() {
         const fetchIdeas = async () => {
           try {
             const data = await authAPI.getUserIdeas();
-            setIdeas(data);
+            if (isMounted) setIdeas(data);
           } catch (err) {
             console.error("Ideas fetch error:", err);
           }
@@ -50,13 +54,17 @@ export default function Profile() {
 
         await Promise.allSettled([fetchSubmissions(), fetchIdeas()]);
       } catch (error) {
-        console.error("Error fetching profile data:", error);
+        if (isMounted) console.error("Error fetching profile data:", error);
       } finally {
-        setIsLoading(false);
+        if (isMounted) setIsLoading(false);
       }
     };
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [isConfigured, navigate]);
 
   const handleLogout = async () => {

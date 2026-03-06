@@ -164,6 +164,9 @@ class AuthAPI {
         return timeB - timeA;
       });
     } catch (err: any) {
+      if (err.name === 'AbortError' || err.code === 'cancelled') {
+        return [];
+      }
       console.error("Failed to fetch user submissions:", err);
       if (err.message?.includes("index")) {
         console.warn("Firestore index missing for contact_submissions. Please create it in the Firebase Console.");
@@ -192,6 +195,9 @@ class AuthAPI {
         return timeB - timeA;
       });
     } catch (err: any) {
+      if (err.name === 'AbortError' || err.code === 'cancelled') {
+        return [];
+      }
       console.error("Failed to fetch user ideas:", err);
       if (err.message?.includes("index")) {
         console.warn("Firestore index missing for project_ideas. Please create it in the Firebase Console.");
@@ -291,7 +297,10 @@ class AuthAPI {
       );
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (err) {
+    } catch (err: any) {
+      if (err.name === 'AbortError' || err.code === 'cancelled') {
+        return [];
+      }
       console.error("Failed to fetch login history:", err);
       return [];
     }
@@ -343,13 +352,30 @@ class AuthAPI {
     });
   }
 
+  async waitForAuth(): Promise<FirebaseUser | null> {
+    if (!auth) return null;
+    if (auth.currentUser) return auth.currentUser;
+
+    return new Promise((resolve) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        unsubscribe();
+        resolve(user);
+      });
+    });
+  }
+
   async getCurrentUser(): Promise<UserProfile | null> {
     if (!auth || !db) return null;
-    const user = auth.currentUser;
+    const user = await this.waitForAuth();
     if (!user) return null;
 
-    const profileDoc = await getDoc(doc(db, "profiles", user.uid));
-    return profileDoc.exists() ? (profileDoc.data() as UserProfile) : null;
+    try {
+      const profileDoc = await getDoc(doc(db, "profiles", user.uid));
+      return profileDoc.exists() ? (profileDoc.data() as UserProfile) : null;
+    } catch (err) {
+      console.error("Error in getCurrentUser:", err);
+      return null;
+    }
   }
 
   private async getClientIP(): Promise<string> {
