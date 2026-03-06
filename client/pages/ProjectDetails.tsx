@@ -71,14 +71,44 @@ export default function ProjectDetails() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Left Side: Long Screenshot */}
-          <div className="lg:col-span-2">
+          {/* Left Side: Long Screenshot & Description */}
+          <div className="lg:col-span-2 space-y-6">
             <div className="bg-white rounded-3xl overflow-hidden border-2 border-orange-50 shadow-2xl">
-              <img 
-                src={project.longScreenshot} 
-                alt={project.title} 
+              <img
+                src={project.longScreenshot}
+                alt={project.title}
                 className="w-full h-auto object-cover"
               />
+            </div>
+
+            {/* Detailed Description Section */}
+            <div className="space-y-12">
+              <div className="max-w-4xl">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                  About the <span className="text-orange-500">Project</span>
+                </h2>
+                <div className="prose prose-lg text-gray-600 max-w-none">
+                  <p className="leading-relaxed">
+                    {project.fullDescription || "No detailed description available."}
+                  </p>
+                </div>
+              </div>
+
+              {project.features && project.features.length > 0 && (
+                <div className="max-w-4xl">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-8">Key Features</h3>
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    {project.features.map((feature, index) => (
+                      <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:border-orange-200 transition-colors">
+                        <div className="mt-1 p-1 bg-green-50 rounded-full">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                        </div>
+                        <span className="text-gray-700 font-medium">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -169,36 +199,6 @@ export default function ProjectDetails() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Detailed Description Section */}
-        <div className="mt-16 space-y-12">
-          <div className="max-w-4xl">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              About the <span className="text-orange-500">Project</span>
-            </h2>
-            <div className="prose prose-lg text-gray-600 max-w-none">
-              <p className="leading-relaxed">
-                {project.fullDescription || "No detailed description available."}
-              </p>
-            </div>
-          </div>
-
-          {project.features && project.features.length > 0 && (
-            <div className="max-w-4xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Key Features</h3>
-              <div className="grid sm:grid-cols-2 gap-6">
-                {project.features.map((feature, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:border-orange-200 transition-colors">
-                    <div className="mt-1 p-1 bg-green-50 rounded-full">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                    </div>
-                    <span className="text-gray-700 font-medium">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </main>
 
