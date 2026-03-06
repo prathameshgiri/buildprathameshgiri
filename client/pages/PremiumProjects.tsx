@@ -48,6 +48,18 @@ export default function PremiumProjects() {
     );
   }
 
+  const handleDownload = (e: React.MouseEvent, githubLink: string) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      toast.error("Please login to visit the code", {
+        action: {
+          label: "Login",
+          onClick: () => navigate("/auth?mode=login")
+        }
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -142,9 +154,10 @@ export default function PremiumProjects() {
                           Live Demo
                         </a>
                         <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={isLoggedIn ? project.githubLink : "#"}
+                          onClick={(e) => handleDownload(e, project.githubLink)}
+                          target={isLoggedIn ? "_blank" : undefined}
+                          rel={isLoggedIn ? "noopener noreferrer" : undefined}
                           className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-95 text-sm"
                         >
                           <Github className="w-4 h-4" />

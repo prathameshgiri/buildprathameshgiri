@@ -10,6 +10,8 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import PremiumProjects from "./pages/PremiumProjects";
+import CollegeProjectsList from "./pages/CollegeProjectsList";
+import ProjectDetails from "./pages/ProjectDetails";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
@@ -50,6 +52,8 @@ export default function App() {
             <Route path="/auth" element={<Auth />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/premium-projects" element={<PremiumProjects />} />
+            <Route path="/college-projects" element={<CollegeProjectsList />} />
+            <Route path="/college-projects/:id" element={<ProjectDetails />} />
             <Route
               path="/services/website-design"
               element={<WebsiteDesignDevelopment />}
