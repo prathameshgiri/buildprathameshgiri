@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProjectIdeaSection from "@/components/ProjectIdeaSection";
+import ProjectsCTA from "@/components/ProjectsCTA";
+import CollegeProjects from "@/components/CollegeProjects";
 import ServicesSection from "@/components/ServicesSection";
 import TechnologyStack from "@/components/TechnologyStack";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -47,6 +49,12 @@ export default function Index() {
         {/* Decorative Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/5 pointer-events-none" />
       </div>
+
+      {/* Projects Call to Action */}
+      <ProjectsCTA />
+
+      {/* College Projects Section */}
+      <CollegeProjects />
 
       {/* Services Section */}
       <ServicesSection />
