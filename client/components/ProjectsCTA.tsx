@@ -13,10 +13,10 @@ export default function ProjectsCTA() {
 
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              Explore Our Recent Projects
+              Full-Stack Final Year Projects for Computer Science Students
             </h3>
             <p className="text-white/80 text-lg max-w-xl mx-auto md:mx-0">
-              Check out our portfolio or request a custom project built specifically for your requirements.
+              Explore our collection of real-world full-stack projects designed specifically for final year students. Browse our portfolio or request a custom project tailored to your academic or business requirements.
             </p>
           </div>
 
