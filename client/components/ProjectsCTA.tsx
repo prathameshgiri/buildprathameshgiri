@@ -5,7 +5,7 @@ export default function ProjectsCTA() {
   return (
     <section className="relative py-12 bg-orange-50/30 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative z-10 bg-gradient-to-br from-orange-300 to-orange-300 rounded-2xl p-8 sm:p-12 shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
+        <div className="relative z-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-8 sm:p-12 shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 opacity-0 animate-slide-up" style={{ animationFillMode: "forwards" }}>
 
           {/* Decorative Pattern - Added pointer-events-none to fix mobile clicks */}
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl pointer-events-none" />
