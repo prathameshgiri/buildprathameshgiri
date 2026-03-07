@@ -15,7 +15,7 @@ export default function ProjectsCTA() {
             <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
               Full-Stack Final Year Projects for Computer Science Students
             </h3>
-            <p className="text-white/80 text-lg max-w-xl mx-auto md:mx-0">
+            <p className="text-black/80 text-lg max-w-xl mx-auto md:mx-0">
               Explore our collection of real-world full-stack projects designed specifically for final year students. Browse our portfolio or request a custom project tailored to your academic or business requirements.
             </p>
           </div>
