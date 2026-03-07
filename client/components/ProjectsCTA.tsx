@@ -12,7 +12,7 @@ export default function ProjectsCTA() {
           <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-black/10 rounded-full mix-blend-overlay filter blur-3xl pointer-events-none" />
 
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+            <h3 className="text-2xl sm:text-3xl font-bold text-black mb-4">
               Full-Stack Final Year Projects for Computer Science Students
             </h3>
             <p className="text-white/80 text-lg max-w-xl mx-auto md:mx-0">
