@@ -167,6 +167,58 @@ export const collegeProjects: CollegeProject[] = [
     "Luxury UI with Animations",
     "Mobile Responsive Design"
   ],
+  },
+
+{
+  id: "7",
+  title: "School Management System",
+  description: "A modern full-stack school management platform for students, parents, and administrators with dashboards, attendance tracking, and academic management.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/schoolMS.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Sandhya Kamble",
+  sourceCodeUrl: "https://github.com/prathameshgiri/schoolmanagementsystem",
+
+  fullDescription: "The School Management System is a complete academic management platform developed as a college project. The application includes a dedicated student and parent portal where users can check attendance, results, fee records, and school announcements. It also provides a powerful admin panel where administrators can manage students, attendance, fees, academic results, events, and school news. The system supports real-time updates and responsive design for seamless access across devices.",
+
+  features: [
+    "Student & Parent Dashboard",
+    "Admin Panel with School Analytics",
+    "Attendance Management System",
+    "Fee Tracking and Payment Records",
+    "Student Result Management",
+    "School Events & News Updates",
+    "Messaging and Notification System",
+    "Role-Based Authentication (Admin / Student / Parent)",
+    "Real-Time Updates with SSE",
+    "Responsive Modern UI"
+  ],
+  },
+
+{
+  id: "8",
+  title: "Job Portal Website",
+  description: "A modern full-stack job portal platform where companies can post jobs and users can search, apply, and manage job applications.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/jobportal.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Ankita Biradar",
+  sourceCodeUrl: "https://github.com/prathameshgiri/jobportal",
+
+  fullDescription: "The Job Portal Website is a full-stack web application developed as a college project that connects job seekers with employers. The platform allows users to browse job listings, apply for jobs, and manage their applications through a user dashboard. Administrators have access to a dedicated admin panel where they can add new job listings, remove outdated jobs, manage user accounts, and monitor applications.",
+
+  features: [
+    "Job Listing and Search System",
+    "User Registration and Login",
+    "Apply for Jobs Online",
+    "User Dashboard for Applications",
+    "Admin Panel for Job Management",
+    "Add and Remove Job Listings",
+    "Manage Users and Applications",
+    "Responsive Job Portal Interface",
+    "Secure Authentication System",
+    "Full Stack Web Architecture"
+  ],
 }
 
   
