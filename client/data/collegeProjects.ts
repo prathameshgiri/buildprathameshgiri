@@ -14,7 +14,7 @@ export interface CollegeProject {
 export const collegeProjects: CollegeProject[] = [
   {
   id: "1",
-  title: "Good Cookie Chocolate Store – Full Stack eCommerce System",
+  title: "Cookie Chocolate Store – Full Stack eCommerce System",
   description: "A modern full-stack eCommerce web application for handcrafted chocolates and cookies with user dashboard, admin panel, and complete order management system.",
   longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/cookiesshop.png",
   technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
