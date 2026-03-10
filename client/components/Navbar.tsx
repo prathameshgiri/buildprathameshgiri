@@ -69,27 +69,15 @@ export default function Navbar() {
           >
             About
           </Link>
-          <a
-            href="/#services"
-            className="nav-link opacity-0 animate-slide-up"
-            style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
-          >
-            Services
-          </a>
+         
           <Link
             to="/college-projects"
             className="nav-link opacity-0 animate-slide-up"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
           >
-            Projects
+           College Projects
           </Link>
-          <a
-            href="/#explore"
-            className="nav-link opacity-0 animate-slide-up"
-            style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
-          >
-            Explore
-          </a>
+          
         </div>
 
         {/* Desktop Right Side Actions */}
