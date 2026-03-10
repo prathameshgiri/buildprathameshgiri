@@ -83,7 +83,7 @@ export default function Hero() {
             className="text-lg sm:text-xl text-gray-600 leading-relaxed opacity-0 animate-slide-up"
             style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}
           >
-            Web Development, Web Applications & Software Development, high-performance solutions with professional design and SEO optimization. Build with Prathamesh Giri.
+            Web Development, Web Applications & Software Development - high-performance solutions with professional design and SEO optimization.
           </p>
           <p
             className="text-lg sm:text-xl text-gray-600 leading-relaxed opacity-0 animate-slide-up"
