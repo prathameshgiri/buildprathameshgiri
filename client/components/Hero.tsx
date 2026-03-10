@@ -59,7 +59,7 @@ export default function Hero() {
           className="max-w-2xl mb-8 opacity-0 animate-slide-up"
           style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4">
             <span
               className="text-gray-900 inline-block opacity-0 animate-slide-up"
               style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}
@@ -84,13 +84,11 @@ export default function Hero() {
             style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}
           >
             Develop modern websites, web applications, and custom software with professional design, high performance, and SEO-optimized solutions.
-            Build with Prathamesh Giri.
           </p>
           <p
             className="text-lg sm:text-xl text-gray-600 leading-relaxed opacity-0 animate-slide-up"
             style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}
           >
-            
             Build with Prathamesh Giri.
           </p>
 
