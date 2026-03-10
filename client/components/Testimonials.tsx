@@ -12,13 +12,13 @@ export default function Testimonials() {
         "https://i.pinimg.com/1200x/d5/2a/fe/d52afe6a810081b69c9053468f924159.jpg",
     },
     {
-      name: "Michael Chen",
-      company: "Digital Solutions",
+      name: "Rohit Verma",
+      company: "JYM Owner",
       feedback:
         "Professional team with great communication. They understood our requirements perfectly and delivered beyond expectations.",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+        "https://i.pinimg.com/736x/7b/8a/7b/7b8a7beb699c1b0a19850a7a13f920a4.jpg",
     },
     {
       name: "Emily Rodriguez",
