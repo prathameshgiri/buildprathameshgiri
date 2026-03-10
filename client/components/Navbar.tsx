@@ -166,13 +166,7 @@ export default function Navbar() {
             >
              College Projects
             </Link>
-            <a
-              href="/#explore"
-              className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Explore
-            </a>
+            
             <div className="border-t border-gray-100 pt-3 space-y-2">
               {user ? (
                 <>
