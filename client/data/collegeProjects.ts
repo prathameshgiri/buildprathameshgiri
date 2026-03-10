@@ -16,7 +16,7 @@ export const collegeProjects: CollegeProject[] = [
     id: "1",
     title: "E-Commerce Management System",
     description: "A comprehensive e-commerce platform with admin dashboard, product management, and secure payment integration.",
-    longScreenshot: "https://i.pinimg.com/1200x/dc/67/65/dc6765f9029f359d7acc7f1eb12529cd.jpg",
+    longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/cookiesshop.png",
     technologies: ["React", "Node.js", "Firebase", "Tailwind CSS"],
     developerName: "Prathamesh Giri",
     customerName: "Final Year Student",
