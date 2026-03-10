@@ -12,17 +12,7 @@ export default function Hero() {
           className="mb-8 opacity-0 animate-slide-up"
           style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}
         >
-          <div className="badge-pill hover:shadow-md transition-shadow duration-300 sm:w-fit">
-            <div className="flex -space-x-2">
-             
-
-
-
-
-
-            </div>
-            
-          </div>
+          
         </div>
 
         {/* Main Heading */}
