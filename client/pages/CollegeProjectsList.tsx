@@ -53,7 +53,15 @@ export default function CollegeProjectsList() {
               College <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Projects</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Explore high-quality Full-Stack Final Year Projects built using modern technologies. Ready-to-deploy solutions designed for Computer Engineering and IT students to build real-world experience.
+              Explore high-quality Full-Stack Final Year Projects created by{" "}
+              <a
+                href="https://prathameshgiri.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:text-black transition"
+              >
+                Prathamesh Giri
+              </a>. These projects are specially developed for Computer Engineering and IT students, providing ready-to-deploy full-stack solutions to help build real-world development experience.
             </p>
           </div>
 
