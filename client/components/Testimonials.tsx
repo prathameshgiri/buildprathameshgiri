@@ -30,13 +30,13 @@ export default function Testimonials() {
         "https://i.pinimg.com/1200x/af/e3/64/afe3646ae7bdffebd07adbb04066a95b.jpg",
     },
     {
-      name: "James Wilson",
-      company: "Enterprise Corp.",
+      name: "Vikram Singh",
+      company: "Heritage Residency Hotel",
       feedback:
         "Reliable, professional, and solution-oriented. They tackled complex requirements and delivered a robust solution.",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+        "https://i.pinimg.com/736x/46/88/12/468812df30ab33d9c66397e40be563af.jpg",
     },
   ];
 
