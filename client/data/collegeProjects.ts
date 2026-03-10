@@ -89,7 +89,85 @@ export const collegeProjects: CollegeProject[] = [
     "Dynamic Data Storage with JSON Database",
     "Mobile-First Responsive Design"
   ],
-  }
+  },
+
+  {
+  id: "4",
+  title: "Shiv Bakery — Online Bakery Shop System",
+  description: "A modern full-stack bakery eCommerce platform with customer storefront and real-time admin dashboard for managing orders, products, and users.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/bakery.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Bhumika Biradar",
+  sourceCodeUrl: "https://github.com/prathameshgiri/bakery",
+
+  fullDescription: "Shiv Bakery Management System is a premium full-stack bakery eCommerce platform developed as a college project. The system provides a complete online bakery storefront where customers can browse products, create accounts, and place orders. It also includes a powerful admin dashboard that allows administrators to manage bakery products, monitor orders, and control customer accounts. The project is built using Node.js and Express with a responsive modern interface.",
+
+  features: [
+    "Customer Bakery Storefront",
+    "Admin Dashboard for Product Management",
+    "User Login & Registration System",
+    "Order Placement and Tracking",
+    "Real-Time Order Management",
+    "Responsive UI Design",
+    "Product Catalog with Images",
+    "Customer Account Management",
+    "Secure Authentication System",
+    "Mobile Friendly Layout"
+  ],
+  },
+
+{
+  id: "5",
+  title: "MedCare HMS — Hospital Management System",
+  description: "A complete hospital management platform with patient portal, doctor management, appointment booking, and real-time admin dashboard.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/hospitalMS.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Heena Bagwan",
+  sourceCodeUrl: "https://github.com/prathameshgiri/medcare-hms",
+
+  fullDescription: "MedCare HMS is a full-featured hospital management system designed to simplify healthcare operations. The platform includes a patient portal for booking appointments, managing profiles, and viewing prescriptions. It also features a professional admin dashboard where hospital administrators can manage doctors, approve appointments, monitor patient records, and respond to patient messages. The system uses a shared JSON database for real-time synchronization between patient and admin portals.",
+
+  features: [
+    "Patient Portal with Appointment Booking",
+    "Doctor Search by Specialization",
+    "Prescription Management System",
+    "Real-Time Appointment Approval",
+    "Admin Dashboard with Analytics",
+    "Doctor Management System",
+    "Patient Records Management",
+    "Hospital Messaging System",
+    "Live Data Synchronization",
+    "Responsive Medical Interface"
+  ],
+  },
+
+{
+  id: "6",
+  title: "LuxeStay — Hotel Management System",
+  description: "An enterprise-level hotel management system with guest booking portal, room inventory management, and advanced admin dashboard.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/hotelMS.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js", "JWT"],
+  developerName: "Prathamesh Giri",
+  customerName: "Poonam Ganachari",
+  sourceCodeUrl: "https://github.com/prathameshgiri/Luxestay-hms",
+
+  fullDescription: "LuxeStay is a production-ready hotel management platform designed to handle hotel operations efficiently. The system provides a modern guest portal where users can browse rooms, make bookings, manage reservations, and contact the hotel. It also includes a centralized admin dashboard that allows hotel administrators to manage room inventory, approve bookings, monitor guest statistics, and respond to customer messages in real-time.",
+
+  features: [
+    "Hotel Room Booking System",
+    "Guest Dashboard with Booking Tracking",
+    "Admin Panel for Booking Management",
+    "Room Inventory Management",
+    "JWT-Based Authentication",
+    "Real-Time Booking Updates",
+    "Guest Database Management",
+    "Contact Messaging System",
+    "Luxury UI with Animations",
+    "Mobile Responsive Design"
+  ],
+}
 
   
 
