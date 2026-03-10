@@ -138,7 +138,7 @@ export default function PremiumMessage() {
             <div className="pt-2">
               <Link
                 to="/auth?mode=signup"
-                className="w-full group/btn relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95"
+                className="w-full group/btn relative inline-flex items-center justify-center gap-3 px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-95"
               >
                 {/* Button Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
@@ -149,7 +149,7 @@ export default function PremiumMessage() {
                     className="w-5 h-5 group-hover/btn:animate-pulse"
                     strokeWidth={2}
                   />
-                  <span className="relative">Unlock Premium Projects</span>
+                  <span className="relative">Premium Projects</span>
                   <svg
                     className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300"
                     fill="none"
