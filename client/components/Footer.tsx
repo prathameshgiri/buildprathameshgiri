@@ -179,14 +179,14 @@ export default function Footer() {
           {/* Bottom Footer */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-gray-400 text-sm">
-              © 2024 - {currentYear} 
+              © 2024 - {currentYear} |{" "}
               <a
                 href="https://prathameshgiri.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition"
               >
-                 Prathamesh Giri
+                Prathamesh Giri
               </a>. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm">
