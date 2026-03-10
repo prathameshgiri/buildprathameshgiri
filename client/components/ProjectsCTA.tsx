@@ -16,7 +16,15 @@ export default function ProjectsCTA() {
               Final Year Projects for Computer Science Students
             </h3>
             <p className="text-black/80 text-lg max-w-xl mx-auto md:mx-0">
-              Explore our collection of real-world full-stack projects designed specifically for final year students. Browse our portfolio or request a custom project tailored to your academic or business requirements.
+              Explore real-world Full-Stack Final Year Projects built by{" "}
+              <a
+                href="https://prathameshgiri.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium underline"
+              >
+                Prathamesh Giri
+              </a>. Discover ready-to-use solutions or request a custom project for your academic or business requirements.
             </p>
           </div>
 
