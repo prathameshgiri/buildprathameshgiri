@@ -158,19 +158,13 @@ export default function Navbar() {
             >
               About
             </Link>
-            <a
-              href="/#services"
-              className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
-            </a>
+            
             <Link
               to="/college-projects"
               className="block px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-300"
               onClick={() => setIsMenuOpen(false)}
             >
-              Projects
+             College Projects
             </Link>
             <a
               href="/#explore"
