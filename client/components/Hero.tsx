@@ -48,9 +48,7 @@ export default function Hero() {
 </div>
 
             </div>
-            <span className="text-gray-700 text-sm">
-              30+ businesses built with Prathamesh Giri
-            </span>
+            
           </div>
         </div>
 
