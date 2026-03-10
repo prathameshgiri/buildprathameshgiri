@@ -219,6 +219,31 @@ export const collegeProjects: CollegeProject[] = [
     "Secure Authentication System",
     "Full Stack Web Architecture"
   ],
+  },
+{
+  id: "9",
+  title: "Gas Cylinder Booking System",
+  description: "A modern full-stack LPG gas booking platform that allows users to book cylinders online, track delivery status, and communicate with service providers.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/gasbookingl.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Diksha Kurne",
+  sourceCodeUrl: "https://github.com/prathameshgiri/gasbooking",
+
+  fullDescription: "The Gas Cylinder Booking System is a modern full-stack web application designed to simplify the process of booking LPG gas cylinders online. The platform provides a user portal where customers can select cylinder types, place bookings, and track delivery status in real time. It also includes a dedicated admin dashboard that allows administrators to manage bookings, monitor delivery progress, view user accounts, and respond to customer messages. The system is designed with a responsive interface and enterprise-style dashboard for a real-world service experience.",
+
+  features: [
+    "Online LPG Gas Cylinder Booking",
+    "User Dashboard with Booking Status Tracking",
+    "Multiple Cylinder Types (Domestic, Commercial, Mini)",
+    "Admin Dashboard with Booking Analytics",
+    "Booking Approval and Delivery Status Updates",
+    "Customer Message & Support System",
+    "User Account Management",
+    "Responsive Modern UI Design",
+    "Secure Login Authentication",
+    "Full Stack Web Application Architecture"
+  ],
 }
 
   
