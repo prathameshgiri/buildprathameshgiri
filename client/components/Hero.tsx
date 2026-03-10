@@ -86,6 +86,13 @@ export default function Hero() {
             Develop modern websites, web applications, and custom software with professional design, high performance, and SEO-optimized solutions.
             Build with Prathamesh Giri.
           </p>
+          <p
+            className="text-lg sm:text-xl text-gray-600 leading-relaxed opacity-0 animate-slide-up"
+            style={{ animationFillMode: "forwards", animationDelay: "0.8s" }}
+          >
+            
+            Build with Prathamesh Giri.
+          </p>
 
           {/* About Link */}
           <Link
