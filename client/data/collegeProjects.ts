@@ -13,17 +13,30 @@ export interface CollegeProject {
 
 export const collegeProjects: CollegeProject[] = [
   {
-    id: "1",
-    title: "E-Commerce Management System",
-    description: "A comprehensive e-commerce platform with admin dashboard, product management, and secure payment integration.",
-    longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/cookiesshop.png",
-    technologies: ["React", "Node.js", "Firebase", "Tailwind CSS"],
-    developerName: "Prathamesh Giri",
-    customerName: "Final Year Student",
-    sourceCodeUrl: "https://github.com/prathameshgiri",
-    fullDescription: "This e-commerce system provides a robust solution for online retail. It includes a user-friendly frontend for customers and a powerful admin dashboard for inventory and order management. Built with modern technologies, it ensures high performance and security.",
-    features: ["User Authentication", "Product Catalog", "Shopping Cart", "Order Management", "Admin Dashboard", "Payment Integration"],
-  },
+  id: "1",
+  title: "Good Cookie Chocolate Store – Full Stack eCommerce System",
+  description: "A modern full-stack eCommerce web application for handcrafted chocolates and cookies with user dashboard, admin panel, and complete order management system.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/cookiesshop.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Arpita Survase",
+  sourceCodeUrl: "https://github.com/prathameshgiri/cookiesshop",
+
+  fullDescription: "Good Cookie Chocolate Store is a modern full-stack eCommerce platform developed as a college project. The system includes a premium UI design with a dark chocolate theme, a complete shopping cart system, role-based authentication for users and admins, and an advanced admin dashboard for managing products, orders, and customer messages. It provides a real-world online store experience with responsive design, smooth animations, and secure order handling.",
+
+  features: [
+    "Premium Glassmorphism UI Design",
+    "Role-Based Authentication (User & Admin)",
+    "Full Shopping Cart System",
+    "Product Catalog with Categories",
+    "User Dashboard with Order History",
+    "Admin Panel with Analytics",
+    "Order Management System",
+    "Contact Message Management",
+    "Responsive Mobile-First Design",
+    "Toast Notifications & Scroll Animations"
+  ],
+},
   {
     id: "2",
     title: "Hospital Management System",
