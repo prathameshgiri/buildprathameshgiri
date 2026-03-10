@@ -21,13 +21,13 @@ export default function Testimonials() {
         "https://i.pinimg.com/736x/7b/8a/7b/7b8a7beb699c1b0a19850a7a13f920a4.jpg",
     },
     {
-      name: "Emily Rodriguez",
+      name: "Priya Mehta",
       company: "Fashion & Co.",
       feedback:
         "Our e-commerce platform exceeded all expectations. The user experience is smooth and our sales increased significantly!",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+        "https://i.pinimg.com/1200x/af/e3/64/afe3646ae7bdffebd07adbb04066a95b.jpg",
     },
     {
       name: "James Wilson",
