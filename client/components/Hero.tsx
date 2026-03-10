@@ -74,7 +74,7 @@ export default function Hero() {
             >
               Crafting Modern Web Experiences
               <Sparkles
-                className="w-7 h-7 text-orange-500 inline opacity-0 animate-bounce-subtle"
+                className="w-8 h-8 text-orange-500 inline opacity-0 animate-bounce-subtle"
                 style={{ animationDelay: "0.9s" }}
               />
             </span>
