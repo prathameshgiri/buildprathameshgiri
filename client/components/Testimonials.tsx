@@ -3,13 +3,13 @@ import { Star } from "lucide-react";
 export default function Testimonials() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      company: "TechStart Inc.",
+      name: "Amit Patel",
+      company: "Photographer.",
       feedback:
         "Exceptional work! They delivered our project ahead of schedule with outstanding quality. Highly recommended!",
       rating: 5,
       image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+        "https://i.pinimg.com/1200x/d5/2a/fe/d52afe6a810081b69c9053468f924159.jpg",
     },
     {
       name: "Michael Chen",
