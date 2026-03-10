@@ -224,7 +224,7 @@ export const collegeProjects: CollegeProject[] = [
   id: "9",
   title: "Gas Cylinder Booking System",
   description: "A modern full-stack LPG gas booking platform that allows users to book cylinders online, track delivery status, and communicate with service providers.",
-  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/gasbookingl.png",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/gasbooking.png",
   technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
   developerName: "Prathamesh Giri",
   customerName: "Diksha Kurne",
