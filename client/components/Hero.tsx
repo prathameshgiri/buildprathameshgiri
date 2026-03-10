@@ -64,7 +64,7 @@ export default function Hero() {
               className="text-gray-900 inline-block opacity-0 animate-slide-up"
               style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}
             >
-               Turning Your Dream Website into Reality
+              Turning Your Dream Website into Reality
             </span>
             <br />
 
