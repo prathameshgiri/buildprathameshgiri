@@ -159,7 +159,7 @@ export default function CollegeProjectsList() {
 
           {/* WhatsApp CTA */}
           <div className="mt-24 text-center bg-white p-8 sm:p-12 rounded-3xl border-2 border-orange-100 shadow-xl">
-            <h3 className="text-1xl font-bold text-gray-900 mb-4">Want a Custom Project?</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Want a Custom Project?</h3>
             <p className="text-gray-600 mb-8 max-w-xl mx-auto">
               We can build any project tailored to your specific academic requirements and deadlines.
             </p>
