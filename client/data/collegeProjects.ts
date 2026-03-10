@@ -37,16 +37,34 @@ export const collegeProjects: CollegeProject[] = [
     "Toast Notifications & Scroll Animations"
   ],
 },
+
+
   {
-    id: "2",
-    title: "Hospital Management System",
-    description: "Digital solution for hospitals to manage patient records, appointments, and billing.",
-    longScreenshot: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000",
-    technologies: ["React", "Express", "MongoDB", "Redux"],
-    developerName: "Prathamesh Giri",
-    customerName: "Computer Engineering Student",
-    sourceCodeUrl: "https://github.com/prathameshgiri",
-    fullDescription: "A comprehensive hospital management solution designed to streamline healthcare operations. It manages patient registrations, doctor schedules, appointment bookings, and detailed billing systems efficiently.",
-    features: ["Patient Management", "Doctor Scheduling", "Appointment Booking", "Billing System", "Medical Records", "User Role Permissions"],
+  id: "2",
+  title: "LuxeWood – Premium Online Furniture Shop",
+  description: "A modern full-stack eCommerce platform for premium handcrafted furniture with advanced product catalog, shopping cart, and admin management system.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/furnitoreshop.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js", "JWT"],
+  developerName: "Prathamesh Giri",
+  customerName: "Alfiya Ekambe",
+  sourceCodeUrl: "https://github.com/prathameshgiri/Furnitureshop",
+
+  fullDescription: "LuxeWood is a modern full-stack furniture eCommerce platform developed for showcasing premium handcrafted furniture products. The system includes a beautiful storefront for browsing and purchasing furniture along with a powerful admin panel for managing products, orders, users, and customer messages. It features role-based authentication, product reviews, order tracking, and a responsive luxury UI with smooth animations and glassmorphism design.",
+
+  features: [
+    "Advanced Product Catalog with Filters",
+    "Shopping Cart with Quantity Controls",
+    "User Authentication with JWT",
+    "Order Placement and Tracking",
+    "User Dashboard with Order History",
+    "Admin Panel with Analytics",
+    "Orders, Users & Messages Management",
+    "Product Reviews with Ratings",
+    "Luxury Glassmorphism UI Design",
+    "Fully Responsive Mobile-First Layout"
+  ],
   }
+
+
+
 ];
