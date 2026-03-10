@@ -50,11 +50,10 @@ export default function CollegeProjectsList() {
               </p>
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Premium <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">College Projects</span>
+              College <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Projects</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              High-quality, ready-to-deploy final year projects built with modern technologies. 
-              Perfect for computer engineering and IT students.
+              Explore high-quality Full-Stack Final Year Projects built using modern technologies. Ready-to-deploy solutions designed for Computer Engineering and IT students to build real-world experience.
             </p>
           </div>
 
