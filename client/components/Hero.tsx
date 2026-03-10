@@ -7,13 +7,7 @@ export default function Hero() {
     <div className="relative w-full">
       {/* Content */}
       <div className="relative z-10 flex flex-col items-start justify-start">
-        {/* Social Proof Badge */}
-        <div
-          className="mb-8 opacity-0 animate-slide-up"
-          style={{ animationFillMode: "forwards", animationDelay: "0.4s" }}
-        >
-          
-        </div>
+        
 
         {/* Main Heading */}
         <div
