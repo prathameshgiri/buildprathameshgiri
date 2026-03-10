@@ -36,7 +36,7 @@ export const collegeProjects: CollegeProject[] = [
     "Responsive Mobile-First Design",
     "Toast Notifications & Scroll Animations"
   ],
-},
+  },
 
 
   {
@@ -63,7 +63,35 @@ export const collegeProjects: CollegeProject[] = [
     "Luxury Glassmorphism UI Design",
     "Fully Responsive Mobile-First Layout"
   ],
+  },
+
+  {
+  id: "3",
+  title: "Spice Garden — Restaurant Booking & Ordering System",
+  description: "A full-stack restaurant website with menu browsing, table reservations, online ordering, and a powerful admin management dashboard.",
+  longScreenshot: "https://res.prathameshgiri.in/build/collegeprojects/resturantbooking.png",
+  technologies: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js"],
+  developerName: "Prathamesh Giri",
+  customerName: "Aditi Suryawanshi",
+  sourceCodeUrl: "https://github.com/prathameshgiri/restaurant",
+
+  fullDescription: "Spice Garden is a modern full-stack restaurant management and ordering platform developed as a college project. The system provides a beautiful and responsive customer interface for browsing menus, placing orders, submitting reviews, and making table reservations. It also includes a powerful admin dashboard where administrators can manage menu items, reservations, orders, and customer messages. Built using Node.js and Express with a lightweight JSON-based data structure, the application delivers a fast and seamless restaurant management experience.",
+
+  features: [
+    "Beautiful Responsive Restaurant UI",
+    "User & Admin Role-Based Authentication",
+    "Online Food Ordering System",
+    "Table Reservation & Booking System",
+    "Shopping Cart & Checkout Flow",
+    "User Order Tracking Dashboard",
+    "Admin Panel for Menu & Order Management",
+    "Customer Reviews & Contact Messages",
+    "Dynamic Data Storage with JSON Database",
+    "Mobile-First Responsive Design"
+  ],
   }
+
+  
 
 
 
