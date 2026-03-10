@@ -16,7 +16,7 @@ export default function Footer() {
             {/* Brand */}
             <div>
               <Link
-                to="/"
+                to="https://prathameshgiri.in/"
                 className="flex items-center gap-1 text-2xl font-bold mb-6"
               >
                 <span className="text-orange-500">Prathamesh</span>
