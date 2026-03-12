@@ -149,7 +149,7 @@ export default function PremiumMessage() {
                     className="w-5 h-5 group-hover/btn:animate-pulse"
                     strokeWidth={2}
                   />
-                  <span className="relative">Premium Projects</span>
+                  <span className="relative">Explore Premium Projects</span>
                   <svg
                     className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-300"
                     fill="none"
@@ -179,7 +179,7 @@ export default function PremiumMessage() {
                     className="w-5 h-5 group-hover/btn:animate-pulse"
                     strokeWidth={2}
                   />
-                  <span className="relative">Explore Projects</span>
+                  <span className="relative">Explore Premium Projects</span>
                 </div>
               </Link>
             </div>
