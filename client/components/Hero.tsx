@@ -56,7 +56,7 @@ export default function Hero() {
 
         {/* Main Heading */}
         <div
-          className="max-w-1xl mb-8 opacity-0 animate-slide-up"
+          className="max-w-2xl mb-8 opacity-0 animate-slide-up"
           style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}
         >
           <h1 className="text-2xl sm:text-2xl md:text-3xl font-bold leading-tight mb-4">
