@@ -22,7 +22,7 @@ export default function ProjectsCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <Link
-              to="/college/projects"
+              to="/college-projects"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-orange-600 font-bold rounded-xl shadow-lg hover:shadow-orange-700/20 hover:scale-105 transition-all duration-300"
             >
               View Projects
