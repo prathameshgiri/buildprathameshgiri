@@ -56,7 +56,7 @@ export default function Hero() {
 
         {/* Main Heading */}
         <div
-          className="max-w-2xl mb-8 opacity-0 animate-slide-up"
+          className="max-w-1xl mb-8 opacity-0 animate-slide-up"
           style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}
         >
           <h1 className="text-2xl sm:text-2xl md:text-3xl font-bold leading-tight mb-4">
@@ -67,6 +67,12 @@ export default function Hero() {
               Turning Your Dream Website into Reality
             </span>
             <br />
+
+            
+          </h1>
+
+          <h1 className="text-2xl sm:text-2xl md:text-3xl font-bold leading-tight mb-4">
+            
 
             <span
               className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent opacity-0 animate-slide-up"
