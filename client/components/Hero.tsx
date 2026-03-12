@@ -59,7 +59,7 @@ export default function Hero() {
           className="max-w-2xl mb-8 opacity-0 animate-slide-up"
           style={{ animationFillMode: "forwards", animationDelay: "0.5s" }}
         >
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4">
+          <h1 className="text-1xl sm:text-2xl md:text-3xl font-bold leading-tight mb-4">
             <span
               className="text-gray-900 inline-block opacity-0 animate-slide-up"
               style={{ animationFillMode: "forwards", animationDelay: "0.6s" }}
