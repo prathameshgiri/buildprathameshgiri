@@ -56,8 +56,8 @@ export default function Navbar() {
           className="flex items-center gap-1 text-xl font-bold opacity-0 animate-slide-up"
           style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
         >
-          <span className="text-orange-500">Prathamesh</span>
-          <span className="text-gray-900">Giri</span>
+          <span className="text-orange-500">Build with</span>
+          <span className="text-gray-900">Prathamesh Giri</span>
         </Link>
 
         {/* Desktop Navigation Links */}
